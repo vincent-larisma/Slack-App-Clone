@@ -32,7 +32,8 @@ export default function RegisterFunction() {
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
-  const handleClickSubmit = () => {
+  const handleClickSubmit = (event) => {
+    event.preventDefault()
     fetch(`${APIurl}/auth`, {
       method: 'POST',
       headers: {
@@ -42,6 +43,8 @@ export default function RegisterFunction() {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
+
+    setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
   }
 
   return (
