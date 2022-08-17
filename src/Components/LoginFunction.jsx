@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
 
-export default function RegisterFunction() {
+export default function LoginFunction() {
   const [userData, setUserData] = useState({
     email: '',
     password: '',
-    passwordConfirm: '',
   })
 
-  const { email, password, passwordConfirm } = userData
+  const { email, password } = userData
 
   const userDataAPI = {
     email: email,
     password: password,
-    password_confirmation: passwordConfirm,
   }
 
   const handleChangeEmail = (event) => {
@@ -23,16 +21,12 @@ export default function RegisterFunction() {
     const { name, value } = event.target
     setUserData({ ...userData, [name]: value })
   }
-  const handleChangePasswordConfirm = (event) => {
-    const { name, value } = event.target
-    setUserData({ ...userData, [name]: value })
-  }
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
-    fetch(`${APIurl}/auth/`, {
+    fetch(`${APIurl}/auth/sign_in`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,13 +36,13 @@ export default function RegisterFunction() {
       .then((res) => res.json())
       .then((data) => console.log(data))
 
-    setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
+    setUserData({ ...userData, email: '', password: '' })
   }
 
   return (
     <>
       <div className='form-container'>
-        <div className='form-name'>Create User</div>
+        <div className='form-name'>Login</div>
         <form>
           <div>
             <label htmlFor='email'>Email:</label>
@@ -74,19 +68,8 @@ export default function RegisterFunction() {
               onChange={handleChangePassword}
             />
           </div>
-          <div>
-            <label htmlFor='passwordConfirm'>Confirm Password:</label>
-            <br />
-            <input
-              type='text'
-              id='passwordConfirm'
-              name='passwordConfirm'
-              value={passwordConfirm}
-              placeholder='Enter your password confirmation'
-              onChange={handleChangePasswordConfirm}
-            />
-          </div>
-          <button onClick={handleClickSubmit}>Submit</button>
+
+          <button onClick={handleClickSubmit}>Login</button>
         </form>
       </div>
     </>
