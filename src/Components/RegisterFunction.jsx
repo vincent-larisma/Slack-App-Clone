@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function RegisterFunction() {
+  const navigate = useNavigate()
+
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -43,6 +46,7 @@ export default function RegisterFunction() {
       .then((data) => console.log(data))
 
     setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
+    navigate('/Login')
   }
 
   return (
