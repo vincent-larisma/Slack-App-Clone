@@ -10,11 +10,9 @@ export default function RegisterFunction() {
   const { email, password, passwordConfirm } = userData
 
   const userDataAPI = {
-    root: {
-      email: email,
-      password: password,
-      password_confirmation: passwordConfirm,
-    },
+    email: email,
+    password: password,
+    password_confirmation: passwordConfirm,
   }
 
   const handleChangeEmail = (event) => {
