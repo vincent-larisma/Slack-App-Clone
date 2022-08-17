@@ -1,7 +1,12 @@
 import React from 'react'
+import RegisterFunction from './Components/RegisterFunction'
 
 function App() {
-  return <></>
+  return (
+    <>
+      <RegisterFunction />
+    </>
+  )
 }
 
 export default App
