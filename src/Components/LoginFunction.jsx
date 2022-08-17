@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function RegisterFunction() {
+export default function LoginFunction() {
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -88,7 +88,7 @@ export default function RegisterFunction() {
               onChange={handleChangePasswordConfirm}
             />
           </div>
-          <button onClick={handleClickSubmit}>Submit</button>
+          <button onClick={handleClickSubmit}>Login</button>
         </form>
       </div>
     </>
