@@ -10,18 +10,11 @@ function App() {
     <>
       <LoginProvider>
         <Routes>
-          {/* <Route path='/CreateUser' element={<RegisterFunction />}></Route>
+          <Route path='/CreateUser' element={<RegisterFunction />}></Route>
           <Route path='/Login' element={<LoginFunction />}></Route>
           <Route path='/' element={<LoginFunction />}></Route>
-          <Route path='/Test' element={<SendMessageFunction />}></Route> */}
+          <Route path='/Test' element={<SendMessageFunction />}></Route>
         </Routes>
-        <RegisterFunction />
-        <br />
-        <br />
-        <LoginFunction />
-        <br />
-        <br />
-        <SendMessageFunction />
       </LoginProvider>
     </>
   )

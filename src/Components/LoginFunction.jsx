@@ -56,6 +56,7 @@ export default function LoginFunction() {
       .then((data) => {
         if (data.data) {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
+          navigate('/test')
         } else if (!data.success) {
           return alert(data.errors[0])
         }
