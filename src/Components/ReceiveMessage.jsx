@@ -6,19 +6,17 @@ export default function SendMessageFunction() {
   const { loginInfo, setLoginInfo } = useContext(LoginContext)
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
   const [userSendMessage, setUserSendMessage] = useState({
-    userMessage: '',
     receiverID: '',
     receiverClass: '',
     userMessageList: [],
   })
 
-  const { userMessage, receiverID, receiverClass, userMessageList } = userSendMessage
+  const { receiverID, receiverClass, userMessageList } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const userDataAPI = {
     receiver_id: receiverID,
     receiver_class: receiverClass,
-    body: userMessage,
   }
   const userDataHeadersAPI = {
     expiry: expiry,
@@ -29,10 +27,6 @@ export default function SendMessageFunction() {
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
-  const handleChangeMessage = (event) => {
-    const { name, value } = event.target
-    setUserSendMessage({ ...userSendMessage, [name]: value })
-  }
   const handleChangeReceiverID = (event) => {
     const { name, value } = event.target
     setUserSendMessage({ ...userSendMessage, [name]: value })
@@ -44,11 +38,9 @@ export default function SendMessageFunction() {
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
-    let list = userMessageList
-    list.push(userMessage)
 
     //Fetch user message
-    fetch(`${APIurl}/messages`, {
+    fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,9 +49,7 @@ export default function SendMessageFunction() {
       body: JSON.stringify(userDataAPI),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-
-    setUserSendMessage({ ...userSendMessage, userMessageList: list, userMessage: '' })
+      .then((data) => console.log('I am receiver', data))
   }
 
   return (
@@ -88,7 +78,6 @@ export default function SendMessageFunction() {
       )}
 
       <div>
-        <input type='text' name='userMessage' value={userMessage} onChange={handleChangeMessage} />
         <button onClick={handleClickSubmit}>Send</button>
       </div>
     </>

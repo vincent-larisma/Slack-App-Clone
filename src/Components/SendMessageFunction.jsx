@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react'
 import { LoginContext } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
+import { useNavigate } from 'react-router-dom'
 
 export default function SendMessageFunction() {
+  const navigate = useNavigate()
   const { loginInfo, setLoginInfo } = useContext(LoginContext)
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
   const [userSendMessage, setUserSendMessage] = useState({
@@ -60,6 +62,7 @@ export default function SendMessageFunction() {
       .then((data) => console.log(data))
 
     setUserSendMessage({ ...userSendMessage, userMessageList: list, userMessage: '' })
+    navigate('/ReceiveMessage')
   }
 
   return (
