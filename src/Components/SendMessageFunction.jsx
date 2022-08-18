@@ -1,18 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { LoginContext } from './LoginContext'
 
 export default function SendMessageFunction() {
+  const { loginInfo, setLoginInfo } = useContext(LoginContext)
   const [userSendMessage, setUserSendMessage] = useState({
     userMessage: '',
+    receiverID: '',
+    receiverClass: '',
     userMessageList: [],
   })
 
-  const { userMessage, userMessageList } = userSendMessage
+  const { userMessage, receiverID, receiverClass, userMessageList } = userSendMessage
 
-  const userDataAPI = {}
+  const userDataAPI = {
+    receiver_id: receiverID,
+    receiver_class: receiverClass,
+    body: userMessage,
+  }
+  const userDataHeadersAPI = {
+    
+  }
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
   const handleChangeMessage = (event) => {
+    const { name, value } = event.target
+    setUserSendMessage({ ...userSendMessage, [name]: value })
+  }
+  const handleChangeReceiverID = (event) => {
+    const { name, value } = event.target
+    setUserSendMessage({ ...userSendMessage, [name]: value })
+  }
+  const handleChangeReceiverClass = (event) => {
     const { name, value } = event.target
     setUserSendMessage({ ...userSendMessage, [name]: value })
   }
@@ -21,21 +40,38 @@ export default function SendMessageFunction() {
     event.preventDefault()
     let list = userMessageList
     list.push(userMessage)
-    // fetch(`${APIurl}/messages`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(userDataAPI),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data))
+
+    //Fetch user message
+    fetch(`${APIurl}/messages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userDataAPI),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
 
     setUserSendMessage({ ...userSendMessage, userMessageList: list, userMessage: '' })
   }
 
   return (
     <>
+      <div>
+        <input
+          type='number'
+          placeholder='Receiver ID'
+          name='receiverID'
+          value={receiverID}
+          onChange={handleChangeReceiverID}
+        />
+        <br />
+        <label htmlFor='user'>User</label>
+        <input type='radio' name='receiverClass' id='user' value='User' onChange={handleChangeReceiverClass} />
+        <label htmlFor='class'>Class</label>
+        <input type='radio' name='receiverClass' id='class' value='Class' onChange={handleChangeReceiverClass} />
+      </div>
+
       {userMessageList.length ? (
         userMessageList.map((value, index) => {
           return <div key={index}>{value}</div>

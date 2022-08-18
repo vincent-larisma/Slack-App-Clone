@@ -37,7 +37,7 @@ export default function LoginFunction() {
       },
       body: JSON.stringify(userDataAPI),
     })
-      .then((res) => res.json())
+      .then((res) => res.json() && console.log(res.headers.expiry))
       .then((data) => {
         if (data.data) {
           setLoginInfo({ ...loginInfo, dataLogin: data.data })

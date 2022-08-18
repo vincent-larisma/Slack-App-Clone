@@ -18,7 +18,6 @@ function App() {
         <LoginFunction />
         <br />
         <br />
-        <br />
         <SendMessageFunction />
       </LoginProvider>
     </>
