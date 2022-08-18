@@ -4,7 +4,6 @@ import { LoginProvider } from './Components/LoginContext'
 import LoginFunction from './Components/LoginFunction'
 import RegisterFunction from './Components/RegisterFunction'
 import SendMessageFunction from './Components/SendMessageFunction'
-import ReceiveMessage from './Components/ReceiveMessage'
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
           <Route path='/Login' element={<LoginFunction />}></Route>
           <Route path='/' element={<LoginFunction />}></Route>
           <Route path='/Test' element={<SendMessageFunction />}></Route>
-          <Route path='/ReceiveMessage' element={<ReceiveMessage />}></Route>
         </Routes>
       </LoginProvider>
     </>
