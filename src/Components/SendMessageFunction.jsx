@@ -13,13 +13,19 @@ export default function SendMessageFunction() {
   })
 
   const { userMessage, receiverID, receiverClass, userMessageList } = userSendMessage
+  const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader || null
 
   const userDataAPI = {
     receiver_id: receiverID,
     receiver_class: receiverClass,
     body: userMessage,
   }
-  const userDataHeadersAPI = {}
+  const userDataHeadersAPI = {
+    expiry: expiry,
+    uid: uid,
+    'access-token': accessToken,
+    client: client,
+  }
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
@@ -46,6 +52,7 @@ export default function SendMessageFunction() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        ...JSON.stringify(userDataHeadersAPI),
       },
       body: JSON.stringify(userDataAPI),
     })

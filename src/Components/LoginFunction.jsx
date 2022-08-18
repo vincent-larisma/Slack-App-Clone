@@ -57,13 +57,11 @@ export default function LoginFunction() {
         if (data.data) {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
         } else if (!data.success) {
-          return console.log(data.errors[0])
+          return alert(data.errors[0])
         }
       })
 
     setUserData({ ...userData, email: '', password: '' })
-    console.log('Data', loginInfo)
-    console.log('Header', loginInfoHeader)
   }
 
   return (
