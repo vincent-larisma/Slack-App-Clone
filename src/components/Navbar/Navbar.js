@@ -11,7 +11,7 @@ export default function Navbar() {
                 <button><i class="fa-solid fa-angle-right"></i></button>
             </section>
             <section className='search-bar'>
-                <input type="text" placeholder='Search or type a command' />
+                <input type="text" placeholder='Search or type a command' /> 
             </section>
             <section className='screen-setting'>
                 <button><i class="fa-solid fa-user-tie"></i></button>
