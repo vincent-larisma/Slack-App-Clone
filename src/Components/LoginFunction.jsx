@@ -4,6 +4,7 @@ import { LoginContext } from './LoginContext'
 
 export default function LoginFunction() {
   const navigate = useNavigate()
+  
   const { loginInfo, setLoginInfo } = useContext(LoginContext)
   const [userData, setUserData] = useState({
     email: '',
@@ -37,17 +38,28 @@ export default function LoginFunction() {
       },
       body: JSON.stringify(userDataAPI),
     })
-      .then((res) => res.json() && console.log(res.headers.expiry))
+      .then((res) => {
+        setLoginInfo({
+          ...loginInfo,
+          dataLoginHeader: {
+            expiry: res.headers.get('expiry'),
+            uid: res.headers.get('uid'),
+            accessToken: res.headers.get('access-token'),
+            client: res.headers.get('client'),
+          },
+        })
+        return res.json()
+      })
       .then((data) => {
         if (data.data) {
-          setLoginInfo({ ...loginInfo, dataLogin: data.data })
-          return console.log('data', data, 'state', loginInfo)
+          setLoginInfo({ ...loginInfo, dataInfo: data.data })
         } else if (!data.success) {
           return console.log(data.errors[0])
         }
       })
 
     setUserData({ ...userData, email: '', password: '' })
+    console.log(loginInfo)
   }
 
   return (

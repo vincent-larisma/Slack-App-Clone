@@ -17,9 +17,7 @@ export default function SendMessageFunction() {
     receiver_class: receiverClass,
     body: userMessage,
   }
-  const userDataHeadersAPI = {
-    
-  }
+  const userDataHeadersAPI = {}
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
@@ -53,6 +51,7 @@ export default function SendMessageFunction() {
       .then((data) => console.log(data))
 
     setUserSendMessage({ ...userSendMessage, userMessageList: list, userMessage: '' })
+   
   }
 
   return (

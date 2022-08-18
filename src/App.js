@@ -15,6 +15,9 @@ function App() {
           <Route path='/' element={<LoginFunction />}></Route>
           <Route path='/Test' element={<SendMessageFunction />}></Route> */}
         </Routes>
+        <RegisterFunction />
+        <br />
+        <br />
         <LoginFunction />
         <br />
         <br />
