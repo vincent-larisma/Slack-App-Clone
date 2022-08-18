@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react'
-import { LoginContext } from './LoginContext'
 
 export const LoginContext = createContext()
 export const LoginContextHeader = createContext()

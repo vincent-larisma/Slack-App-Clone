@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react'
 import { LoginContext } from './LoginContext'
+import { LoginContextHeader } from './LoginContext'
 
 export default function SendMessageFunction() {
   const { loginInfo, setLoginInfo } = useContext(LoginContext)
+  const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
   const [userSendMessage, setUserSendMessage] = useState({
     userMessage: '',
     receiverID: '',
@@ -51,7 +53,6 @@ export default function SendMessageFunction() {
       .then((data) => console.log(data))
 
     setUserSendMessage({ ...userSendMessage, userMessageList: list, userMessage: '' })
-   
   }
 
   return (

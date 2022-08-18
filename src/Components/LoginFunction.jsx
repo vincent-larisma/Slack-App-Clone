@@ -1,11 +1,14 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LoginContext } from './LoginContext'
+import { LoginContextHeader } from './LoginContext'
 
 export default function LoginFunction() {
   const navigate = useNavigate()
-  
+
   const { loginInfo, setLoginInfo } = useContext(LoginContext)
+  const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
+
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -39,8 +42,8 @@ export default function LoginFunction() {
       body: JSON.stringify(userDataAPI),
     })
       .then((res) => {
-        setLoginInfo({
-          ...loginInfo,
+        setLoginInfoHeader({
+          ...loginInfoHeader,
           dataLoginHeader: {
             expiry: res.headers.get('expiry'),
             uid: res.headers.get('uid'),
@@ -59,7 +62,8 @@ export default function LoginFunction() {
       })
 
     setUserData({ ...userData, email: '', password: '' })
-    console.log(loginInfo)
+    console.log('Data', loginInfo)
+    console.log('Header', loginInfoHeader)
   }
 
   return (
