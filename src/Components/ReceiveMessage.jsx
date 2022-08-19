@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { LoginContext } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
 
-export default function SendMessageFunction() {
+export default function ReceiveMessage() {
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
@@ -17,7 +17,6 @@ export default function SendMessageFunction() {
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
-
     //Fetch user message
     fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
       method: 'GET',
