@@ -77,7 +77,7 @@
 .new-message {
     display: flex;
     display: block;
-    margin-left: 50px;
+    margin-left: 30px;
     background-color: white;
     justify-content: flex-end;
     position: absolute;
@@ -98,6 +98,7 @@
     text-align: left;
     box-sizing: border-box;
     width: 1000px;
+    height: 70px;
     padding: 12px 10px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -136,7 +137,79 @@
     margin-top: 10px;
 }
 
+.top-body-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #1A374D;
+    text-align: center;
+    align-items: center;
+}
+
+.name-converse button {
+    border: none;
+    font-size: 20px;
+}
+
+.name-converse button:hover {
+    background-color: rgb(231, 228, 228);
+    transform: scale(1.01);
+    transition: .3s;
+}
+
 .new-chat-btn {
+    font-size: 35px;
+    padding-right: 10px;
+}
+
+.conversation {
+    margin: 10px 30px;
+    display: flex;
+    /* display: block; */
+    flex-direction: column;
+    height: 300px;
+    justify-content: flex-end;
+}
+
+.conversation div i {
+    color: #6998AB;
+}
+
+.message-sender-name, .message-receiver-name {
+    margin: 10px 20px;
+}
+
+.sender-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.sender-chat {
+    padding: 8px 6px;
+    color: #fff;
+    background-color: #6998AB;
+    display: table;
+    border-radius: 8px; 
+    margin-right: 60px;
+}
+
+.receiver-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.receiver-chat {
+    background-color: #ccc;
+    color: black;
+    padding: 8px 6px;
+    display: table;
+    border-radius: 8px; 
+    margin-left: 60px;
+}
+
+/* .new-chat-btn {
     display: flex;
     justify-content: flex-end;
     margin-top: 30px;
@@ -144,6 +217,15 @@
     font-size: 30px;
     color: #6998AB;
 }
+
+.name-converse {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+    margin-right: 30px;
+    font-size: 30px;
+    color: #6998AB;
+} */
 
 .new-chat-btn i:hover {
     transform: scale(1.1);

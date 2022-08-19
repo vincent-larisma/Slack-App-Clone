@@ -19,6 +19,10 @@ body {
     
 }
 
+.navbar-container section button {
+    font-size: 15px;
+}
+
 .settings {
     display: flex;
     column-gap: 30px; 
@@ -72,11 +76,15 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+    
 }
 
 .screen-setting button:hover {
     transform: scale(1.2);
 }
 
+.button-exit {
+    color: black;
+}
 
 

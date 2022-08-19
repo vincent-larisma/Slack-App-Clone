@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Navbar.css'
 import Swal from 'sweetalert2'
+import Body from '../SlackBody/Body'
+
 
 export default function Navbar() {
 
@@ -25,13 +27,13 @@ export default function Navbar() {
                 <button><i class="fa-solid fa-angle-right"></i></button>
             </section>
             <section className='search-bar'>
-                <input type="text" placeholder='Search or type a command' /> 
+                <input type="text" placeholder='Search' /> 
             </section>
             <section className='screen-setting'>
                 <button><i class="fa-solid fa-user-tie"></i></button>
                 <button><i class="fa-solid fa-minus"></i></button>
-                <button><i class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
-                <button onClick={exit}><i class="fa-solid fa-xmark"></i></button>
+                <button> <i class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
+                <button className='button-exit' onClick={exit}><i className="fa-solid fa-xmark"></i></button>
             </section>
         </nav>
     </>

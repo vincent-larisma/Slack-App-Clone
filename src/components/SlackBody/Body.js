@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import './Body.css'
+import Navbar from '../Navbar/Navbar';
+
 
 function Body() {
+
+  const [activeName, setactiveName] = useState("Justine Jun Banogon");
 
   const [channgelToggle, setchannelToggle] = useState(false);
   const [directMessageToggle, setdirectMessageTogggle] = useState(false);
@@ -46,9 +50,26 @@ function Body() {
             </div>
         </section>
         <section className='message-window'>
-            <div className='new-chat-btn'>
-              <i class="fa-solid fa-circle-plus"></i>
-            </div>
+            <section className='top-body-section'>
+              <div className='name-converse'>
+                <button>{activeName} &nbsp; <i class="fa-solid fa-caret-down"></i></button>
+              </div>
+              <div className='new-chat-btn'>
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+            </section>
+
+            <section className='conversation'>
+              <div className='sender-container'>
+                <div className='message-sender-name'><i class="fa-solid fa-circle"></i> Shawn Go</div>
+                  <p className='sender-chat'>Ang panget mo</p>
+              </div>
+              <div className='receiver-container'>
+                <div className='message-receiver-name'><i class="fa-solid fa-circle"></i> Evan Maylas</div>
+                  <p className="receiver-chat">Mas panget ka</p>
+              </div>
+            </section>
+
             <section className='new-message'>
               <textarea id="sendmessage" name="sendmessage" placeholder='Write your message...'>
               </textarea>
