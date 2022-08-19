@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar';
 
 function Body() {
 
-  const [activeName, setactiveName] = useState("Justine Jun Banogon");
+  const [activeName, setactiveName] = useState("Shawn Go");
 
   const [channgelToggle, setchannelToggle] = useState(false);
   const [directMessageToggle, setdirectMessageTogggle] = useState(false);
@@ -61,11 +61,11 @@ function Body() {
 
             <section className='conversation'>
               <div className='sender-container'>
-                <div className='message-sender-name'><i class="fa-solid fa-circle"></i> Shawn Go</div>
+                <div className='message-sender-name'><i class="fa-solid fa-circle"></i> Evan Maylas</div>
                   <p className='sender-chat'>Ang panget mo</p>
               </div>
               <div className='receiver-container'>
-                <div className='message-receiver-name'><i class="fa-solid fa-circle"></i> Evan Maylas</div>
+                <div className='message-receiver-name'><i class="fa-solid fa-circle"></i> Shawn Go</div>
                   <p className="receiver-chat">Mas panget ka</p>
               </div>
             </section>

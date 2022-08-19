@@ -147,14 +147,17 @@
 }
 
 .name-converse button {
-    border: none;
     font-size: 20px;
+    padding: 5px;
+    border: none;
 }
 
 .name-converse button:hover {
-    background-color: rgb(231, 228, 228);
+    background-color: #6998AB;
+    border-radius: 5px;
     transform: scale(1.01);
     transition: .3s;
+    color: white;
 }
 
 .new-chat-btn {
@@ -209,15 +212,11 @@
     margin-left: 60px;
 }
 
-/* .new-chat-btn {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 30px;
-    margin-right: 30px;
-    font-size: 30px;
+ .new-chat-btn {
     color: #6998AB;
 }
 
+/*
 .name-converse {
     display: flex;
     justify-content: flex-start;
