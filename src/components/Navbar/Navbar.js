@@ -1,7 +1,21 @@
 import React from 'react'
 import './Navbar.css'
+import Swal from 'sweetalert2'
 
 export default function Navbar() {
+
+  const exit = () => {
+    Swal.fire({
+      title: 'Are you sure you want to exit?',
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        return
+      } 
+    })
+  }
+
   return (
     <>
         <nav className='navbar-container'>
@@ -17,7 +31,7 @@ export default function Navbar() {
                 <button><i class="fa-solid fa-user-tie"></i></button>
                 <button><i class="fa-solid fa-minus"></i></button>
                 <button><i class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
-                <button><i class="fa-solid fa-xmark"></i></button>
+                <button onClick={exit}><i class="fa-solid fa-xmark"></i></button>
             </section>
         </nav>
     </>
