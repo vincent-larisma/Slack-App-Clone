@@ -44,7 +44,6 @@ export default function CreateChannel() {
   const handleClickSubmit = (event) => {
     event.preventDefault()
 
-    //Fetch user message
     fetch(`${APIurl}/channels`, {
       method: 'POST',
       headers: {
@@ -57,6 +56,18 @@ export default function CreateChannel() {
       .then((data) => console.log(data))
 
     setCreateChannel({ ...createChannel, channelName: '', userIDList: [] })
+  }
+
+  const handleClickGetAllUsers = () => {
+    fetch(`${APIurl}/channels`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...userDataHeadersAPI,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
   }
 
   return (
@@ -75,6 +86,9 @@ export default function CreateChannel() {
           onChange={handleChangeChannelName}
         />
         <button onClick={handleClickSubmit}>Send</button>
+      </div>
+      <div>
+        <button onClick={handleClickGetAllUsers}>Get All Users</button>
       </div>
     </>
   )
