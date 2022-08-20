@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Body.css'
-import Navbar from '../Navbar/Navbar';
+
 
 
 function Body() {
@@ -61,7 +61,7 @@ function Body() {
 
             <section className='conversation'>
               <div className='sender-container'>
-                <div className='message-sender-name'><i class="fa-solid fa-circle"></i> Evan Maylas</div>
+                <div className='message-sender-name'><i class="fa-solid fa-circle"></i>Evan Maylas</div>
                   <p className='sender-chat'>Ang panget mo</p>
               </div>
               <div className='receiver-container'>

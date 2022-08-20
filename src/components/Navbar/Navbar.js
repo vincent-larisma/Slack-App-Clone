@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Navbar.css'
 import Swal from 'sweetalert2'
-import Body from '../SlackBody/Body'
+
 
 
 export default function Navbar() {
