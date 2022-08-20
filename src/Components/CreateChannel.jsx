@@ -37,7 +37,6 @@ export default function CreateChannel() {
     let list = userIDList
     list.push(parseInt(userID))
     setCreateChannel({ ...createChannel, userID: '', userIDList: list })
-    console.log(userIDList)
   }
   const handleClickSubmit = (event) => {
     event.preventDefault()
