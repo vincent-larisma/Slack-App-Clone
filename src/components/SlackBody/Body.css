@@ -168,7 +168,6 @@
 .conversation {
     margin: 10px 30px;
     display: flex;
-    /* display: block; */
     flex-direction: column;
     height: 300px;
     justify-content: flex-end;
