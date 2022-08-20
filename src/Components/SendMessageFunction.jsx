@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import CreateChannel from './CreateChannel'
+import GetChannelDetail from './GetChannelDetail'
 import { LoginContext } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
 import ReceiveMessage from './ReceiveMessage'
@@ -98,6 +99,10 @@ export default function SendMessageFunction() {
       <br />
       <br />
       <CreateChannel />
+      <br />
+      <br />
+      <br />
+      <GetChannelDetail />
     </>
   )
 }

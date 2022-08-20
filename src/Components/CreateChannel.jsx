@@ -85,10 +85,10 @@ export default function CreateChannel() {
           value={channelName}
           onChange={handleChangeChannelName}
         />
-        <button onClick={handleClickSubmit}>Send</button>
+        <button onClick={handleClickSubmit}>Create</button>
       </div>
       <div>
-        <button onClick={handleClickGetAllUsers}>Get All Users</button>
+        <button onClick={handleClickGetAllUsers}>Get User Channel</button>
       </div>
     </>
   )
