@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { LoginContextHeader } from './LoginContext'
 
-export default function ReceiveMessage() {
+export default function ListAllUsers() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
+
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const userDataHeadersAPI = {
@@ -16,8 +17,8 @@ export default function ReceiveMessage() {
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
-    //Fetch user message
-    fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
+
+    fetch(`${APIurl}/users`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -25,23 +26,13 @@ export default function ReceiveMessage() {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log('I am receiver', data))
+      .then((data) => console.log(data))
   }
-
-  // body: JSON.stringify(userDataAPI),
 
   return (
     <>
-      {/* {userMessageList.length ? (
-        userMessageList.map((value, index) => {
-          return <div key={index}>{value}</div>
-        })
-      ) : (
-        <span>No Messages Yet</span>
-      )} */}
-
       <div>
-        <button onClick={handleClickSubmit}>Receive</button>
+        <button onClick={handleClickSubmit}>Get All Users</button>
       </div>
     </>
   )

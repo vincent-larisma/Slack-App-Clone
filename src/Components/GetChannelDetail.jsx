@@ -1,10 +1,8 @@
 import React, { useState, useContext } from 'react'
-import { LoginContext } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
 
 export default function GetChannelDetail() {
-  const { loginInfo, setLoginInfo } = useContext(LoginContext)
-  const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
+  const { loginInfoHeader } = useContext(LoginContextHeader)
   const [getChannelDetails, setGetChannelDetails] = useState({
     channelID: '',
   })
