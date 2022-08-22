@@ -21,7 +21,7 @@
     width: 350px;
     justify-content: center;
     height: 400px;
-    background-color: #6998AB;
+    background-color: #1A374D;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     /* align-items: center; */
@@ -43,16 +43,15 @@
 }
 
 .login-email-input, .login-password-input {
-    background-color: #f3f2f0;
+    background-color: #fff;
     outline: none;
     text-align: center;
     box-sizing: border-box;
     width: 250px;
     padding: 8px 5px;
     display: inline-block;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 10px;
     margin-bottom: 20px;
 }
 
@@ -70,4 +69,5 @@
 
 .loginCreate button {
     width: 80px;
+    background-color: white;
 }
