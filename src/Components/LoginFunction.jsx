@@ -2,6 +2,9 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LoginContext } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
+import './LoginFunction.css' 
+import Swal from "sweetalert2";
+
 
 export default function LoginFunction() {
   const navigate = useNavigate()
@@ -58,46 +61,52 @@ export default function LoginFunction() {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
           navigate('/test')
         } else if (!data.success) {
-          return alert(data.errors[0])
+          Swal.fire('Invalid username or password')
+          // return alert(data.errors[0])
         }
+        // if (userData.email === "") {
+        //   Swal.fire('Any fool can asdfasdfasdf a computer')
+        // }
       })
 
     setUserData({ ...userData, email: '', password: '' })
   }
 
   return (
-    <>
-      <div className='form-container'>
-        <div className='form-name'>Login</div>
-        <form>
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <br />
-            <input
-              type='text'
-              id='email'
-              name='email'
-              value={email}
-              placeholder='Enter your email address'
-              onChange={handleChangeEmail}
-            />
-          </div>
-          <div>
-            <label htmlFor='password'>Password:</label>
-            <br />
-            <input
-              type='text'
-              id='password'
-              name='password'
-              value={password}
-              placeholder='Enter your password'
-              onChange={handleChangePassword}
-            />
-          </div>
 
-          <button onClick={handleClickSubmit}>Login</button>
-        </form>
-      </div>
-    </>
+    <div className='login-container'>
+      <form className='form-container'>
+        <section className='inner-form'>
+        <div className='form-name'>Login to Slack App</div>
+            <div className='login-email'>
+              <input
+                className='login-email-input'
+                type='text'
+                id='email'
+                name='email'
+                value={email}
+                placeholder='Enter your email address'
+                onChange={handleChangeEmail}
+              />
+            </div>
+            <div className='login-password'>
+              <input
+                className='login-password-input'
+                type='text'
+                id='password'
+                name='password'
+                value={password}
+                placeholder='Enter your password'
+                onChange={handleChangePassword}
+              />
+            </div>
+            <div className='loginCreate'>
+              <button className='login-submit-button' onClick={handleClickSubmit}>Login</button>
+              <button className='login-submit-button' onClick={() => navigate('/CreateUser')}>Register</button>
+            </div>
+        </section>
+      </form>
+    </div>
+  
   )
 }
