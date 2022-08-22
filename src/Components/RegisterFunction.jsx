@@ -49,6 +49,10 @@ export default function RegisterFunction() {
 
     setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
     navigate('/Login')
+
+    if(email.value === "") {
+      console.log('hahahah')
+    }
   }
 
   return (

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { LoginContext } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
 import './LoginFunction.css' 
+import Swal from "sweetalert2";
+
 
 export default function LoginFunction() {
   const navigate = useNavigate()
@@ -59,8 +61,12 @@ export default function LoginFunction() {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
           navigate('/test')
         } else if (!data.success) {
-          return alert(data.errors[0])
+          Swal.fire('Invalid username or password')
+          // return alert(data.errors[0])
         }
+        // if (userData.email === "") {
+        //   Swal.fire('Any fool can asdfasdfasdf a computer')
+        // }
       })
 
     setUserData({ ...userData, email: '', password: '' })
