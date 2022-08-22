@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;    
+}
+
+.form-name {
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    width: 350px;
+    justify-content: center;
+    height: 400px;
+    background-color: #1A374D;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    /* align-items: center; */
+    /* flex-direction: column; */
+}
+
+.inner-form {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+}
+
+.form-name {
+    margin-bottom: 20px;
+    color: white;
+    font-size: 30px;
+}
+
+.login-email-input, .login-password-input {
+    background-color: #fff;
+    outline: none;
+    text-align: center;
+    box-sizing: border-box;
+    width: 250px;
+    padding: 8px 5px;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+
+.login-email-input::placeholder, .login-password-input::placeholder {
+    font-size: 13px;
+}
+
+.login-submit-button {
+    color: black;
+    padding: 8px 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.loginCreate {
+    display: flex;
+    justify-content: space-around;
+}
+
+.loginCreate button {
+    width: 80px;
+    background-color: white;
+}
