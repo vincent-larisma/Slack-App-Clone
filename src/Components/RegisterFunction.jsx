@@ -91,7 +91,6 @@ export default function RegisterFunction() {
           </div>
           <div className='loginCreate'>
             <button className='login-submit-button' onClick={handleClickSubmit}>Create User</button>
-            <button className='login-submit-button' onClick={() => navigate('/')}>Back to Login</button>
           </div>
       </section>
     </form>

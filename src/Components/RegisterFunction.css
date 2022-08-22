@@ -55,6 +55,10 @@
     margin-bottom: 20px;
 }
 
+.login-email-input::placeholder, .login-password-input::placeholder, .login-password-confirm::placeholder {
+    font-size: 13px;
+}
+
 .login-submit-button {
     color: black;
     padding: 10px 5px;
