@@ -27,14 +27,16 @@ export default function ReceiveMessage() {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        setReceivedMessage({ data })
+      })
   }, [])
 
   return (
     <>
       <section className='conversation'>
-        {/* {data.length
-          ? data.map(({ body }, index) => {
+        {data.data.length
+          ? data.data.map(({ body }, index) => {
               return (
                 <div className='sender-container' key={index}>
                   <div className='message-sender-name'>
@@ -44,7 +46,7 @@ export default function ReceiveMessage() {
                 </div>
               )
             })
-          : null} */}
+          : null}
 
         <div className='receiver-container'>
           <div className='message-receiver-name'>
