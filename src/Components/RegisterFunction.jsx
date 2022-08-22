@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './RegisterFunction.css'
 
 export default function RegisterFunction() {
   const navigate = useNavigate()
@@ -31,6 +32,7 @@ export default function RegisterFunction() {
     setUserData({ ...userData, [name]: value })
   }
 
+
   const APIurl = 'http://206.189.91.54/api/v1'
 
   const handleClickSubmit = (event) => {
@@ -50,14 +52,13 @@ export default function RegisterFunction() {
   }
 
   return (
-    <>
-      <div className='form-container'>
-        <div className='form-name'>Create User</div>
-        <form>
-          <div>
-            <label htmlFor='email'>Email:</label>
-            <br />
+    <div className='login-container'>
+    <form className='form-container'>
+      <section className='inner-form'>
+      <div className='form-name'>Enter your information</div>
+          <div className='login-email'>
             <input
+              className='login-email-input'
               type='text'
               id='email'
               name='email'
@@ -66,10 +67,9 @@ export default function RegisterFunction() {
               onChange={handleChangeEmail}
             />
           </div>
-          <div>
-            <label htmlFor='password'>Password:</label>
-            <br />
+          <div className='login-password'>
             <input
+              className='login-password-input'
               type='text'
               id='password'
               name='password'
@@ -78,21 +78,24 @@ export default function RegisterFunction() {
               onChange={handleChangePassword}
             />
           </div>
-          <div>
-            <label htmlFor='passwordConfirm'>Confirm Password:</label>
-            <br />
+          <div className='confirm-password'>
             <input
+              className='login-password-confirm'
               type='text'
               id='passwordConfirm'
               name='passwordConfirm'
               value={passwordConfirm}
-              placeholder='Enter your password confirmation'
+              placeholder='Confirm password'
               onChange={handleChangePasswordConfirm}
             />
           </div>
-          <button onClick={handleClickSubmit}>Submit</button>
-        </form>
-      </div>
-    </>
+          <div className='loginCreate'>
+            <button className='login-submit-button' onClick={handleClickSubmit}>Create User</button>
+            <button className='login-submit-button' onClick={() => navigate('/')}>Back to Login</button>
+          </div>
+      </section>
+    </form>
+  </div>
+
   )
 }

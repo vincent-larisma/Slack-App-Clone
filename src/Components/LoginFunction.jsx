@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LoginContext } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
-import './LoginFunction.css'
+import './LoginFunction.css' 
 
 export default function LoginFunction() {
   const navigate = useNavigate()
@@ -71,10 +71,10 @@ export default function LoginFunction() {
     <div className='login-container'>
       <form className='form-container'>
         <section className='inner-form'>
-          <div className='form-name'>Login</div>
+        <div className='form-name'>Login to Slack App</div>
             <div className='login-email'>
               <input
-                className='login-input'
+                className='login-email-input'
                 type='text'
                 id='email'
                 name='email'
@@ -85,6 +85,7 @@ export default function LoginFunction() {
             </div>
             <div className='login-password'>
               <input
+                className='login-password-input'
                 type='text'
                 id='password'
                 name='password'
@@ -93,7 +94,10 @@ export default function LoginFunction() {
                 onChange={handleChangePassword}
               />
             </div>
-            <button className='login-submit-button' onClick={handleClickSubmit}>Login</button>
+            <div className='loginCreate'>
+              <button className='login-submit-button' onClick={handleClickSubmit}>Login</button>
+              <button className='login-submit-button' onClick={() => navigate('/CreateUser')}>Register</button>
+            </div>
         </section>
       </form>
     </div>
