@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;    
+}
+
+.form-name {
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    border: 1px solid black;
+    width: 350px;
+    justify-content: center;
+    height: 400px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    /* align-items: center; */
+    /* flex-direction: column; */
+}
+
+.inner-form {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+}
+
+.login-email { 
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-submit-button {
+    color: red;
+    padding: 10px 5px;
+}

@@ -4,6 +4,9 @@ import { LoginProvider } from './Components/LoginContext'
 import LoginFunction from './Components/LoginFunction'
 import TestFunctionPage from './Components/Pages/TestFunctionPage'
 import RegisterFunction from './Components/RegisterFunction'
+import './index.css'
+
+
 function App() {
   return (
     <>
