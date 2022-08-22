@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useTransition } from 'react'
 import './Body.css'
 
 
@@ -6,8 +6,9 @@ import './Body.css'
 function Body() {
 
   const [activeName, setactiveName] = useState("Shawn Go");
+  const [availUser, setavailUser] = useState("Evan Maylas")
 
-  const [availUser, setavailUser] = useState("Vince Larisma")
+  const [currentReceiver, setcurrentReceiver] = useState("")
 
   const [channgelToggle, setchannelToggle] = useState(false);
   const [directMessageToggle, setdirectMessageTogggle] = useState(false);
@@ -15,7 +16,7 @@ function Body() {
   const toggleChannel = () => {
     channgelToggle ? setchannelToggle(false) : setchannelToggle(true);
     console.log(channgelToggle)
-  } 
+  }  
 
   const toggledirectMessage = () => {
     directMessageToggle ? setdirectMessageTogggle(false) : setdirectMessageTogggle(true);
@@ -35,7 +36,7 @@ function Body() {
                       <li>{availUser}</li>
                     </ul>
                   </div>
-                <button onClick={toggleChannel}>
+                <button onClick={toggleChannel}> 
                   <i class="fa-solid fa-people-group"></i> Channels
                 </button>
                   <div className='names-channel'>
@@ -69,7 +70,7 @@ function Body() {
               </div>
             </section>
             <section className='new-message'>
-              <textarea id="sendmessage" name="sendmessage" placeholder='Write your message...'>
+              <textarea id="sendmessage" name="sendmessage" placeholder='Write your message...' >
               </textarea>
                 <div className='options-icons'>
                       <button><i class="fa-solid fa-image"></i></button>
