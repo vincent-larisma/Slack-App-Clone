@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
-
+import { UserMessages } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
-
 
 export default function SendMessageFunction() {
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
@@ -11,6 +10,7 @@ export default function SendMessageFunction() {
     receiverClass: '',
     userMessageList: [],
   })
+  const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
 
   const { userMessage, receiverID, receiverClass, userMessageList } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
@@ -59,6 +59,15 @@ export default function SendMessageFunction() {
       .then((res) => res.json())
       .then((data) => console.log(data))
 
+    fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...userDataHeadersAPI,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setReceivedMessage({ data }))
     setUserSendMessage({ ...userSendMessage, userMessageList: list, userMessage: '' })
   }
 

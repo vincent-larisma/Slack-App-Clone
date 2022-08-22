@@ -4,8 +4,8 @@ import { LoginProvider } from './Components/LoginContext'
 import LoginFunction from './Components/LoginFunction'
 import TestFunctionPage from './Components/Pages/TestFunctionPage'
 import RegisterFunction from './Components/RegisterFunction'
+import Body from './Components/SlackBody/Body'
 import './index.css'
-
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
           <Route path='/Login' element={<LoginFunction />}></Route>
           <Route path='/' element={<LoginFunction />}></Route>
           <Route path='/Test' element={<TestFunctionPage />}></Route>
+          <Route path='/slack-app' element={<Body />}></Route>
         </Routes>
       </LoginProvider>
     </>
