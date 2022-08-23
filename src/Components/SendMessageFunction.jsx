@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { UserMessages } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
 
@@ -13,6 +13,7 @@ export default function SendMessageFunction() {
 
   const { userMessage, receiverID, receiverClass } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
+  const { localHeader, setLocalHeader} = useState();
 
   //localStorage
   // const localStorageAPIHeader = JSON.parse(localStorage.getItem('dataLoginHeader'))
@@ -75,6 +76,11 @@ export default function SendMessageFunction() {
       .then((data) => setReceivedMessage({ data }))
     setUserSendMessage({ ...userSendMessage, userMessage: '' })
   }
+
+  useEffect(() => {
+    const local = JSON.parse(localStorage.getItem('dataLoginHeader'));
+    setLocalHeader(local);
+  }, []);
 
   return (
     <>
