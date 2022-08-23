@@ -8,7 +8,7 @@ export default function ReceiveMessage() {
   const [runOnce, setRunOnce] = useState(false)
   const { data } = receivedMessage
 
-  const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
+  const { accessToken = '', uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const userDataHeadersAPI = {
     expiry: expiry,
