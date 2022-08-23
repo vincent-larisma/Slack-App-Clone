@@ -63,26 +63,7 @@ function Body() {
           {/* Conversation container */}
           <ReceiveMessage />
           <SendMessageFunction />
-          <section className='new-message'>
-            <textarea id='sendmessage' name='sendmessage' placeholder='Write your message...'></textarea>
-            <div className='options-icons'>
-              <button>
-                <i class='fa-solid fa-image'></i>
-              </button>
-              <button>
-                <i class='fa-solid fa-face-smile-beam'></i>
-              </button>
-              <button>
-                <i class='fa-solid fa-video'></i>
-              </button>
-              <button>
-                <i class='fa-solid fa-file'></i>
-              </button>
-              <button className='send-button'>
-                <i class='fa-solid fa-paper-plane'></i>
-              </button>
-            </div>
-          </section>
+          
         </section>
       </div>
     </>

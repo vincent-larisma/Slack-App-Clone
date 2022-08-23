@@ -8,7 +8,6 @@ export default function SendMessageFunction() {
     userMessage: '',
     receiverID: '',
     receiverClass: '',
-    userMessageList: [],
   })
   const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
 
@@ -32,6 +31,8 @@ export default function SendMessageFunction() {
   const handleChangeMessage = (event) => {
     const { name, value } = event.target
     setUserSendMessage({ ...userSendMessage, [name]: value })
+    console.log(value)
+    console.log(userSendMessage)
   }
   const handleChangeReceiverID = (event) => {
     const { name, value } = event.target
@@ -44,8 +45,6 @@ export default function SendMessageFunction() {
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
-    let list = userMessageList
-    list.push(userMessage)
 
     //Fetch user message
     fetch(`${APIurl}/messages`, {
@@ -68,7 +67,7 @@ export default function SendMessageFunction() {
     })
       .then((res) => res.json())
       .then((data) => setReceivedMessage({ data }))
-    setUserSendMessage({ ...userSendMessage, userMessageList: list, userMessage: '' })
+    setUserSendMessage({ ...userSendMessage, userMessage: '' })
   }
 
   return (
@@ -88,18 +87,30 @@ export default function SendMessageFunction() {
         <input type='radio' name='receiverClass' id='class' value='Class' onChange={handleChangeReceiverClass} />
       </div>
 
-      {userMessageList.length ? (
-        userMessageList.map((value, index) => {
-          return <div key={index}>{value}</div>
-        })
-      ) : (
-        <span>No Messages Yet</span>
-      )}
-
-      <div>
-        <input type='text' name='userMessage' value={userMessage} onChange={handleChangeMessage} />
-        <button onClick={handleClickSubmit}>Send</button>
-      </div>
+      <section className='new-message'>
+        <textarea
+          name='userMessage'
+          value={userMessage}
+          onChange={handleChangeMessage}
+          placeholder='Write your message...'></textarea>
+        <div className='options-icons'>
+          <button>
+            <i class='fa-solid fa-image'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-face-smile-beam'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-video'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-file'></i>
+          </button>
+          <button className='send-button' onClick={handleClickSubmit}>
+            <i class='fa-solid fa-paper-plane'></i>
+          </button>
+        </div>
+      </section>
     </>
   )
 }

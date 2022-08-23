@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { LoginContextHeader } from './LoginContext'
 import { UserMessages } from './LoginContext'
 
 export default function ReceiveMessage() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
+  const [runOnce, setRunOnce] = useState(false)
   const { data } = receivedMessage
 
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
@@ -29,13 +30,14 @@ export default function ReceiveMessage() {
       .then((res) => res.json())
       .then((data) => {
         setReceivedMessage({ data })
+        setRunOnce(true)
       })
-  }, [])
+  }, [receivedMessage])
 
   return (
     <>
       <section className='conversation'>
-        {data.data.length
+        {runOnce && data.data.length
           ? data.data.map(({ body }, index) => {
               return (
                 <div className='sender-container' key={index}>
