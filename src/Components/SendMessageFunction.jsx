@@ -1,10 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { UserMessages } from './LoginContext'
+import React, { useState, useContext } from 'react'
 import { LoginContextHeader } from './LoginContext'
 
-
-
-const APIurl = 'http://206.189.91.54/api/v1';
+const APIurl = 'http://206.189.91.54/api/v1'
 
 export default function SendMessageFunction() {
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
@@ -13,14 +10,8 @@ export default function SendMessageFunction() {
     receiverID: '',
     receiverClass: '',
   })
-  const { receivedMessage, setReceivedMessage } = useContext(UserMessages);
   const { userMessage, receiverID, receiverClass } = userSendMessage
-  const [userDataHeadersAPI, setUserHeaders] = useState({});
-
-  //localStorage
-  // const localStorageAPIHeader = JSON.parse(localStorage.getItem('dataLoginHeader'))
-  // console.log(localStorageAPIHeader)
-  // const { accessToken, uid, expiry, client } = localStorageAPIHeader.dataLoginHeader
+  const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const userDataAPI = {
     receiver_id: receiverID,
@@ -35,12 +26,9 @@ export default function SendMessageFunction() {
     client: client,
   }
 
-
   const handleChangeMessage = (event) => {
     const { name, value } = event.target
     setUserSendMessage({ ...userSendMessage, [name]: value })
-    console.log(value)
-    console.log(userSendMessage)
   }
   const handleChangeReceiverID = (event) => {
     const { name, value } = event.target
@@ -60,17 +48,11 @@ export default function SendMessageFunction() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setReceivedMessage({ data }))
+      .then((data) => console.log(data))
     setUserSendMessage({ ...userSendMessage, userMessage: '' })
   }
 
   const postMessages = () => {
-    const userDataAPI = {
-      receiver_id: receiverID,
-      receiver_class: receiverClass,
-      body: userMessage,
-    }
-
     fetch(`${APIurl}/messages`, {
       method: 'POST',
       headers: {
@@ -84,9 +66,9 @@ export default function SendMessageFunction() {
   }
 
   const handleClickSubmit = (event) => {
-    event.preventDefault();
-    postMessages();
-    getMessages();
+    event.preventDefault()
+    postMessages()
+    getMessages()
   }
 
   return (
