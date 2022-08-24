@@ -14,10 +14,7 @@ export default function SendMessageFunction() {
   const { userMessage, receiverID, receiverClass } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
-  //localStorage
-  // const localStorageAPIHeader = JSON.parse(localStorage.getItem('dataLoginHeader'))
-  // console.log(localStorageAPIHeader)
-  // const { accessToken, uid, expiry, client } = localStorageAPIHeader.dataLoginHeader
+  // const { accessToken, uid, expiry, client } = JSON.parse(localStorageFile.dataLoginHeader)
 
   const userDataAPI = {
     receiver_id: receiverID,
