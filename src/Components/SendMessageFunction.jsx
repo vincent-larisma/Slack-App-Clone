@@ -13,6 +13,17 @@ export default function SendMessageFunction() {
   const { userMessage, receiverID, receiverClass } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
+  const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
+
+  const { userMessage, receiverID, receiverClass } = userSendMessage
+  const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
+  const { localHeader, setLocalHeader} = useState();
+
+  //localStorage
+  // const localStorageAPIHeader = JSON.parse(localStorage.getItem('dataLoginHeader'))
+  // console.log(localStorageAPIHeader)
+  // const { accessToken, uid, expiry, client } = localStorageAPIHeader.dataLoginHeader
+
   const userDataAPI = {
     receiver_id: receiverID,
     receiver_class: receiverClass,
@@ -25,6 +36,9 @@ export default function SendMessageFunction() {
     'access-token': accessToken,
     client: client,
   }
+
+  const APIurl = 'http://206.189.91.54/api/v1'
+>>>>>>> parent of 98d9750 (fix context/localstorage issue)
 
   const handleChangeMessage = (event) => {
     const { name, value } = event.target
@@ -39,7 +53,21 @@ export default function SendMessageFunction() {
     setUserSendMessage({ ...userSendMessage, [name]: value })
   }
 
-  const getMessages = () => {
+  const handleClickSubmit = (event) => {
+    event.preventDefault()
+
+    //Fetch user message
+    fetch(`${APIurl}/messages`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...userDataHeadersAPI,
+      },
+      body: JSON.stringify(userDataAPI),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+
     fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
       method: 'GET',
       headers: {
@@ -70,6 +98,10 @@ export default function SendMessageFunction() {
     postMessages()
     getMessages()
   }
+  useEffect(() => {
+    const local = JSON.parse(localStorage.getItem('dataLoginHeader'));
+    setLocalHeader(local);
+  }, []);
 
   return (
     <>
