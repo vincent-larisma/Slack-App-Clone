@@ -53,12 +53,12 @@ export default function LoginFunction() {
             client: res.headers.get('client'),
           },
         })
+        localStorage.setItem('dataLoginHeader', JSON.stringify(loginInfoHeader))
         return res.json()
       })
       .then((data) => {
         if (data.data) {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
-          localStorage.setItem('dataLoginHeader', JSON.stringify(loginInfoHeader))
           navigate('/slack-app')
         } else if (!data.success) {
           Swal.fire('Invalid username or password')

@@ -1,11 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { LoginContextHeader } from './LoginContext'
 
-<<<<<<< HEAD
 const APIurl = 'http://206.189.91.54/api/v1'
 
-=======
->>>>>>> parent of 98d9750 (fix context/localstorage issue)
 export default function SendMessageFunction() {
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
   const [userSendMessage, setUserSendMessage] = useState({
@@ -13,40 +10,26 @@ export default function SendMessageFunction() {
     receiverID: '',
     receiverClass: '',
   })
-<<<<<<< HEAD
   const { userMessage, receiverID, receiverClass } = userSendMessage
-  const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
+  const [userDataHeadersAPI, setUserHeaders] = useState({})
 
-=======
-  const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
+  const fetchHeaders = () => {
+    const { dataLoginHeader } = loginInfoHeader
 
-  const { userMessage, receiverID, receiverClass } = userSendMessage
-  const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
-  const { localHeader, setLocalHeader} = useState();
-
-  //localStorage
-  // const localStorageAPIHeader = JSON.parse(localStorage.getItem('dataLoginHeader'))
-  // console.log(localStorageAPIHeader)
-  // const { accessToken, uid, expiry, client } = localStorageAPIHeader.dataLoginHeader
-
->>>>>>> parent of 98d9750 (fix context/localstorage issue)
-  const userDataAPI = {
-    receiver_id: receiverID,
-    receiver_class: receiverClass,
-    body: userMessage,
+    if (!dataLoginHeader) {
+      const local = JSON.parse(localStorage.getItem('dataLoginHeader'))
+      setUserHeaders(local)
+    } else {
+      const { accessToken, uid, expiry, client } = dataLoginHeader
+      const tempHeaders = {
+        expiry: expiry,
+        uid: uid,
+        'access-token': accessToken,
+        client: client,
+      }
+      setUserHeaders(tempHeaders)
+    }
   }
-
-  const userDataHeadersAPI = {
-    expiry: expiry,
-    uid: uid,
-    'access-token': accessToken,
-    client: client,
-  }
-<<<<<<< HEAD
-=======
-
-  const APIurl = 'http://206.189.91.54/api/v1'
->>>>>>> parent of 98d9750 (fix context/localstorage issue)
 
   const handleChangeMessage = (event) => {
     const { name, value } = event.target
@@ -61,21 +44,7 @@ export default function SendMessageFunction() {
     setUserSendMessage({ ...userSendMessage, [name]: value })
   }
 
-  const handleClickSubmit = (event) => {
-    event.preventDefault()
-
-    //Fetch user message
-    fetch(`${APIurl}/messages`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...userDataHeadersAPI,
-      },
-      body: JSON.stringify(userDataAPI),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-
+  const getMessages = () => {
     fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
       method: 'GET',
       headers: {
@@ -88,8 +57,13 @@ export default function SendMessageFunction() {
     setUserSendMessage({ ...userSendMessage, userMessage: '' })
   }
 
-<<<<<<< HEAD
   const postMessages = () => {
+    const userDataAPI = {
+      receiver_id: receiverID,
+      receiver_class: receiverClass,
+      body: userMessage,
+    }
+
     fetch(`${APIurl}/messages`, {
       method: 'POST',
       headers: {
@@ -104,15 +78,10 @@ export default function SendMessageFunction() {
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
+
     postMessages()
     getMessages()
   }
-=======
-  useEffect(() => {
-    const local = JSON.parse(localStorage.getItem('dataLoginHeader'));
-    setLocalHeader(local);
-  }, []);
->>>>>>> parent of 98d9750 (fix context/localstorage issue)
 
   return (
     <>
