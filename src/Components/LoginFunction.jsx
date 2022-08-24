@@ -44,21 +44,25 @@ export default function LoginFunction() {
       body: JSON.stringify(userDataAPI),
     })
       .then((res) => {
-        setLoginInfoHeader({
-          ...loginInfoHeader,
-          dataLoginHeader: {
+        const headers = {
             expiry: res.headers.get('expiry'),
             uid: res.headers.get('uid'),
             accessToken: res.headers.get('access-token'),
             client: res.headers.get('client'),
-          },
+          }
+        
+        setLoginInfoHeader({
+          ...loginInfoHeader,
+          dataLoginHeader: headers,
         })
+        
+        localStorage.setItem('dataLoginHeader', JSON.stringify(headers))  
         return res.json()
       })
       .then((data) => {
         if (data.data) {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
-          localStorage.setItem('dataLoginHeader', JSON.stringify(loginInfoHeader))
+         
           navigate('/slack-app')
         } else if (!data.success) {
           Swal.fire('Invalid username or password')
