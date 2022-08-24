@@ -1,8 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { LoginContextHeader } from './LoginContext'
 
+<<<<<<< HEAD
 const APIurl = 'http://206.189.91.54/api/v1'
 
+=======
+>>>>>>> parent of 98d9750 (fix context/localstorage issue)
 export default function SendMessageFunction() {
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
   const [userSendMessage, setUserSendMessage] = useState({
@@ -10,9 +13,11 @@ export default function SendMessageFunction() {
     receiverID: '',
     receiverClass: '',
   })
+<<<<<<< HEAD
   const { userMessage, receiverID, receiverClass } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
+=======
   const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
 
   const { userMessage, receiverID, receiverClass } = userSendMessage
@@ -24,6 +29,7 @@ export default function SendMessageFunction() {
   // console.log(localStorageAPIHeader)
   // const { accessToken, uid, expiry, client } = localStorageAPIHeader.dataLoginHeader
 
+>>>>>>> parent of 98d9750 (fix context/localstorage issue)
   const userDataAPI = {
     receiver_id: receiverID,
     receiver_class: receiverClass,
@@ -36,6 +42,8 @@ export default function SendMessageFunction() {
     'access-token': accessToken,
     client: client,
   }
+<<<<<<< HEAD
+=======
 
   const APIurl = 'http://206.189.91.54/api/v1'
 >>>>>>> parent of 98d9750 (fix context/localstorage issue)
@@ -80,6 +88,7 @@ export default function SendMessageFunction() {
     setUserSendMessage({ ...userSendMessage, userMessage: '' })
   }
 
+<<<<<<< HEAD
   const postMessages = () => {
     fetch(`${APIurl}/messages`, {
       method: 'POST',
@@ -98,10 +107,12 @@ export default function SendMessageFunction() {
     postMessages()
     getMessages()
   }
+=======
   useEffect(() => {
     const local = JSON.parse(localStorage.getItem('dataLoginHeader'));
     setLocalHeader(local);
   }, []);
+>>>>>>> parent of 98d9750 (fix context/localstorage issue)
 
   return (
     <>
