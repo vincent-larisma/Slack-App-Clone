@@ -94,6 +94,7 @@ export default function ReceiveMessage() {
               </div>
             )
           })}
+=======
         {runOnce && data.data.length
           ? data.data.map(({ body }, index) => {
               return (
