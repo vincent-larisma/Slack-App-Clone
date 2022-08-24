@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { LoginContextHeader } from './LoginContext'
 import { UserMessages } from './LoginContext'
+import "./SlackBody/Body.css"
 
 export default function ReceiveMessage() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
@@ -29,10 +30,11 @@ export default function ReceiveMessage() {
       .then((res) => res.json())
       .then((data) => console.log(data))
   }, [])
-
+ 
   return (
     <>
       <section className='conversation'>
+        <div className='converse-chats'>
         {/* {data.length
           ? data.map(({ body }, index) => {
               return (
@@ -46,11 +48,27 @@ export default function ReceiveMessage() {
             })
           : null} */}
 
-        <div className='receiver-container'>
-          <div className='message-receiver-name'>
-            <i class='fa-solid fa-circle'></i> Shawn Go
-          </div>
-          <p className='receiver-chat'>Mas panget ka</p>
+       
+            <div className='receiver-container'>
+              <div className='message-receiver-name'>
+               <i class='fa-solid fa-circle'></i> Shawn Go
+              </div>
+              <p className='receiver-chat'>Mas panget ka</p>
+            </div>
+
+            <div className='receiver-container'>
+              <div className='message-receiver-name'>
+               <i class='fa-solid fa-circle'></i> Shawn Go
+              </div>
+              <p className='receiver-chat'>Mas panget ka</p>
+            </div>
+
+            <div className='receiver-container'>
+              <div className='message-receiver-name'>
+               <i class='fa-solid fa-circle'></i> Shawn Go
+              </div>
+              <p className='receiver-chat'>Mas panget ka</p>
+            </div>
         </div>
       </section>
     </>

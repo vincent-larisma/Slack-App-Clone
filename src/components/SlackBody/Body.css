@@ -166,10 +166,26 @@
 
 .conversation {
   margin: 10px 30px;
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    /* justify-content: flex-end; */
+    overflow: hidden;
+    overflow-y: scroll;
+    transform: scale(1, -1);
+    padding-right: 0px;
+}
 
-  justify-content: flex-end;
+.conversation::-webkit-scrollbar {
+  display: none;
+}
+
+.converse-chats {
+  transform: scale(1, -1);   
+}
+
+.conversation:hover {
+  cursor: pointer;
 }
 
 .conversation div i {
