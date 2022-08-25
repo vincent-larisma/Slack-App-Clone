@@ -10,7 +10,6 @@ export default function LoginFunction() {
 
   const { loginInfo, setLoginInfo } = useContext(LoginContext)
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
-
   const [userData, setUserData] = useState({
     email: '',
     password: '',

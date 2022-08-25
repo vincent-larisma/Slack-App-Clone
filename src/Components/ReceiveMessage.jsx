@@ -3,12 +3,13 @@ import { LoginContextHeader } from './LoginContext'
 import { UserMessages } from './LoginContext'
 import './SlackBody/Body.css'
 
+const APIurl = 'http://206.189.91.54/api/v1'
+
 export default function ReceiveMessage() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
   const { data } = receivedMessage
   const [restrictOnce, setRestrictOnce] = useState(false)
-
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const userDataHeadersAPI = {
@@ -18,10 +19,8 @@ export default function ReceiveMessage() {
     client: client,
   }
 
-  const APIurl = 'http://206.189.91.54/api/v1'
-
-  useEffect(() => {
-    fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
+  const fetchMessages = () => {
+    fetch(`${APIurl}/messages?receiver_id=${2484}&receiver_class=User`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +32,11 @@ export default function ReceiveMessage() {
         setReceivedMessage({ data })
         setRestrictOnce(true)
       })
-  }, [receivedMessage])
+  }
+
+  useEffect(() => {
+    fetchMessages()
+  }, [])
 
   return (
     <>

@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react'
 import { UserMessages } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
 
+const APIurl = 'http://206.189.91.54/api/v1'
+
 export default function SendMessageFunction() {
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
   const [userSendMessage, setUserSendMessage] = useState({
@@ -9,24 +11,9 @@ export default function SendMessageFunction() {
     receiverID: '',
     receiverClass: '',
   })
-  const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
-
+  const { setReceivedMessage } = useContext(UserMessages)
   const { userMessage, receiverID, receiverClass } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
-
-  const userDataAPI = {
-    receiver_id: receiverID,
-    receiver_class: receiverClass,
-    body: userMessage,
-  }
-  const userDataHeadersAPI = {
-    expiry: expiry,
-    uid: uid,
-    'access-token': accessToken,
-    client: client,
-  }
-
-  const APIurl = 'http://206.189.91.54/api/v1'
 
   const handleChangeMessage = (event) => {
     const { name, value } = event.target
@@ -41,9 +28,19 @@ export default function SendMessageFunction() {
     setUserSendMessage({ ...userSendMessage, [name]: value })
   }
 
-  const handleClickSubmit = (event) => {
-    event.preventDefault()
-    //Fetch user message
+  const userDataAPI = {
+    receiver_id: receiverID,
+    receiver_class: receiverClass,
+    body: userMessage,
+  }
+  const userDataHeadersAPI = {
+    expiry: expiry,
+    uid: uid,
+    'access-token': accessToken,
+    client: client,
+  }
+
+  const getMessage = () => {
     fetch(`${APIurl}/messages`, {
       method: 'POST',
       headers: {
@@ -54,8 +51,10 @@ export default function SendMessageFunction() {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
+  }
 
-    fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
+  const postMessage = () => {
+    fetch(`${APIurl}/messages?receiver_id=${2484}&receiver_class=User`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -64,7 +63,12 @@ export default function SendMessageFunction() {
     })
       .then((res) => res.json())
       .then((data) => setReceivedMessage({ data }))
+  }
 
+  const handleClickSubmit = (event) => {
+    event.preventDefault()
+    getMessage()
+    postMessage()
     setUserSendMessage({ ...userSendMessage, userMessage: '' })
   }
 
