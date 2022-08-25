@@ -70,6 +70,7 @@ export default function RegisterFunction() {
               value={email}
               placeholder='Enter your email address'
               onChange={handleChangeEmail}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
           </div>
           <p className='register-credentials'>Password <i class="fa-solid fa-lock-open"></i></p>
@@ -82,6 +83,7 @@ export default function RegisterFunction() {
               value={password}
               placeholder='Enter your password'
               onChange={handleChangePassword}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
           </div>
           <p className='register-credentials'>Confirm Password <i class="fa-solid fa-lock"></i></p>
@@ -94,6 +96,7 @@ export default function RegisterFunction() {
               value={passwordConfirm}
               placeholder='Confirm password'
               onChange={handleChangePasswordConfirm}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
             <button className='login-submit-button-register' onClick={() => navigate('/')}>
               <i class="fa-solid fa-arrow-left"></i> Back to Login

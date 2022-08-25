@@ -86,6 +86,7 @@ export default function LoginFunction() {
               value={email}
               placeholder='Enter your email address'
               onChange={handleChangeEmail}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
           </div>
 
@@ -100,6 +101,7 @@ export default function LoginFunction() {
               value={password}
               placeholder='Enter your password'
               onChange={handleChangePassword}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
             <button className='create-submit-button' onClick={() => navigate('/CreateUser')}>
               Register <i class="fa-solid fa-arrow-right"></i> 
@@ -109,7 +111,6 @@ export default function LoginFunction() {
             <button className='login-submit-button' onClick={handleClickSubmit}>
               Login
             </button>
-            
           </div>
         </section>
       </form>
