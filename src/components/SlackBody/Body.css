@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
 .body-container {
   display: grid;
   grid-template-columns: 1fr 4.5fr;
@@ -19,9 +27,18 @@
   font-size: 18px;
 }
 
+.threads-buttons-clicked {
+  background-color: white;
+}
+
+.threads-buttons-NOTclicked {
+  background-color:#ccc;
+}
+
+
 .threads-buttons button:hover {
   cursor: pointer;
-  background-color: #ebeae5;
+  background-color: #fff;
 }
 
 .names-channel ul li {
@@ -177,17 +194,13 @@
   transition: 0.3s;
   color: white;
 }
- 
-.new-chat-btn {
-  font-size: 35px;
-  padding-right: 10px;
-}
+
 
 .conversation {
   margin: 10px 30px;
     display: flex;
     flex-direction: column;
-    height: 120px;
+    height: 100px;
     /* justify-content: flex-end; */
     overflow: hidden;
     overflow-y: scroll;
@@ -247,8 +260,27 @@
 }
 
 .new-chat-btn {
-  color: #6998ab;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
+
+.new-chat-btn button {
+  color: #1a374d;
+  font-size: 25px;
+  column-gap: 25px;
+  margin-right: 20px;
+  display: flex;
+  text-align: center;
+  border: none;
+}
+
+/* .new-chat-btn i {
+  padding: 5px 5px;
+  background-color: #6998ab;
+  color: white;
+  border-radius: 5px;
+} */
 
 /*
 .name-converse {

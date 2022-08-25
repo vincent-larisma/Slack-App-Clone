@@ -34,7 +34,7 @@
     height: 400px;
     background-color: #1A374D;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .inner-form {

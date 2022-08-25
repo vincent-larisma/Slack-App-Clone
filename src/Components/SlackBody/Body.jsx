@@ -1,12 +1,21 @@
 import React, { useState, useTransition } from 'react'
+import { useNavigate } from 'react-router-dom'
 import SendMessageFunction from '../SendMessageFunction'
 import ReceiveMessage from '../ReceiveMessage'
 import './Body.css'
+import Login from '../LoginFunction'
+import Swal from 'sweetalert2'
+import './Navbar.css'
+import AddUserModal from '../AddUserModal/AddUserModal'
+import AddChannel from '../AddChannelModal/AddChannel'
 
 function Body() {
+
+  const navigate = useNavigate()
+
   const [activeName, setactiveName] = useState('Shawn Go')
   const [availUser, setavailUser] = useState('Evan Maylas')
-
+ 
   const [currentReceiver, setcurrentReceiver] = useState('')
 
   const [channgelToggle, setchannelToggle] = useState(false)
@@ -27,8 +36,40 @@ function Body() {
     allUsersToggle ? setallUsersTogggle(false) : setallUsersTogggle(true)
   }
 
+  const [openAdduser, setopenAdduser] = useState(false);
+  const [openAddchannel, setopenAddchannel] = useState(false);
+
+
+  const exit = () => {
+    Swal.fire({
+      title: 'Are you sure you want to exit?',
+      showDenyButton: true,
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate('/Login')
+      } 
+    })
+  }
+
   return (
     <>
+      <nav className='navbar-container'>
+            <section className='settings'>
+                <button><i class="fa-solid fa-bars"></i></button>
+                <button><i class="fa-solid fa-angle-left"></i></button>
+                <button><i class="fa-solid fa-angle-right"></i></button>
+            </section>
+            <section className='search-bar'>
+                <input type="text" placeholder='Search' /> 
+            </section>
+            <section className='screen-setting'>
+                <button><i class="fa-solid fa-user-tie"></i></button>
+                <button><i class="fa-solid fa-minus"></i></button>
+                <button> <i class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
+                <button className='button-exit' onClick={exit}><i className="fa-solid fa-xmark"></i></button>
+            </section>
+        </nav>
       <div className='body-container'>
         <section className='threads'>
           <div className='threads-buttons'>
@@ -54,9 +95,10 @@ function Body() {
             </button>
             <div className='all-users-channel'>
               <ul className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}>
-                <li>batch21</li>
-                <li>group 2 - Slack App</li>
-              </ul>
+                <li>Vince Larisma</li>
+                <li>Justine Jun Banogon</li>
+                <li>Shawn Go</li>
+                </ul>
             </div>
           </div>
         </section>
@@ -68,12 +110,15 @@ function Body() {
               </button>
             </div>
             <div className='new-chat-btn'>
-              <i class='fa-solid fa-circle-plus'></i>
+              <button onClick={() => {setopenAdduser(true);}}><i class="fa-solid fa-user-plus"></i></button>
+              <button onClick={() => {setopenAddchannel(true)}}><i class="fa-solid fa-users"></i></button>
             </div>
           </section>
           {/* Conversation container */}
           <ReceiveMessage />
           <SendMessageFunction />
+          {openAdduser && <AddUserModal closeAdduserMOdal={setopenAdduser} />}
+          {openAddchannel && <AddChannel closeAddChannelMOdal={setopenAddchannel} />}
           <section className='new-message'>
             <textarea id='sendmessage' name='sendmessage' placeholder='Write your message...'></textarea>
             <div className='options-icons'>
