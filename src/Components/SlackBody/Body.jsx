@@ -11,6 +11,7 @@ function Body() {
 
   const [channgelToggle, setchannelToggle] = useState(false)
   const [directMessageToggle, setdirectMessageTogggle] = useState(false)
+  const [allUsersToggle, setallUsersTogggle] = useState(false)
 
   const toggleChannel = () => {
     channgelToggle ? setchannelToggle(false) : setchannelToggle(true)
@@ -20,6 +21,10 @@ function Body() {
   const toggledirectMessage = () => {
     directMessageToggle ? setdirectMessageTogggle(false) : setdirectMessageTogggle(true)
     console.log(channgelToggle)
+  }
+
+  const togglealluser = () => {
+    allUsersToggle ? setallUsersTogggle(false) : setallUsersTogggle(true)
   }
 
   return (
@@ -44,9 +49,15 @@ function Body() {
                 <li>group 2 - Slack App</li>
               </ul>
             </div>
-            <button>
+            <button onClick={togglealluser}>
               <i class='fa-solid fa-bell'></i> All users
             </button>
+            <div className='all-users-channel'>
+              <ul className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}>
+                <li>batch21</li>
+                <li>group 2 - Slack App</li>
+              </ul>
+            </div>
           </div>
         </section>
         <section className='message-window'>
