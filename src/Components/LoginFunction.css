@@ -130,11 +130,15 @@
 
 .loginCreate {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-top:20px;
 }
 
-.loginCreate button {
-    width: 80px;
+
+ .loginCreate button {
+    width: 100px;
     background-color: white;
+    padding: 6px 6px;
+    border-radius: 5px;
+    font-weight: 500;
 }

@@ -143,6 +143,10 @@
     transition: .5s ease-in-out;
 }
 
-.loginCreate button {
+.loginCreate-register button {
     width: 100px;
+    background-color: white;
+    padding: 6px 6px;
+    border-radius: 5px;
 }
+
