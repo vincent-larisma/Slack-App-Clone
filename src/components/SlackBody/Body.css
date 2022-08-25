@@ -166,14 +166,14 @@
 
 .conversation {
   margin: 10px 30px;
-    display: flex;
-    flex-direction: column;
-    height: 120px;
-    /* justify-content: flex-end; */
-    overflow: hidden;
-    overflow-y: scroll;
-    transform: scale(1, -1);
-    padding-right: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  /* justify-content: flex-end; */
+  /* overflow: hidden;   */
+  overflow-y: scroll;
+  transform: scale(1, -1);
+  padding-right: 0px;
 }
 
 .conversation::-webkit-scrollbar {
@@ -181,7 +181,7 @@
 }
 
 .converse-chats {
-  transform: scale(1, -1);   
+  transform: scale(1, -1);
 }
 
 .conversation:hover {

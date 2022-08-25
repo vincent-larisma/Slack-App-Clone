@@ -3,7 +3,6 @@ import { createContext, useState } from 'react'
 export const LoginContext = createContext()
 export const LoginContextHeader = createContext()
 export const UserMessages = createContext()
-
 export const LoginProvider = ({ children }) => {
   const [loginInfo, setLoginInfo] = useState({})
   const [loginInfoHeader, setLoginInfoHeader] = useState({})

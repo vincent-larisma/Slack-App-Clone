@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { LoginContextHeader } from './LoginContext'
 import { UserMessages } from './LoginContext'
-import "./SlackBody/Body.css"
+import './SlackBody/Body.css'
 
 export default function ReceiveMessage() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
   const { data } = receivedMessage
+  const [restrictOnce, setRestrictOnce] = useState(false)
 
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
@@ -28,47 +29,35 @@ export default function ReceiveMessage() {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-  }, [])
- 
+      .then((data) => {
+        setReceivedMessage({ data })
+        setRestrictOnce(true)
+      })
+  }, [receivedMessage])
+
   return (
     <>
       <section className='conversation'>
         <div className='converse-chats'>
-        {/* {data.length
-          ? data.map(({ body }, index) => {
-              return (
-                <div className='sender-container' key={index}>
-                  <div className='message-sender-name'>
-                    Evan Maylas <i class='fa-solid fa-circle'></i>
+          {restrictOnce && data.data.length
+            ? data.data.map(({ body }, index) => {
+                return (
+                  <div className='sender-container' key={index}>
+                    <div className='message-sender-name'>
+                      Evan Maylas <i class='fa-solid fa-circle'></i>
+                    </div>
+                    <p className='sender-chat'>{body}</p>
                   </div>
-                  <p className='sender-chat'>{body}</p>
-                </div>
-              )
-            })
-          : null} */}
+                )
+              })
+            : null}
 
-       
-            <div className='receiver-container'>
-              <div className='message-receiver-name'>
-               <i class='fa-solid fa-circle'></i> Shawn Go
-              </div>
-              <p className='receiver-chat'>Mas panget ka</p>
+          <div className='receiver-container'>
+            <div className='message-receiver-name'>
+              <i class='fa-solid fa-circle'></i> Shawn Go
             </div>
-
-            <div className='receiver-container'>
-              <div className='message-receiver-name'>
-               <i class='fa-solid fa-circle'></i> Shawn Go
-              </div>
-              <p className='receiver-chat'>Mas panget ka</p>
-            </div>
-
-            <div className='receiver-container'>
-              <div className='message-receiver-name'>
-               <i class='fa-solid fa-circle'></i> Shawn Go
-              </div>
-              <p className='receiver-chat'>Mas panget ka</p>
-            </div>
+            <p className='receiver-chat'>Mas panget ka</p>
+          </div>
         </div>
       </section>
     </>
