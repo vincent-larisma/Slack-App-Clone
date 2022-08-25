@@ -60,10 +60,10 @@ export default function RegisterFunction() {
     <form className='form-container'>
       <section className='inner-form'>
       <div className='form-name-register'>Register <i class="fa-solid fa-address-card"></i></div>
-          <div className='login-email'>
-            <p className='top-credentials'>Email <i class="fa-solid fa-user"></i></p>
+          <div className='create-email'>
+            <p className='register-credentials'>Email <i class="fa-solid fa-user"></i></p>
             <input
-              className='login-email-input'
+              className='create-email-input'
               type='text'
               id='email'
               name='email'
@@ -72,10 +72,10 @@ export default function RegisterFunction() {
               onChange={handleChangeEmail}
             />
           </div>
-          <p className='top-credentials'>Password <i class="fa-solid fa-lock-open"></i></p>
-          <div className='login-password'>
+          <p className='register-credentials'>Password <i class="fa-solid fa-lock-open"></i></p>
+          <div className='create-password'>
             <input
-              className='login-password-input'
+              className='create-password-input'
               type='text'
               id='password'
               name='password'
@@ -84,10 +84,10 @@ export default function RegisterFunction() {
               onChange={handleChangePassword}
             />
           </div>
-          <p className='top-credentials'>Confirm Password <i class="fa-solid fa-lock"></i></p>
-          <div className='confirm-password'>
+          <p className='register-credentials'>Confirm Password <i class="fa-solid fa-lock"></i></p>
+          <div className='create-password'>
             <input
-              className='login-password-confirm'
+              className='create-password-confirm'
               type='text'
               id='passwordConfirm'
               name='passwordConfirm'
@@ -95,10 +95,13 @@ export default function RegisterFunction() {
               placeholder='Confirm password'
               onChange={handleChangePasswordConfirm}
             />
+            <button className='login-submit-button-register' onClick={() => navigate('/')}>
+              <i class="fa-solid fa-arrow-left"></i> Back to Login
+            </button>
           </div>
+          
           <div className='loginCreate-register'>
-            <button className='login-submit-button-register' onClick={handleClickSubmit}>Create User</button>
-            <button className='login-submit-button-register' onClick={() => navigate('/')}>Back to Login</button>
+            <button className='create-button-register' onClick={handleClickSubmit}>Create User</button>
           </div>
       </section>
     </form>

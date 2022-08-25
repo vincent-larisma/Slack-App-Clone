@@ -91,6 +91,7 @@ export default function LoginFunction() {
 
           <p className='top-credentials'>Password <i class="fa-solid fa-lock"></i></p>
           <div className='login-password'>
+            {/* <i class="fa-solid fa-lock"></i> */}
             <input
               className='login-password-input'
               type='text'
@@ -100,14 +101,15 @@ export default function LoginFunction() {
               placeholder='Enter your password'
               onChange={handleChangePassword}
             />
+            <button className='create-submit-button' onClick={() => navigate('/CreateUser')}>
+              Register <i class="fa-solid fa-arrow-right"></i> 
+            </button>
           </div>
           <div className='loginCreate'>
             <button className='login-submit-button' onClick={handleClickSubmit}>
               Login
             </button>
-            <button className='login-submit-button' onClick={() => navigate('/CreateUser')}>
-              Register
-            </button>
+            
           </div>
         </section>
       </form>

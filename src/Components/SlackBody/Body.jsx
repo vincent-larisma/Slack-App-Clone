@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from 'react'
+import React, { useState, useTransition, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SendMessageFunction from '../SendMessageFunction'
 import ReceiveMessage from '../ReceiveMessage'
@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 import './Navbar.css'
 import AddUserModal from '../AddUserModal/AddUserModal'
 import AddChannel from '../AddChannelModal/AddChannel'
+import { faDesktop } from '@fortawesome/free-solid-svg-icons'
 
 function Body() {
 
@@ -38,6 +39,18 @@ function Body() {
 
   const [openAdduser, setopenAdduser] = useState(false);
   const [openAddchannel, setopenAddchannel] = useState(false);
+
+  // useEffect(() => {
+
+  //   const closeModal = e => {
+  //     console.log(e)
+  //     setopenAdduser(false);
+  //   }
+
+  //   document.body.addEventListener('click', closeModal);
+
+  //   return () =>  document.body.removeEventListener('click', closeModal);
+  // });
 
 
   const exit = () => {
@@ -110,13 +123,13 @@ function Body() {
               </button>
             </div>
             <div className='new-chat-btn'>
-              <button onClick={() => {setopenAdduser(true);}}><i class="fa-solid fa-user-plus"></i></button>
-              <button onClick={() => {setopenAddchannel(true)}}><i class="fa-solid fa-users"></i></button>
+              <button onClick={() => {setopenAdduser(prev => !prev)}}><i class="fa-solid fa-user-plus"></i></button>
+              <button onClick={() => {setopenAddchannel(prev => !prev)}}><i class="fa-solid fa-users"></i></button>
             </div>
           </section>
           {/* Conversation container */}
           <ReceiveMessage />
-          <SendMessageFunction />
+          {/* <SendMessageFunction /> */}
           {openAdduser && <AddUserModal closeAdduserMOdal={setopenAdduser} />}
           {openAddchannel && <AddChannel closeAddChannelMOdal={setopenAddchannel} />}
           <section className='new-message'>
