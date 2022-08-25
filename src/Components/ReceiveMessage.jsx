@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { LoginContextHeader } from './LoginContext'
 import { UserMessages } from './LoginContext'
+import { UserInfoSend } from './LoginContext'
 import './SlackBody/Body.css'
 
 const APIurl = 'http://206.189.91.54/api/v1'
@@ -8,8 +9,11 @@ const APIurl = 'http://206.189.91.54/api/v1'
 export default function ReceiveMessage() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
-  const { data } = receivedMessage
+  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
   const [restrictOnce, setRestrictOnce] = useState(false)
+
+  const { userId, userClass } = containUserInfo
+  const { data } = receivedMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const userDataHeadersAPI = {
@@ -20,7 +24,7 @@ export default function ReceiveMessage() {
   }
 
   const fetchMessages = () => {
-    fetch(`${APIurl}/messages?receiver_id=${2484}&receiver_class=User`, {
+    fetch(`${APIurl}/messages?receiver_id=${userId}&receiver_class=${userClass}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +51,7 @@ export default function ReceiveMessage() {
                 return (
                   <div className='sender-container' key={index}>
                     <div className='message-sender-name'>
-                      Evan Maylas <i class='fa-solid fa-circle'></i>
+                      {uid} <i class='fa-solid fa-circle'></i>
                     </div>
                     <p className='sender-chat'>{body}</p>
                   </div>

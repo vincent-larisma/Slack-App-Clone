@@ -1,17 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { UserMessages } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
+import { UserInfoSend } from './LoginContext'
 
 const APIurl = 'http://206.189.91.54/api/v1'
 
 export default function SendMessageFunction() {
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
+  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const { setReceivedMessage } = useContext(UserMessages)
   const [userSendMessage, setUserSendMessage] = useState({
     userMessage: '',
     receiverID: '',
     receiverClass: '',
   })
-  const { setReceivedMessage } = useContext(UserMessages)
+
+  const { userId, userClass } = containUserInfo
   const { userMessage, receiverID, receiverClass } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
@@ -19,20 +23,13 @@ export default function SendMessageFunction() {
     const { name, value } = event.target
     setUserSendMessage({ ...userSendMessage, [name]: value })
   }
-  const handleChangeReceiverID = (event) => {
-    const { name, value } = event.target
-    setUserSendMessage({ ...userSendMessage, [name]: value })
-  }
-  const handleChangeReceiverClass = (event) => {
-    const { name, value } = event.target
-    setUserSendMessage({ ...userSendMessage, [name]: value })
-  }
 
   const userDataAPI = {
-    receiver_id: receiverID,
-    receiver_class: receiverClass,
+    receiver_id: userId,
+    receiver_class: userClass,
     body: userMessage,
   }
+
   const userDataHeadersAPI = {
     expiry: expiry,
     uid: uid,
@@ -54,7 +51,7 @@ export default function SendMessageFunction() {
   }
 
   const postMessage = () => {
-    fetch(`${APIurl}/messages?receiver_id=${2484}&receiver_class=User`, {
+    fetch(`${APIurl}/messages?receiver_id=${userId}&receiver_class=${userClass}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -74,21 +71,6 @@ export default function SendMessageFunction() {
 
   return (
     <>
-      <div>
-        <input
-          type='number'
-          placeholder='Receiver ID'
-          name='receiverID'
-          value={receiverID}
-          onChange={handleChangeReceiverID}
-        />
-        <br />
-        <label htmlFor='user'>User</label>
-        <input type='radio' name='receiverClass' id='user' value='User' onChange={handleChangeReceiverClass} />
-        <label htmlFor='class'>Class</label>
-        <input type='radio' name='receiverClass' id='class' value='Class' onChange={handleChangeReceiverClass} />
-      </div>
-
       <section className='new-message'>
         <textarea
           id='sendmessage'

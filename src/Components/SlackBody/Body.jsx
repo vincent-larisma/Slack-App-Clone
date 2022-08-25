@@ -4,10 +4,7 @@ import ReceiveMessage from '../ReceiveMessage'
 import './Body.css'
 
 function Body() {
-  const [activeName, setactiveName] = useState('Shawn Go')
   const [availUser, setavailUser] = useState('Evan Maylas')
-
-  const [currentReceiver, setcurrentReceiver] = useState('')
 
   const [channgelToggle, setchannelToggle] = useState(false)
   const [directMessageToggle, setdirectMessageTogggle] = useState(false)
@@ -63,7 +60,6 @@ function Body() {
           {/* Conversation container */}
           <ReceiveMessage />
           <SendMessageFunction />
-          
         </section>
       </div>
     </>
