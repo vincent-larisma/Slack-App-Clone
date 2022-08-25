@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
 .body-container {
   display: grid;
   grid-template-columns: 1fr 4.5fr;
@@ -12,15 +19,24 @@
 .threads-buttons button {
   display: flex;
   width: 100%;
-  padding: 10px 7px;
+  padding: 10px 20px;
   column-gap: 10px;
   border: none;
   background-color: rgb(220, 219, 219);
+  font-size: 18px;
+}
+
+.threads-buttons-clicked {
+  background-color: white;
+}
+
+.threads-buttons-NOTclicked {
+  background-color: #ccc;
 }
 
 .threads-buttons button:hover {
   cursor: pointer;
-  background-color: #ebeae5;
+  background-color: #fff;
 }
 
 .names-channel ul li {
@@ -29,9 +45,9 @@
   list-style: none;
   background-color: #1a374d;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 3px 10px;
+  padding: 10px 20px;
   color: white;
 }
 
@@ -45,13 +61,29 @@
   list-style: none;
   background-color: #1a374d;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 3px 10px;
+  padding: 10px 20px;
   color: white;
 }
 
 .direct-message-channel ul li:hover {
+  background-color: #6998ab;
+}
+
+.all-users-channel ul li {
+  color: black;
+  font-size: 10px;
+  list-style: none;
+  background-color: #1a374d;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 20px;
+  color: white;
+}
+
+.all-users-channel ul li:hover {
   background-color: #6998ab;
 }
 
@@ -102,7 +134,7 @@
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 7px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .new-message input::placeholder {
@@ -159,18 +191,13 @@
   color: white;
 }
 
-.new-chat-btn {
-  font-size: 35px;
-  padding-right: 10px;
-}
-
 .conversation {
   margin: 10px 30px;
   display: flex;
   flex-direction: column;
-  height: 420px;
+  height: 200px;
   /* justify-content: flex-end; */
-  /* overflow: hidden;   */
+  overflow: hidden;
   overflow-y: scroll;
   transform: scale(1, -1);
   padding-right: 0px;
@@ -228,8 +255,27 @@
 }
 
 .new-chat-btn {
-  color: #6998ab;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
+
+.new-chat-btn button {
+  color: #1a374d;
+  font-size: 25px;
+  column-gap: 25px;
+  margin-right: 20px;
+  display: flex;
+  text-align: center;
+  border: none;
+}
+
+/* .new-chat-btn i {
+  padding: 5px 5px;
+  background-color: #6998ab;
+  color: white;
+  border-radius: 5px;
+} */
 
 /*
 .name-converse {

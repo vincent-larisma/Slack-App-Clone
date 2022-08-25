@@ -59,8 +59,9 @@ export default function RegisterFunction() {
     <div className='login-container'>
     <form className='form-container'>
       <section className='inner-form'>
-      <div className='form-name'>Enter your information</div>
+      <div className='form-name-register'>Register <i class="fa-solid fa-address-card"></i></div>
           <div className='login-email'>
+            <p className='top-credentials'>Email <i class="fa-solid fa-user"></i></p>
             <input
               className='login-email-input'
               type='text'
@@ -71,6 +72,7 @@ export default function RegisterFunction() {
               onChange={handleChangeEmail}
             />
           </div>
+          <p className='top-credentials'>Password <i class="fa-solid fa-lock-open"></i></p>
           <div className='login-password'>
             <input
               className='login-password-input'
@@ -82,6 +84,7 @@ export default function RegisterFunction() {
               onChange={handleChangePassword}
             />
           </div>
+          <p className='top-credentials'>Confirm Password <i class="fa-solid fa-lock"></i></p>
           <div className='confirm-password'>
             <input
               className='login-password-confirm'
@@ -93,9 +96,9 @@ export default function RegisterFunction() {
               onChange={handleChangePasswordConfirm}
             />
           </div>
-          <div className='loginCreate'>
-            <button className='login-submit-button' onClick={handleClickSubmit}>Create User</button>
-            <button className='login-submit-button' onClick={() => navigate('/')}>Back to login</button>
+          <div className='loginCreate-register'>
+            <button className='login-submit-button-register' onClick={handleClickSubmit}>Create User</button>
+            <button className='login-submit-button-register' onClick={() => navigate('/')}>Back to Login</button>
           </div>
       </section>
     </form>
