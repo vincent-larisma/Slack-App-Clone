@@ -26,7 +26,7 @@
  
 }
 
-
+ 
 .form-container {
     display: flex;
     width: 350px;
@@ -38,7 +38,7 @@
 }
 
 .inner-form {
-    margin: 40px;
+    margin: 20px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +58,7 @@
     font-size: 10px;
 }
 
-.login-email-input, .login-password-input {
+.login-email input {
     background-color: #fff;
     outline: none;
     text-align: center;
@@ -67,20 +67,61 @@
     padding: 8px 5px;
     display: inline-block;
     border-radius: 5px;
-    font-size: 10px;
-    margin-bottom: 20px;
+    font-size: 15px;
+    margin-bottom: 15px;
 }
+
+.login-password input {
+    background-color: #fff;
+    outline: none;
+    text-align: center;
+    box-sizing: border-box;
+    width: 250px;
+    padding: 8px 5px;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+
+/* .login-password i {
+    color: black;
+    position: absolute;
+    z-index: 1;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
 
 .login-email-input::placeholder, .login-password-input::placeholder {
     font-size: 13px;
 }
 
-.login-submit-button {
-    color: black;
-    padding: 8px 5px;
-    border-radius: 5px;
+.create-submit-button {
+    color: #fff;
+    outline: none;
     border: none;
     font-weight: 590;
+    background-color: transparent;
+    margin-top: 0;
+    border-bottom: 2px dotted #1A374D;
+    display: flex;
+}
+
+.create-submit-button i {
+    display: flex;
+    margin-left: 5px;
+    align-self: center;
+}
+
+
+
+.create-submit-button:hover {
+    border-bottom: 2px dotted white;
+    transition: .5s ease-in-out;
 }
 
 .login-submit-button:hover {
@@ -89,11 +130,15 @@
 
 .loginCreate {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-top:20px;
 }
 
-.loginCreate button {
-    width: 80px;
+
+ .loginCreate button {
+    width: 100px;
     background-color: white;
+    padding: 6px 6px;
+    border-radius: 5px;
+    font-weight: 500;
 }

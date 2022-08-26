@@ -58,16 +58,18 @@ export default function LoginFunction() {
         if (data.data) {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
           navigate('/slack-app')
+        } else if (userData.email === "" && userData.password === "") {
+          Swal.fire('Please enter your email and password')
+          setUserData({ ...userData, email: email })
+        } else if (userData.email === "") {
+          Swal.fire('Please enter your email')
+        } else if (userData.password === "") {
+          Swal.fire('Please enter your password')
         } else if (!data.success) {
           Swal.fire('Invalid username or password')
-          // return alert(data.errors[0])
-        }
-        // if (userData.email === "") {
-        //   Swal.fire('Any fool can asdfasdfasdf a computer')
-        // }
+          setUserData({ ...userData, email: '', password: '' })
+        } 
       })
-
-    setUserData({ ...userData, email: '', password: '' })
   }
 
   return (
@@ -89,6 +91,7 @@ export default function LoginFunction() {
               value={email}
               placeholder='Enter your email address'
               onChange={handleChangeEmail}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
           </div>
 
@@ -96,22 +99,24 @@ export default function LoginFunction() {
             Password <i class='fa-solid fa-lock'></i>
           </p>
           <div className='login-password'>
+            {/* <i class="fa-solid fa-lock"></i> */}
             <input
               className='login-password-input'
-              type='text'
+              type='password'
               id='password'
               name='password'
               value={password}
               placeholder='Enter your password'
               onChange={handleChangePassword}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
+            <button className='create-submit-button' onClick={() => navigate('/CreateUser')}>
+              Register <i class="fa-solid fa-arrow-right"></i> 
+            </button>
           </div>
           <div className='loginCreate'>
             <button className='login-submit-button' onClick={handleClickSubmit}>
               Login
-            </button>
-            <button className='login-submit-button' onClick={() => navigate('/CreateUser')}>
-              Register
             </button>
           </div>
         </section>

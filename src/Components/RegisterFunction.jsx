@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './RegisterFunction.css'
+import Swal from 'sweetalert2'
 
 export default function RegisterFunction() {
   const navigate = useNavigate()
@@ -48,10 +49,20 @@ export default function RegisterFunction() {
       .then((data) => console.log(data))
 
     setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
-    navigate('/Login')
+    // navigate('/Login')
 
-    if(email.value === "") {
-      console.log('hahahah')
+    if(userData.email === "" && userData.password === "" && userData.passwordConfirm === "") {
+      Swal.fire('Please enter your email and password')
+    } else if (userData.email === "") {
+      Swal.fire('Please enter your email')
+    } else if (userData.password === "") {
+      Swal.fire('Please enter your password')
+    } else if (userData.passwordConfirm === "") {
+      Swal.fire('Please confirm your password')
+    } else if (userData.email === "" && userData.password === "") {
+      Swal.fire('Please enter your email and password')
+    } else if (userData.password === "" && userData.passwordConfirm === "") {
+      Swal.fire('Please enter your password')
     }
   }
 
@@ -60,45 +71,51 @@ export default function RegisterFunction() {
     <form className='form-container'>
       <section className='inner-form'>
       <div className='form-name-register'>Register <i class="fa-solid fa-address-card"></i></div>
-          <div className='login-email'>
-            <p className='top-credentials'>Email <i class="fa-solid fa-user"></i></p>
+          <div className='create-email'>
+            <p className='register-credentials'>Email <i class="fa-solid fa-user"></i></p>
             <input
-              className='login-email-input'
+              className='create-email-input'
               type='text'
               id='email'
               name='email'
               value={email}
               placeholder='Enter your email address'
               onChange={handleChangeEmail}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
           </div>
-          <p className='top-credentials'>Password <i class="fa-solid fa-lock-open"></i></p>
-          <div className='login-password'>
+          <p className='register-credentials'>Password <i class="fa-solid fa-lock-open"></i></p>
+          <div className='create-password'>
             <input
-              className='login-password-input'
-              type='text'
+              className='create-password-input'
+              type='password'
               id='password'
               name='password'
               value={password}
               placeholder='Enter your password'
               onChange={handleChangePassword}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
           </div>
-          <p className='top-credentials'>Confirm Password <i class="fa-solid fa-lock"></i></p>
-          <div className='confirm-password'>
+          <p className='register-credentials'>Confirm Password <i class="fa-solid fa-lock"></i></p>
+          <div className='create-password'>
             <input
-              className='login-password-confirm'
-              type='text'
+              className='create-password-confirm'
+              type='password'
               id='passwordConfirm'
               name='passwordConfirm'
               value={passwordConfirm}
               placeholder='Confirm password'
               onChange={handleChangePasswordConfirm}
+              onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             />
+            <button className='login-submit-button-register' onClick={() => navigate('/')}>
+              <i class="fa-solid fa-arrow-left"></i> Back to Login
+            </button>
           </div>
+          
           <div className='loginCreate-register'>
-            <button className='login-submit-button-register' onClick={handleClickSubmit}>Create User</button>
-            <button className='login-submit-button-register' onClick={() => navigate('/')}>Back to Login</button>
+            <button className='create-button-register' onClick={handleClickSubmit}>Create User</button>
           </div>
       </section>
     </form>

@@ -11,6 +11,7 @@ import AddChannel from '../AddChannelModal/AddChannel'
 import { UserList, LoginContextHeader, UserInfoSend } from '../LoginContext'
 import { faArrowUpRightFromSquare, faDesktop } from '@fortawesome/free-solid-svg-icons'
 
+
 function Body() {
   const navigate = useNavigate()
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
@@ -57,6 +58,7 @@ function Body() {
     setContainUserInfo({ ...containUserInfo, userId: userValue.id })
   }
 
+
   const fetchUserList = () => {
     fetch(`${APIurl}/users`, {
       method: 'GET',
@@ -70,6 +72,19 @@ function Body() {
         setUserListArray(data)
       })
   }
+
+  // useEffect(() => {
+
+  //   const closeModal = e => {
+  //     console.log(e)
+  //     setopenAdduser(false);
+  //   }
+
+  //   document.body.addEventListener('click', closeModal);
+
+  //   return () =>  document.body.removeEventListener('click', closeModal);
+  // });
+
 
   const exit = () => {
     Swal.fire({
@@ -199,23 +214,15 @@ function Body() {
               </button>
             </div>
             <div className='new-chat-btn'>
-              <button
-                onClick={() => {
-                  setopenAdduser((prev) => !prev)
-                }}>
-                <i class='fa-solid fa-user-plus'></i>
-              </button>
-              <button
-                onClick={() => {
-                  setopenAddchannel((prev) => !prev)
-                }}>
-                <i class='fa-solid fa-users'></i>
-              </button>
+
+              <button onClick={() => {setopenAdduser(prev => !prev)}}><i class="fa-solid fa-user-plus"></i></button>
+              <button onClick={() => {setopenAddchannel(prev => !prev)}}><i class="fa-solid fa-users"></i></button>
+
             </div>
           </section>
           {/* Conversation container */}
           <ReceiveMessage />
-          <SendMessageFunction />
+          {/* <SendMessageFunction /> */}
           {openAdduser && <AddUserModal closeAdduserMOdal={setopenAdduser} />}
           {openAddchannel && <AddChannel closeAddChannelMOdal={setopenAddchannel} />}
         </section>

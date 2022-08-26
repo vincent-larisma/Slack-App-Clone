@@ -43,16 +43,18 @@ body {
 }
 
 .search-bar input {
-  background-color: #f3f2f0;
-  outline: none;
-  text-align: center;
-  box-sizing: border-box;
-  width: 500px;
-  padding: 8px 5px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 15px;
+
+    background-color: #f3f2f0;
+    outline: none;
+    text-align: center;
+    box-sizing: border-box;
+    width: 500px;
+    padding: 8px 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+
 }
 
 .search-bar input::placeholder {
