@@ -74,9 +74,13 @@ export default function LoginFunction() {
     <div className='login-container'>
       <form className='form-container'>
         <section className='inner-form'>
-          <div className='form-name'>Slack App <i class="fa-solid fa-square-envelope"></i></div>
+          <div className='form-name'>
+            Slack App <i class='fa-solid fa-square-envelope'></i>
+          </div>
           <div className='login-email'>
-            <p className='top-credentials'>Username <i class="fa-solid fa-user"></i></p>
+            <p className='top-credentials'>
+              Username <i class='fa-solid fa-user'></i>
+            </p>
             <input
               className='login-email-input'
               type='text'
@@ -88,7 +92,9 @@ export default function LoginFunction() {
             />
           </div>
 
-          <p className='top-credentials'>Password <i class="fa-solid fa-lock"></i></p>
+          <p className='top-credentials'>
+            Password <i class='fa-solid fa-lock'></i>
+          </p>
           <div className='login-password'>
             <input
               className='login-password-input'

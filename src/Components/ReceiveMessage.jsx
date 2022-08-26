@@ -9,7 +9,7 @@ const APIurl = 'http://206.189.91.54/api/v1'
 export default function ReceiveMessage() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
-  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)  
   const [restrictOnce, setRestrictOnce] = useState(false)
 
   const { userId, userClass } = containUserInfo
@@ -40,7 +40,7 @@ export default function ReceiveMessage() {
 
   useEffect(() => {
     fetchMessages()
-  }, [])
+  }, [containUserInfo])
 
   return (
     <>
