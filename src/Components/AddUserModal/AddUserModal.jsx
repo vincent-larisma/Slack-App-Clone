@@ -6,24 +6,30 @@ import './AddUser.css'
 
 function AddUserModal({ closeAdduserMOdal }) {
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
-  
-  const [getUserID, setGetUserID] = useState()
 
+  const [getUserID, setGetUserID] = useState()
 
   const handleChangeUserID = (event) => {
     const { value } = event.target
     setGetUserID(value)
   }
 
+  const checkList = (userId) => {
+    return userId === getUserID
+  }
 
   const handleClickAdd = () => {
     let list = listAllUserAdded
-    list.push(getUserID)
-    setListAllUserAdded(list)
-    setGetUserID('')
-    closeAdduserMOdal(false)
-  }
+    if (!list.some(checkList)) {
+      list.push(getUserID)
+      setListAllUserAdded(list)
 
+      closeAdduserMOdal(false)
+    } else if (list.some(checkList)) {
+      return alert('User has already been added')
+    }
+    setGetUserID('')
+  }
 
   return (
     <>

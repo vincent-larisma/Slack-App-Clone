@@ -9,7 +9,7 @@ const APIurl = 'http://206.189.91.54/api/v1'
 export default function ReceiveMessage() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
-  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)  
+  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
   const [restrictOnce, setRestrictOnce] = useState(false)
 
   const { userId, userClass } = containUserInfo
@@ -47,24 +47,28 @@ export default function ReceiveMessage() {
       <section className='conversation'>
         <div className='converse-chats'>
           {restrictOnce && data.data.length
-            ? data.data.map(({ body }, index) => {
-                return (
-                  <div className='sender-container' key={index}>
-                    <div className='message-sender-name'>
-                      {uid} <i class='fa-solid fa-circle'></i>
+            ? data.data.map(({ body, sender }, index) => {
+                if (uid !== sender.uid) {
+                  return (
+                    <div className='receiver-container'>
+                      <div className='message-receiver-name'>
+                        <i class='fa-solid fa-circle'></i> {sender.uid}
+                      </div>
+                      <p className='receiver-chat'>{body}</p>
                     </div>
-                    <p className='sender-chat'>{body}</p>
-                  </div>
-                )
+                  )
+                } else {
+                  return (
+                    <div className='sender-container' key={index}>
+                      <div className='message-sender-name'>
+                        {sender.uid} <i class='fa-solid fa-circle'></i>
+                      </div>
+                      <p className='sender-chat'>{body}</p>
+                    </div>
+                  )
+                }
               })
             : null}
-
-          <div className='receiver-container'>
-            <div className='message-receiver-name'>
-              <i class='fa-solid fa-circle'></i> Shawn Go
-            </div>
-            <p className='receiver-chat'>Mas panget ka</p>
-          </div>
         </div>
       </section>
     </>

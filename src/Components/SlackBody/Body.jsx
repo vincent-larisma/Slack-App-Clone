@@ -14,7 +14,7 @@ import { faArrowUpRightFromSquare, faDesktop } from '@fortawesome/free-solid-svg
 function Body() {
   const navigate = useNavigate()
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
-  const [availUser, setavailUser] = useState('Evan Maylas')
+  const [availUser, setavailUser] = useState('Starting user')
   const [userListArray, setUserListArray] = useState()
   const [channgelToggle, setchannelToggle] = useState(false)
   const [directMessageToggle, setdirectMessageTogggle] = useState(false)
@@ -120,24 +120,25 @@ function Body() {
             </button>
             <div className='direct-message-channel'>
               <ul className={directMessageToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}>
-                <li>test</li>
-                {listAllUserAdded.length
-                  ? listAllUserAdded.map((value, index) => {
-                      let userValue = false
-                      userListArray.data.filter((valueUser) => {
-                        if (valueUser.id == value) {
-                          userValue = valueUser
-                        }
-                      })
-                      if (userValue) {
-                        return (
-                          <li key={index} onClick={() => handleClickSelectUser(userValue)}>
-                            {userValue.uid}
-                          </li>
-                        )
+                {listAllUserAdded.length ? (
+                  listAllUserAdded.map((value, index) => {
+                    let userValue = false
+                    userListArray.data.filter((valueUser) => {
+                      if (valueUser.id == value) {
+                        userValue = valueUser
                       }
                     })
-                  : null}
+                    if (userValue) {
+                      return (
+                        <li key={index} onClick={() => handleClickSelectUser(userValue)}>
+                          {userValue.uid}
+                        </li>
+                      )
+                    }
+                  })
+                ) : (
+                  <li>No New Messages</li>
+                )}
               </ul>
             </div>
             <button onClick={toggleChannel}>
