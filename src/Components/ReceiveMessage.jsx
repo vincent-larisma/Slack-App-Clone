@@ -40,7 +40,7 @@ export default function ReceiveMessage() {
 
   useEffect(() => {
     fetchMessages()
-  }, [containUserInfo])
+  }, [containUserInfo, setReceivedMessage])
 
   return (
     <>

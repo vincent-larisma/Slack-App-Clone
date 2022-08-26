@@ -11,9 +11,21 @@
   height: 92vh;
 }
 
+.search-container {
+  position: absolute;
+  width: 500px;
+  z-index: 10;
+}
+.search-item {
+  position: relative;
+  background-color: rgb(236, 236, 236);
+  color: black;
+}
+
 .threads {
   background-color: #1a374d;
-  color: white;
+
+  color: rgb(236, 236, 236);
 }
 
 .threads-buttons button {

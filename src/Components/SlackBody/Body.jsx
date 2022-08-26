@@ -24,6 +24,12 @@ function Body() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const handleChangeSearch = (event) => {
+    const { value } = event.target
+    setSearchTerm(value)
+  }
 
   const userDataHeadersAPI = {
     expiry: expiry,
@@ -95,7 +101,30 @@ function Body() {
           </button>
         </section>
         <section className='search-bar'>
-          <input type='text' placeholder='Search' />
+          <input type='text' placeholder='Search...' onChange={handleChangeSearch} />
+          <div className='search-container'>
+            {searchTerm.length
+              ? userListArray.data
+                  .filter((value) => {
+                    console.log('value', value)
+                    if (searchTerm == '') {
+                      return value
+                    } else if (
+                      value.uid.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                      value.id === searchTerm.toLowerCase()
+                    ) {
+                      return value
+                    }
+                  })
+                  .map((value, index) => {
+                    return (
+                      <div className='search-item' key={index}>
+                        {value.uid}
+                      </div>
+                    )
+                  })
+              : null}
+          </div>
         </section>
         <section className='screen-setting'>
           <button>
