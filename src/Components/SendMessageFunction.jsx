@@ -1,25 +1,35 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { UserMessages } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
+import { UserInfoSend } from './LoginContext'
+
+const APIurl = 'http://206.189.91.54/api/v1'
 
 export default function SendMessageFunction() {
   const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
+  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const { setReceivedMessage } = useContext(UserMessages)
   const [userSendMessage, setUserSendMessage] = useState({
     userMessage: '',
     receiverID: '',
     receiverClass: '',
-    userMessageList: [],
   })
-  const { receivedMessage, setReceivedMessage } = useContext(UserMessages)
 
-  const { userMessage, receiverID, receiverClass, userMessageList } = userSendMessage
+  const { userId, userClass } = containUserInfo
+  const { userMessage, receiverID, receiverClass } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
+  const handleChangeMessage = (event) => {
+    const { name, value } = event.target
+    setUserSendMessage({ ...userSendMessage, [name]: value })
+  }
+
   const userDataAPI = {
-    receiver_id: receiverID,
-    receiver_class: receiverClass,
+    receiver_id: userId,
+    receiver_class: userClass,
     body: userMessage,
   }
+
   const userDataHeadersAPI = {
     expiry: expiry,
     uid: uid,
@@ -27,27 +37,7 @@ export default function SendMessageFunction() {
     client: client,
   }
 
-  const APIurl = 'http://206.189.91.54/api/v1'
-
-  const handleChangeMessage = (event) => {
-    const { name, value } = event.target
-    setUserSendMessage({ ...userSendMessage, [name]: value })
-  }
-  const handleChangeReceiverID = (event) => {
-    const { name, value } = event.target
-    setUserSendMessage({ ...userSendMessage, [name]: value })
-  }
-  const handleChangeReceiverClass = (event) => {
-    const { name, value } = event.target
-    setUserSendMessage({ ...userSendMessage, [name]: value })
-  }
-
-  const handleClickSubmit = (event) => {
-    event.preventDefault()
-    let list = userMessageList
-    list.push(userMessage)
-
-    //Fetch user message
+  const getMessage = () => {
     fetch(`${APIurl}/messages`, {
       method: 'POST',
       headers: {
@@ -58,8 +48,10 @@ export default function SendMessageFunction() {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
+  }
 
-    fetch(`${APIurl}/messages?receiver_id=1&receiver_class=User`, {
+  const postMessage = () => {
+    fetch(`${APIurl}/messages?receiver_id=${userId}&receiver_class=${userClass}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -68,38 +60,42 @@ export default function SendMessageFunction() {
     })
       .then((res) => res.json())
       .then((data) => setReceivedMessage({ data }))
-    setUserSendMessage({ ...userSendMessage, userMessageList: list, userMessage: '' })
+  }
+
+  const handleClickSubmit = (event) => {
+    event.preventDefault()
+    getMessage()
+    postMessage()
+    setUserSendMessage({ ...userSendMessage, userMessage: '' })
   }
 
   return (
     <>
-      <div>
-        <input
-          type='number'
-          placeholder='Receiver ID'
-          name='receiverID'
-          value={receiverID}
-          onChange={handleChangeReceiverID}
-        />
-        <br />
-        <label htmlFor='user'>User</label>
-        <input type='radio' name='receiverClass' id='user' value='User' onChange={handleChangeReceiverClass} />
-        <label htmlFor='class'>Class</label>
-        <input type='radio' name='receiverClass' id='class' value='Class' onChange={handleChangeReceiverClass} />
-      </div>
-
-      {userMessageList.length ? (
-        userMessageList.map((value, index) => {
-          return <div key={index}>{value}</div>
-        })
-      ) : (
-        <span>No Messages Yet</span>
-      )}
-
-      <div>
-        <input type='text' name='userMessage' value={userMessage} onChange={handleChangeMessage} />
-        <button onClick={handleClickSubmit}>Send</button>
-      </div>
+      <section className='new-message'>
+        <textarea
+          id='sendmessage'
+          placeholder='Write your message...'
+          name='userMessage'
+          value={userMessage}
+          onChange={handleChangeMessage}></textarea>
+        <div className='options-icons'>
+          <button>
+            <i class='fa-solid fa-image'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-face-smile-beam'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-video'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-file'></i>
+          </button>
+          <button className='send-button' onClick={handleClickSubmit}>
+            <i class='fa-solid fa-paper-plane'></i>
+          </button>
+        </div>
+      </section>
     </>
   )
 }

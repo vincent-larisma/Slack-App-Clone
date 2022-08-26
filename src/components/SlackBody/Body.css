@@ -3,7 +3,6 @@
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  
 }
 
 .body-container {
@@ -12,9 +11,21 @@
   height: 92vh;
 }
 
+.search-container {
+  position: absolute;
+  width: 500px;
+  z-index: 10;
+}
+.search-item {
+  position: relative;
+  background-color: rgb(236, 236, 236);
+  color: black;
+}
+
 .threads {
   background-color: #1a374d;
-  color: white;
+
+  color: rgb(236, 236, 236);
 }
 
 .threads-buttons button {
@@ -32,9 +43,8 @@
 }
 
 .threads-buttons-NOTclicked {
-  background-color:#ccc;
+  background-color: #ccc;
 }
-
 
 .threads-buttons button:hover {
   cursor: pointer;
@@ -67,7 +77,6 @@
   font-family: 'Roboto', sans-serif;
   padding: 10px 20px;
   color: white;
-
 }
 
 .direct-message-channel ul li:hover {
@@ -84,7 +93,6 @@
   font-family: 'Roboto', sans-serif;
   padding: 10px 20px;
   color: white;
-
 }
 
 .all-users-channel ul li:hover {
@@ -195,17 +203,16 @@
   color: white;
 }
 
-
 .conversation {
   margin: 10px 30px;
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-    /* justify-content: flex-end; */
-    overflow: hidden;
-    overflow-y: scroll;
-    transform: scale(1, -1);
-    padding-right: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+  /* justify-content: flex-end; */
+  overflow: hidden;
+  overflow-y: scroll;
+  transform: scale(1, -1);
+  padding-right: 0px;
 }
 
 .conversation::-webkit-scrollbar {
@@ -213,7 +220,7 @@
 }
 
 .converse-chats {
-  transform: scale(1, -1);   
+  transform: scale(1, -1);
 }
 
 .conversation:hover {

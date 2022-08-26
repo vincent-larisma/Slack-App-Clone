@@ -16,6 +16,7 @@ function App() {
           <Route path='/Login' element={<LoginFunction />}></Route>
           <Route path='/' element={<LoginFunction />}></Route>
           <Route path='/Test' element={<TestFunctionPage />}></Route>
+          {/* <Route path='/slack-app' element={<TestFunctionPage />}></Route> */}
           <Route path='/slack-app' element={<Body />}></Route>
         </Routes>
       </LoginProvider>
