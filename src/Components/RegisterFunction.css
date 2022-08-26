@@ -150,3 +150,7 @@
     border-radius: 5px;
 }
 
+.create-button-register:hover {
+    background-color: rgb(230, 229, 229);
+}
+

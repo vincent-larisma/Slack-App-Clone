@@ -66,13 +66,11 @@ export default function LoginFunction() {
           Swal.fire('Please enter your email')
         } else if (userData.password === "") {
           Swal.fire('Please enter your password')
-        }
-        // if (userData.email === "") {
-        //   Swal.fire('Any fool can asdfasdfasdf a computer')
-        // }
+        } else if (!data.success) {
+          Swal.fire('Invalid username or password')
+          setUserData({ ...userData, email: '', password: '' })
+        } 
       })
-
-    setUserData({ ...userData, email: '', password: '' })
   }
 
   return (

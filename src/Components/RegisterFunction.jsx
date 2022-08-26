@@ -52,7 +52,7 @@ export default function RegisterFunction() {
     // navigate('/Login')
 
     if(userData.email === "" && userData.password === "" && userData.passwordConfirm === "") {
-      Swal.fire('Please enter your credentials')
+      Swal.fire('Please enter your email and password')
     } else if (userData.email === "") {
       Swal.fire('Please enter your email')
     } else if (userData.password === "") {
@@ -61,6 +61,8 @@ export default function RegisterFunction() {
       Swal.fire('Please confirm your password')
     } else if (userData.email === "" && userData.password === "") {
       Swal.fire('Please enter your email and password')
+    } else if (userData.password === "" && userData.passwordConfirm === "") {
+      Swal.fire('Please enter your password')
     }
   }
 
