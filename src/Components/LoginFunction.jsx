@@ -59,9 +59,13 @@ export default function LoginFunction() {
         if (data.data) {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
           navigate('/slack-app')
-        } else if (!data.success) {
-          Swal.fire('Invalid username or password')
-          // return alert(data.errors[0])
+        } else if (userData.email === "" && userData.password === "") {
+          Swal.fire('Please enter your email and password')
+          setUserData({ ...userData, email: email })
+        } else if (userData.email === "") {
+          Swal.fire('Please enter your email')
+        } else if (userData.password === "") {
+          Swal.fire('Please enter your password')
         }
         // if (userData.email === "") {
         //   Swal.fire('Any fool can asdfasdfasdf a computer')
@@ -95,7 +99,7 @@ export default function LoginFunction() {
             {/* <i class="fa-solid fa-lock"></i> */}
             <input
               className='login-password-input'
-              type='text'
+              type='password'
               id='password'
               name='password'
               value={password}

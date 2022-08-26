@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './RegisterFunction.css'
+import Swal from 'sweetalert2'
 
 export default function RegisterFunction() {
   const navigate = useNavigate()
@@ -48,10 +49,18 @@ export default function RegisterFunction() {
       .then((data) => console.log(data))
 
     setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
-    navigate('/Login')
+    // navigate('/Login')
 
-    if(email.value === "") {
-      console.log('hahahah')
+    if(userData.email === "" && userData.password === "" && userData.passwordConfirm === "") {
+      Swal.fire('Please enter your credentials')
+    } else if (userData.email === "") {
+      Swal.fire('Please enter your email')
+    } else if (userData.password === "") {
+      Swal.fire('Please enter your password')
+    } else if (userData.passwordConfirm === "") {
+      Swal.fire('Please confirm your password')
+    } else if (userData.email === "" && userData.password === "") {
+      Swal.fire('Please enter your email and password')
     }
   }
 
@@ -77,7 +86,7 @@ export default function RegisterFunction() {
           <div className='create-password'>
             <input
               className='create-password-input'
-              type='text'
+              type='password'
               id='password'
               name='password'
               value={password}
@@ -90,7 +99,7 @@ export default function RegisterFunction() {
           <div className='create-password'>
             <input
               className='create-password-confirm'
-              type='text'
+              type='password'
               id='passwordConfirm'
               name='passwordConfirm'
               value={passwordConfirm}
