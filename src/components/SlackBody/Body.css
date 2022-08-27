@@ -14,8 +14,15 @@
 .search-container {
   position: absolute;
   width: 500px;
-  z-index: 10;
+  z-index: 5;
+  max-height: 250px;
+  overflow-y: scroll;
 }
+
+.search-container::-webkit-scrollbar {
+  display: none;
+}
+
 .search-item {
   position: relative;
   background-color: rgb(236, 236, 236);
@@ -77,6 +84,11 @@
   font-family: 'Roboto', sans-serif;
   padding: 10px 20px;
   color: white;
+}
+
+.direct-message-channel ul::-webkit-scrollbar, .names-channel ul::-webkit-scrollbar, .all-users-channel ul::-webkit-scrollbar{
+  display: none;
+
 }
 
 .direct-message-channel ul li:hover {
