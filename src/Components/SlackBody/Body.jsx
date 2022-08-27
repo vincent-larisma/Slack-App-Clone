@@ -25,6 +25,8 @@ function Body() {
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
   const [searchTerm, setSearchTerm] = useState('')
+  const [getUserID, setGetUserID] = useState()
+  const [text, setText] = useState(0);
 
   document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
@@ -102,6 +104,12 @@ function Body() {
     fetchUserList()
   }, [])
 
+  const IconPop = () => {
+    let list = listAllUserAdded
+      list.splice(getUserID)
+      setListAllUserAdded(list)
+  }
+
   return (
     <>
       <nav className='navbar-container'>
@@ -175,8 +183,8 @@ function Body() {
                     })
                     if (userValue) {
                       return (
-                        <li key={index} onClick={() => handleClickSelectUser(userValue)}>
-                          {userValue.uid}
+                        <li className='direct-sms-users' key={index} onClick={() => handleClickSelectUser(userValue)} onMouseEnter={e=> setText(1)} onMouseLeave={e=> setText(0)}>
+                          {userValue.uid} <i style={{opacity: `${text}`}} class="fa-solid fa-circle-xmark" onClick={IconPop}></i>
                         </li>
                       )
                     }
@@ -191,7 +199,7 @@ function Body() {
             </button>
             <div className='names-channel'>
               <ul className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 279}}>
-                <li>batch21</li>
+                <li>batch21</li> 
                 <li>group 2 - Slack App</li>
               </ul>
             </div>
@@ -232,7 +240,6 @@ function Body() {
               </button>
             </div>
           </section>
-
           <ReceiveMessage />
           <SendMessageFunction />
           {openAdduser && <AddUserModal closeAdduserMOdal={setopenAdduser} />}

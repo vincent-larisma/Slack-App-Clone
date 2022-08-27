@@ -23,6 +23,11 @@
   display: none;
 }
 
+.search-container div:hover {
+  background-color: #6998ab;
+  color: white;
+}
+
 .search-item {
   position: relative;
   background-color: rgb(236, 236, 236);
@@ -58,6 +63,26 @@
   background-color: #fff;
 }
 
+.direct-sms-users {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.direct-sms-users i {
+  text-align: center;
+}
+
+/* .direct-sms-users i {
+  visibility: hidden;
+  opacity: 0;
+} */
+
+.direct-sms-users i:hover {
+  color: rgb(189, 3, 3);
+}
+
+
 .names-channel ul li {
   color: black;
   font-size: 10px;
@@ -85,11 +110,14 @@
   cursor: pointer;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 10px 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 300;
   
 }
 
