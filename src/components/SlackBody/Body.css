@@ -15,7 +15,14 @@
   position: absolute;
   width: 500px;
   z-index: 10;
+  max-height: 300px;
+  overflow-y: scroll;
 }
+
+.search-container::-webkit-scrollbar {
+  display: none;
+}
+
 .search-item {
   position: relative;
   background-color: rgb(236, 236, 236);
@@ -24,7 +31,6 @@
 
 .threads {
   background-color: #1a374d;
-
   color: rgb(236, 236, 236);
 }
 
@@ -51,6 +57,10 @@
   background-color: #fff;
 }
 
+.names-channel ul {
+  max-width: 300px;
+}
+
 .names-channel ul li {
   color: black;
   font-size: 10px;
@@ -61,6 +71,7 @@
   font-family: 'Roboto', sans-serif;
   padding: 10px 20px;
   color: white;
+  text-overflow: ellipsis;
 }
 
 .names-channel ul li:hover {
@@ -147,6 +158,10 @@
   border: 1px solid #ccc;
   border-radius: 7px;
   font-size: 20px;
+}
+
+.new-message textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .new-message input::placeholder {
@@ -242,6 +257,11 @@
   align-items: flex-end;
 }
 
+
+.sender-container p:hover   {
+  visibility: hidden;
+}
+
 .sender-chat {
   padding: 8px 6px;
   color: #fff;
@@ -310,3 +330,5 @@
   cursor: pointer;
   align-self: center;
 }
+
+

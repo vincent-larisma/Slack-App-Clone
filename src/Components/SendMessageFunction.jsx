@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { UserMessages } from './LoginContext'
 import { LoginContextHeader } from './LoginContext'
 import { UserInfoSend } from './LoginContext'
+import '../Components/SlackBody/Body.css'
 
 const APIurl = 'http://206.189.91.54/api/v1'
 
@@ -69,10 +70,33 @@ export default function SendMessageFunction() {
     setUserSendMessage({ ...userSendMessage, userMessage: '' })
   }
 
+  const sendTheMessage = () => {
+    getMessage()
+    postMessage()
+    setUserSendMessage({ ...userSendMessage, userMessage: '' })
+  };
+
+  useEffect(() => {
+    const keyDownHandler = event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        sendTheMessage();
+      }
+    };
+
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  });
+
+
   return (
     <>
       <section className='new-message'>
         <textarea
+          className='new-message-textarea'
           id='sendmessage'
           placeholder='Write your message...'
           name='userMessage'

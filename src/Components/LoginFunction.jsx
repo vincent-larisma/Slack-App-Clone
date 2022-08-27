@@ -72,6 +72,9 @@ export default function LoginFunction() {
       })
   }
 
+
+
+
   return (
     <div className='login-container'>
       <form className='form-container'>
@@ -102,7 +105,7 @@ export default function LoginFunction() {
             {/* <i class="fa-solid fa-lock"></i> */}
             <input
               className='login-password-input'
-              type='password'
+              type='text'
               id='password'
               name='password'
               value={password}

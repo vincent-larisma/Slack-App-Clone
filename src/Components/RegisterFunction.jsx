@@ -4,6 +4,7 @@ import './RegisterFunction.css'
 import Swal from 'sweetalert2'
 
 export default function RegisterFunction() {
+
   const navigate = useNavigate()
 
   const [userData, setUserData] = useState({
@@ -48,6 +49,10 @@ export default function RegisterFunction() {
       .then((res) => res.json())
       .then((data) => console.log(data))
 
+    
+    Swal.fire(
+      'Your account has been created!',
+    )
     setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
     // navigate('/Login')
 

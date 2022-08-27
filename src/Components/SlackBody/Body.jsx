@@ -130,9 +130,11 @@ function Body() {
                   })
                   .map((value, index) => {
                     return (
-                      <div className='search-item' key={index}>
+                   
+                       <div className='search-item' key={index}>
                         {value.uid}
-                      </div>
+                       </div>
+                  
                     )
                   })
               : null}
@@ -152,7 +154,7 @@ function Body() {
             <i className='fa-solid fa-xmark'></i>
           </button>
         </section>
-      </nav>
+      </nav> 
       <div className='body-container'>
         <section className='threads'>
           <div className='threads-buttons'>
@@ -171,7 +173,7 @@ function Body() {
                     })
                     if (userValue) {
                       return (
-                        <li key={index} onClick={() => handleClickSelectUser(userValue)}>
+                        <li key={index} onClick={() => handleClickSelectUser(userValue)} style={{ maxWidth: 300, textOverflow: 'ellipsis' }}>
                           {userValue.uid}
                         </li>
                       )
