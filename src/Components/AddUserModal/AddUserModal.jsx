@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { UserList } from '../LoginContext'
-
 import Body from '../SlackBody/Body'
 import './AddUser.css'
+import Swal from 'sweetalert2'
 
 function AddUserModal({ closeAdduserMOdal }) {
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
@@ -26,11 +26,11 @@ function AddUserModal({ closeAdduserMOdal }) {
 
       closeAdduserMOdal(false)
     } else if (list.some(checkList)) {
-      return alert('User has already been added')
+      Swal.fire('User has already been added')
     }
     setGetUserID('')
   }
-
+ 
   return (
     <>
       <section className='adduser-container'>

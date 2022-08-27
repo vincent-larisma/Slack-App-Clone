@@ -81,7 +81,7 @@ export default function LoginFunction() {
           </div>
           <div className='login-email'>
             <p className='top-credentials'>
-              Username <i class='fa-solid fa-user'></i>
+              Email <i class='fa-solid fa-user'></i>
             </p>
             <input
               className='login-email-input'
