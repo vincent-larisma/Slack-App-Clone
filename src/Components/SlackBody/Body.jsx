@@ -26,6 +26,10 @@ function Body() {
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
   const [searchTerm, setSearchTerm] = useState('')
 
+  document.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+  });
+
   const handleChangeSearch = (event) => {
     const { value } = event.target
     setSearchTerm(value)
@@ -160,7 +164,7 @@ function Body() {
               <i class='fa-solid fa-message'></i> Direct messages
             </button>
             <div className='direct-message-channel'>
-              <ul className={directMessageToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 300}}>
+              <ul className={directMessageToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 279}}>
                 {listAllUserAdded.length ? (
                   listAllUserAdded.map((value, index) => {
                     let userValue = false
@@ -186,7 +190,7 @@ function Body() {
               <i class='fa-solid fa-people-group'></i> Channels
             </button>
             <div className='names-channel'>
-              <ul className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 300}}>
+              <ul className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 279}}>
                 <li>batch21</li>
                 <li>group 2 - Slack App</li>
               </ul>
@@ -195,9 +199,12 @@ function Body() {
               <i class='fa-solid fa-bell'></i> All users
             </button>
             <div className='all-users-channel'>
-              <ul className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 300}}>
+              <ul className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 279}}>
                 <li>Vince Larisma</li>
-                <li>Justine Jun Banogon</li>
+                <li>Justine Jun Banogon cute pogi hahahaha</li>
+                <li>Shawn Go</li>
+                <li>Shawn Go</li>
+                <li>Shawn Go</li>
                 <li>Shawn Go</li>
               </ul>
             </div>
