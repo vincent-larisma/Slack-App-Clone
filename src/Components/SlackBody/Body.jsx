@@ -95,6 +95,8 @@ function Body() {
     let list = listAllUserAdded
     list.splice(index, 1)
     setListAllUserAdded(list)
+    setavailUser('Starting User')
+    setContainUserInfo({ ...containUserInfo, userId: 1 })
   }
 
   const handleClickSearchSelectUser = (value) => {
@@ -184,7 +186,7 @@ function Body() {
                           onClick={() => handleClickSelectUser(userValue)}
                           onMouseEnter={(e) => setText(1)}
                           onMouseLeave={(e) => setText(0)}>
-                          {userValue.uid}{' '}
+                          {userValue.uid}
                           <i
                             style={{ opacity: `${text}` }}
                             class='fa-solid fa-circle-xmark'

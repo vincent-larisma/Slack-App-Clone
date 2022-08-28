@@ -16,7 +16,7 @@ export default function SendMessageFunction() {
   })
 
   const { userId, userClass } = containUserInfo
-  const { userMessage, receiverID, receiverClass } = userSendMessage
+  const { userMessage } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const handleChangeMessage = (event) => {
