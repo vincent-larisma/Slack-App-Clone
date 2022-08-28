@@ -155,6 +155,9 @@ function Body() {
       </nav>
       <div className='body-container'>
         <section className='threads'>
+          <div className='slack-body-logo'>      
+               <p>Messages</p> <i class="fa-solid fa-circle-down"></i>
+          </div>
           <div className='threads-buttons'>
             <button onClick={toggledirectMessage}>
               <i class='fa-solid fa-message'></i> Direct messages
