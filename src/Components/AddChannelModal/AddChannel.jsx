@@ -19,15 +19,17 @@ function Addchannel({ closeAddChannelMOdal }) {
                     <div className='enter-user-input'>
                         <input type="text" placeholder='Add users' />
                     </div>
+                   <input type="text" className='channel-members' placeholder='members added'/>
                 </div>
                 <section className='adduser-buttons'>
                     <button onClick={() => {closeAddChannelMOdal(false)}}>Cancel</button>
-                    <button>Add</button>
+                    <button>Add member</button>
+                    <button>Create channel</button>
                 </section>
             </div>
         </section>
     </>
   )
 }
-
+ 
 export default Addchannel

@@ -2,14 +2,14 @@
 .addchannel-container {
     z-index: 1;
     position: absolute;
-    top: 200px;
+    top: 170px;
     left: 400px;
 }
 
 
 .addchannel-content {
-    width: 400px;
-    height:200px;
+    width: 420px;
+    height: 250px;
     display: flex;
     /* justify-content: center;
     align-items: center; */
@@ -46,6 +46,18 @@
     justify-content: center;
 }
 
+.channel-members {
+    color: rgb(0, 0, 0);
+    width: 250px;
+    padding: 5px;
+    text-align: center;
+    background-color: white;
+    margin: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
 .adduser-buttons {
     display: flex;
     justify-content: center;
@@ -55,6 +67,11 @@
 .adduser-buttons button {
     padding: 4px 7px;
     font-size: 15px;
-    width: 80px;
+    width: 120px;
     border-radius: 5px;
+}
+
+.adduser-buttons button:hover {
+    background-color: white;
+    transform: scale(1.06);
 }

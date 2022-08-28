@@ -26,6 +26,7 @@
 .search-container div:hover {
   background-color: #6998ab;
   color: white;
+  cursor: pointer;
 }
 
 .search-item {
@@ -41,7 +42,7 @@
 
 .slack-body-logo {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 10px;
   align-items: center;
   font-size: 30px;
@@ -155,6 +156,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 279px;
 }
 
 .all-users-channel ul li:hover {

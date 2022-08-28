@@ -51,3 +51,8 @@
     font-size: 12px;
     width: 60px;
 }
+
+.adduser-buttons button:hover {
+    background-color: white;
+    transform: scale(1.06);
+}

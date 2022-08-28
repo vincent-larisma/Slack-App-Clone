@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { UserList } from '../LoginContext'
-import Body from '../SlackBody/Body'
 import './AddUser.css'
 import Swal from 'sweetalert2'
 
 function AddUserModal({ closeAdduserMOdal }) {
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
-
+ 
   const [getUserID, setGetUserID] = useState()
 
   const handleChangeUserID = (event) => {

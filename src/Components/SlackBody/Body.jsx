@@ -87,6 +87,7 @@ function Body() {
       }
     })
   }
+  
   useEffect(() => {
     fetchUserList()
   }, [])
@@ -165,7 +166,7 @@ function Body() {
             <div className='direct-message-channel'>
               <ul
                 className={directMessageToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
+                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
                 {listAllUserAdded.length ? (
                   listAllUserAdded.map((value, index) => {
                     let userValue = false
@@ -202,7 +203,7 @@ function Body() {
             <div className='names-channel'>
               <ul
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
+                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
                 <li>batch21</li>
               </ul>
             </div>
@@ -212,7 +213,7 @@ function Body() {
             <div className='all-users-channel'>
               <ul
                 className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
+                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
                 <li>Vince Larisma</li>
                 <li>Justine Jun Banogon cute pogi hahahaha</li>
                 <li>Shawn Go</li>
