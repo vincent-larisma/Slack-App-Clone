@@ -25,12 +25,11 @@ function Body() {
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
   const [searchTerm, setSearchTerm] = useState('')
-  const [getUserID, setGetUserID] = useState()
-  const [text, setText] = useState(0);
+  const [text, setText] = useState(0)
 
-  document.addEventListener("contextmenu", (event) => {
-    event.preventDefault();
-  });
+  document.addEventListener('contextmenu', (event) => {
+    event.preventDefault()
+  })
 
   const handleChangeSearch = (event) => {
     const { value } = event.target
@@ -43,7 +42,7 @@ function Body() {
     'access-token': accessToken,
     client: client,
   }
-  
+
   const APIurl = 'http://206.189.91.54/api/v1'
 
   const toggleChannel = () => {
@@ -104,10 +103,10 @@ function Body() {
     fetchUserList()
   }, [])
 
-  const IconPop = () => {
+  const IconPop = (index) => {
     let list = listAllUserAdded
-      list.splice(getUserID)
-      setListAllUserAdded(list)
+    list.splice(index, 1)
+    setListAllUserAdded(list)
   }
 
   return (
@@ -172,7 +171,9 @@ function Body() {
               <i class='fa-solid fa-message'></i> Direct messages
             </button>
             <div className='direct-message-channel'>
-              <ul className={directMessageToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 279}}>
+              <ul
+                className={directMessageToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
+                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
                 {listAllUserAdded.length ? (
                   listAllUserAdded.map((value, index) => {
                     let userValue = false
@@ -183,8 +184,17 @@ function Body() {
                     })
                     if (userValue) {
                       return (
-                        <li className='direct-sms-users' key={index} onClick={() => handleClickSelectUser(userValue)} onMouseEnter={e=> setText(1)} onMouseLeave={e=> setText(0)}>
-                          {userValue.uid} <i style={{opacity: `${text}`}} class="fa-solid fa-circle-xmark" onClick={IconPop}></i>
+                        <li
+                          className='direct-sms-users'
+                          key={index}
+                          onClick={() => handleClickSelectUser(userValue)}
+                          onMouseEnter={(e) => setText(1)}
+                          onMouseLeave={(e) => setText(0)}>
+                          {userValue.uid}{' '}
+                          <i
+                            style={{ opacity: `${text}` }}
+                            class='fa-solid fa-circle-xmark'
+                            onClick={() => IconPop(index)}></i>
                         </li>
                       )
                     }
@@ -198,8 +208,10 @@ function Body() {
               <i class='fa-solid fa-people-group'></i> Channels
             </button>
             <div className='names-channel'>
-              <ul className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 279}}>
-                <li>batch21</li> 
+              <ul
+                className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
+                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
+                <li>batch21</li>
                 <li>group 2 - Slack App</li>
               </ul>
             </div>
@@ -207,7 +219,9 @@ function Body() {
               <i class='fa-solid fa-bell'></i> All users
             </button>
             <div className='all-users-channel'>
-              <ul className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'} style={{maxHeight: 150, overflowY: "scroll", maxWidth: 279}}>
+              <ul
+                className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
+                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
                 <li>Vince Larisma</li>
                 <li>Justine Jun Banogon cute pogi hahahaha</li>
                 <li>Shawn Go</li>
