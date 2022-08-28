@@ -76,18 +76,6 @@ function Body() {
       })
   }
 
-  // useEffect(() => {
-
-  //   const closeModal = e => {
-  //     console.log(e)
-  //     setopenAdduser(false);
-  //   }
-
-  //   document.body.addEventListener('click', closeModal);
-
-  //   return () =>  document.body.removeEventListener('click', closeModal);
-  // });
-
   const exit = () => {
     Swal.fire({
       title: 'Are you sure you want to exit?',
@@ -106,6 +94,7 @@ function Body() {
   const IconPop = (index) => {
     let list = listAllUserAdded
     list.splice(index, 1)
+
     setListAllUserAdded(list)
   }
 
