@@ -35,10 +35,6 @@
     margin-bottom: 8px;
 }
 
-.add-user-input input:placeholder {
-
-}
-
 .add-user-input {
     display: flex;
     justify-content: center;

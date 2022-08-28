@@ -65,7 +65,7 @@
 
 .direct-sms-users {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -102,19 +102,6 @@
   background-color: #6998ab;
 }
 
-.direct-message-channel ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.direct-message-channel ul i {
-  background-color: red;
-  position: absolute;
-  top: 10px;
-  right: 0;
-}
 
 .direct-message-channel ul li {
   color: black;
@@ -127,11 +114,11 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
+  padding-right: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 300;
 }
 
 .direct-message-channel ul::-webkit-scrollbar, .names-channel ul::-webkit-scrollbar, .all-users-channel ul::-webkit-scrollbar{
@@ -143,7 +130,6 @@
   background-color: #6998ab;
 }
 
-
 .all-users-channel ul li {
   color: black;
   font-size: 10px;
@@ -152,7 +138,10 @@
   cursor: pointer;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 10px 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
