@@ -32,6 +32,9 @@
   position: relative;
   background-color: rgb(236, 236, 236);
   color: black;
+  padding: 10px;
+  border: 0.5px rgb(188, 188, 188) solid;
+  cursor: pointer;
 }
 
 .threads {
@@ -82,7 +85,6 @@
   color: rgb(189, 3, 3);
 }
 
-
 .names-channel ul li {
   color: black;
   font-size: 10px;
@@ -118,12 +120,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 300;
-  
 }
 
-.direct-message-channel ul::-webkit-scrollbar, .names-channel ul::-webkit-scrollbar, .all-users-channel ul::-webkit-scrollbar{
+.direct-message-channel ul::-webkit-scrollbar,
+.names-channel ul::-webkit-scrollbar,
+.all-users-channel ul::-webkit-scrollbar {
   display: none;
-
 }
 
 .direct-message-channel ul li:hover {
@@ -197,7 +199,6 @@
   border: 1px solid #ccc;
   border-radius: 7px;
   font-size: 20px;
-
 }
 
 .new-message textarea::-webkit-scrollbar {

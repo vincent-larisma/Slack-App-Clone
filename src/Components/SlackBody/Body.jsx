@@ -94,8 +94,13 @@ function Body() {
   const IconPop = (index) => {
     let list = listAllUserAdded
     list.splice(index, 1)
-
     setListAllUserAdded(list)
+  }
+
+  const handleClickSearchSelectUser = (value) => {
+    setavailUser(value.uid)
+    setSearchTerm('')
+    setContainUserInfo({ ...containUserInfo, userId: value.id })
   }
 
   return (
@@ -130,7 +135,7 @@ function Body() {
                   })
                   .map((value, index) => {
                     return (
-                      <div className='search-item' key={index}>
+                      <div className='search-item' key={index} onClick={() => handleClickSearchSelectUser(value)}>
                         {value.uid}
                       </div>
                     )
@@ -213,7 +218,6 @@ function Body() {
                 style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
                 <li>Vince Larisma</li>
                 <li>Justine Jun Banogon cute pogi hahahaha</li>
-                <li>Shawn Go</li>
                 <li>Shawn Go</li>
                 <li>Shawn Go</li>
                 <li>Shawn Go</li>
