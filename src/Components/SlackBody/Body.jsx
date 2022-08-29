@@ -257,7 +257,7 @@ function Body() {
               closeAdduserMOdal={setopenAdduser}
             />
           )}
-          {openAddchannel && <AddChannel closeAddChannelMOdal={setopenAddchannel} />}
+          {openAddchannel && <AddChannel userListArray={userListArray} closeAddChannelMOdal={setopenAddchannel} />}
         </section>
       </div>
     </>
