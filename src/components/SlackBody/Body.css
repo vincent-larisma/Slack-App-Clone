@@ -111,14 +111,12 @@
   width: 200px;
 }
 
-
 .new-direct-messages {
   display: flex;
   justify-content: space-around;
   align-items: center;
   cursor: pointer;
 }
-
 
 .direct-message-channel ul li {
   list-style: none;
@@ -141,8 +139,6 @@
   justify-content: flex-start;
 }
 
-
-
 .direct-message-channel i {
   color: #6998ab;
 }
@@ -156,7 +152,6 @@
 .all-users-channel ul::-webkit-scrollbar {
   display: none;
 }
-
 
 .all-users-channel ul li {
   color: black;
@@ -323,10 +318,6 @@
 
 .converse-chats {
   transform: scale(1, -1);
-}
-
-.conversation:hover {
-  cursor: pointer;
 }
 
 .conversation div i {

@@ -53,10 +53,6 @@ function Body() {
     directMessageToggle ? setdirectMessageTogggle(false) : setdirectMessageTogggle(true)
   }
 
-  const togglealluser = () => {
-    allUsersToggle ? setallUsersTogggle(false) : setallUsersTogggle(true)
-  }
-
   const handleClickSelectUser = (userValue) => {
     setavailUser(userValue.uid)
     setContainUserInfo({ ...containUserInfo, userId: userValue.id })
@@ -110,9 +106,15 @@ function Body() {
     <>
       <nav className='navbar-container'>
         <section className='settings'>
-          <button>{/* <i class='fa-solid fa-bars'></i> */}</button>
-          <button>{/* <i class='fa-solid fa-angle-left'></i> */}</button>
-          <button>{/* <i class='fa-solid fa-angle-right'></i> */}</button>
+          <button>
+            <i class='fa-solid fa-bars'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-angle-left'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-angle-right'></i>
+          </button>
         </section>
         <section className='search-bar'>
           <input type='text' placeholder='Search...' onChange={handleChangeSearch} />
@@ -141,9 +143,15 @@ function Body() {
           </div>
         </section>
         <section className='screen-setting'>
-          <button>{/* <i class='fa-solid fa-user-tie'></i> */}</button>
-          <button>{/* <i class='fa-solid fa-minus'></i> */}</button>
-          <button>{/* <i class='fa-solid fa-down-left-and-up-right-to-center'></i> */}</button>
+          <button>
+            <i class='fa-solid fa-user-tie'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-minus'></i>
+          </button>
+          <button>
+            <i class='fa-solid fa-down-left-and-up-right-to-center'></i>
+          </button>
           <button className='button-exit' onClick={exit}>
             <i className='fa-solid fa-xmark'></i>
           </button>
@@ -206,31 +214,6 @@ function Body() {
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
                 style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
                 <li>batch21</li>
-
-                <div
-                  className='new-channel-messages'
-                  style={{ Width: 279 }}
-                  onMouseEnter={(e) => setText2(1)}
-                  onMouseLeave={(e) => setText2(0)}>
-                  <li>batch21</li>
-                  <i style={{ opacity: `${text2}` }} class='fa-solid fa-circle-xmark'></i>
-                </div>
-              </ul>
-            </div>
-            <button onClick={togglealluser}>
-              <i class='fa-solid fa-bell'></i> All users
-            </button>
-            <div className='all-users-channel'>
-              <ul
-                className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
-                <li>Vince Larisma</li>
-                <li>Justine Jun Banogon</li>
-                <li>Shawn Go</li>
-                <li>Shawn Go</li>
-                <li>Shawn Go</li>
-                <li>Shawn Going</li>
-                <li>Shawn Went</li>
               </ul>
             </div>
           </div>
@@ -247,7 +230,7 @@ function Body() {
                 onClick={() => {
                   setopenAdduser((prev) => !prev)
                 }}>
-                <i class='fa-solid fa-user-plus'></i>
+                <i className='fa-solid fa-message'></i>
               </button>
               <button
                 onClick={() => {

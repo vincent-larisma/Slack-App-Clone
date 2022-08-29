@@ -6,7 +6,6 @@ import Swal from 'sweetalert2'
 function AddUserModal({ closeAdduserMOdal }) {
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
 
- 
   const [getUserID, setGetUserID] = useState()
 
   const handleChangeUserID = (event) => {
@@ -27,7 +26,7 @@ function AddUserModal({ closeAdduserMOdal }) {
 
       closeAdduserMOdal(false)
     } else if (list.some(checkList)) {
-      Swal.fire('User has already been added')
+      Swal.fire('User has already been messaged')
     }
     setGetUserID('')
   }
@@ -36,7 +35,7 @@ function AddUserModal({ closeAdduserMOdal }) {
     <>
       <section className='adduser-container'>
         <div className='adduser-content'>
-          <p>Add User</p>
+          <p>Message User</p>
           <div className='add-user-input'>
             <input type='number' placeholder='Enter user ID' value={getUserID} onChange={handleChangeUserID} />
           </div>
@@ -47,7 +46,7 @@ function AddUserModal({ closeAdduserMOdal }) {
               }}>
               Cancel
             </button>
-            <button onClick={handleClickAdd}>Add</button>
+            <button onClick={handleClickAdd}>Message</button>
           </section>
         </div>
       </section>
