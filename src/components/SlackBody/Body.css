@@ -66,11 +66,7 @@
   background-color: #fff;
 }
 
-.direct-sms-users {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+
 
 .direct-sms-users i {
   text-align: center;
@@ -86,27 +82,30 @@
 }
 
 .names-channel ul li {
-  color: black;
   font-size: 10px;
   list-style: none;
   background-color: #1a374d;
   cursor: pointer;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 10px 20px;
+  padding: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 200px;
 }
 
-.names-channel ul li:hover {
-  background-color: #6998ab;
+
+.new-direct-messages {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
 }
+
 
 .direct-message-channel ul li {
-  color: black;
-  font-size: 10px;
   list-style: none;
   background-color: #1a374d;
   cursor: pointer;
@@ -114,12 +113,24 @@
   font-family: 'Roboto', sans-serif;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 20px;
-  color: white;
+  padding-left: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 300;
+  width: 200px;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+
+.direct-message-channel i {
+  color: #6998ab;
+}
+
+.direct-message-channel i:hover {
+  color: rgb(192, 1, 1);
 }
 
 .direct-message-channel ul::-webkit-scrollbar,
@@ -128,9 +139,6 @@
   display: none;
 }
 
-.direct-message-channel ul li:hover {
-  background-color: #6998ab;
-}
 
 .all-users-channel ul li {
   color: black;
@@ -145,6 +153,21 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.new-channel-messages {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.new-channel-messages i {
+  color: #6998ab;
+}
+
+.new-channel-messages i:hover {
+  color: rgb(189, 3, 3);
 }
 
 .all-users-channel ul li:hover {

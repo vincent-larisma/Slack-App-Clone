@@ -102,14 +102,14 @@ export default function LoginFunction() {
             {/* <i class="fa-solid fa-lock"></i> */}
             <input
               className='login-password-input'
-              type='password'
+              type='text'
               id='password'
               name='password'
               value={password}
               placeholder='Enter your password'
               onChange={handleChangePassword}
               onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
-            />
+            /> 
             <button className='create-submit-button' onClick={() => navigate('/CreateUser')}>
               Register <i class="fa-solid fa-arrow-right"></i> 
             </button>
