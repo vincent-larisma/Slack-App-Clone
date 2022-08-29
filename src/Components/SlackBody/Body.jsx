@@ -13,7 +13,7 @@ import { faArrowUpRightFromSquare, faDesktop } from '@fortawesome/free-solid-svg
 
 function Body() {
   const navigate = useNavigate()
-  const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
+  const {listAllUserAdded, setListAllUserAdded} = useContext(UserList)
   const [availUser, setavailUser] = useState('Starting user')
   const [userListArray, setUserListArray] = useState()
   const [channgelToggle, setchannelToggle] = useState(false)
@@ -21,9 +21,9 @@ function Body() {
   const [allUsersToggle, setallUsersTogggle] = useState(false)
   const [openAdduser, setopenAdduser] = useState(false)
   const [openAddchannel, setopenAddchannel] = useState(false)
-  const { loginInfoHeader } = useContext(LoginContextHeader)
-  const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
-  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const {loginInfoHeader} = useContext(LoginContextHeader)
+  const {accessToken, uid, expiry, client} = loginInfoHeader.dataLoginHeader
+  const {containUserInfo, setContainUserInfo} = useContext(UserInfoSend)
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
 
@@ -217,9 +217,8 @@ function Body() {
                 <li>Vince Larisma</li>
                 <li>Justine Jun Banogon cute pogi hahahaha</li>
                 <li>Shawn Go</li>
-                <li>Shawn Go</li>
-                <li>Shawn Go</li>
-                <li>Shawn Go</li>
+                <li>Shawn Going</li>
+                <li>Shawn Went</li>
               </ul>
             </div>
           </div>

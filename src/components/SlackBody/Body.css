@@ -45,9 +45,10 @@
   justify-content: center;
   gap: 10px;
   align-items: center;
-  font-size: 30px;
+  font-size: 25px;
   padding: 9px 20px;
   border-bottom: 1px solid white;
+  height: 55px;
 }
 
 .threads-buttons button {
