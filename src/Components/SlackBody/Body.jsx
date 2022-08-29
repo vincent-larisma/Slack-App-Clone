@@ -25,7 +25,6 @@ function Body() {
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
-  const [text2, setText2] = useState(0)
 
   document.addEventListener('contextmenu', (event) => {
     event.preventDefault()
@@ -56,6 +55,14 @@ function Body() {
   const handleClickSelectUser = (userValue) => {
     setavailUser(userValue.uid)
     setContainUserInfo({ ...containUserInfo, userId: userValue.id })
+  }
+
+  const findNameInAllUsers = () => {
+    console.log(
+      userListArray.data.filter((value) => {
+        return value.id === containUserInfo.userId
+      })
+    )
   }
 
   const fetchUserList = () => {
@@ -160,7 +167,7 @@ function Body() {
       <div className='body-container'>
         <section className='threads'>
           <div className='slack-body-logo'>
-            <p>Messages</p> <i class='fa-solid fa-circle-down'></i>
+            <i class='fa-solid fa-envelope'></i> <p>Messages</p>
           </div>
           <div className='threads-buttons'>
             <button onClick={toggledirectMessage}>
