@@ -229,7 +229,7 @@ function Body() {
                 )}
               </ul>
             </div>
-            <button onClick={toggleChannel}>
+            <button onClick={toggleChannel} className="channel-button-thread">
               <i class='fa-solid fa-people-group'></i> Channels
             </button>
             <div className='names-channel'>

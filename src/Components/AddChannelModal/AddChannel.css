@@ -2,14 +2,14 @@
 .addchannel-container {
     z-index: 1;
     position: absolute;
-    top: 170px;
+    top: 130px;
     left: 400px;
 }
 
 
 .addchannel-content {
     width: 450px;
-    height: 270px;
+    height: 310px;
     display: flex;
     /* justify-content: center;
     align-items: center; */
@@ -67,7 +67,14 @@
     align-items: center;
 }
 
-.enter-channel-input input, .enter-user-input input{
+.enter-user-input {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+
+}
+
+.enter-channel-input input {
     width: 300px;
     font-size: 15px;
     padding: 5px 8px;
@@ -76,9 +83,44 @@
     margin-bottom: 8px;
 }
 
+.enter-user-input input {
+    width: 230px;
+    font-size: 15px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.enter-user-input button {
+    width: 50px;
+    font-size: 15px;
+    padding: 5px 8px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.existingAddedMembers span {
+    padding-left: 10px;
+}
+
+.enter-user-input button:hover {
+    background-color: #6998ab;
+    transform: scale(1.06);
+    color: white;
+}
+
 .add-user-input {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.addNewChannel-text {
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .channel-members {
@@ -91,20 +133,21 @@
     overflow: hidden;
 }
 
-.adduser-buttons {
+.addChannel-buttons {
     display: flex;
     justify-content: center;
     column-gap: 20px;
 }
 
-.adduser-buttons button {
-    padding: 4px 7px;
-    font-size: 15px;
+.addChannel-buttons button {
     width: 120px;
     border-radius: 5px;
+    padding: 4px 6px;
+    font-size: 12px;
 }
 
-.adduser-buttons button:hover {
-    background-color: white;
+.addChannel-buttons button:hover {
+    background-color: #6998ab;
     transform: scale(1.06);
+    color: white;
 }

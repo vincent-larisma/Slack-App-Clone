@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { LoginContextHeader } from './LoginContext'
+import Swal from 'sweetalert2'
 
 export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
   const [text, setText] = useState(0)
@@ -65,12 +66,20 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
       body: JSON.stringify(userDataAPI),
     })
       .then((res) => res.json())
-      .catch(alert(`Channel ${channelName} has been created successfully`))
+      .catch(
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Channel has been created!',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      )
     closeAddChannelMOdal(false)
     setCreateChannel({ ...createChannel, channelName: '', userIDList: [] })
   }
 
- 
+  
 
   return (
     <>
@@ -97,7 +106,7 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
               />
               <button onClick={handleClickAddUserID}>Add</button>
             </div>
-            <p className='addNewChannel'>Current Added Members</p>
+            <p className='addNewChannel-text'>Current Added Members</p>
             <ul className='existingAddedMembers'>
               {userIDList.length ? (
                 userIDList.map((value, index) => {
@@ -122,11 +131,11 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
                   )
                 })
               ) : (
-                <span>No added Member</span>
+                <span>No added member</span>
               )}
             </ul>
           </div>
-          <section className='adduser-buttons'>
+          <section className='addChannel-buttons'>
             <button
               onClick={() => {
                 closeAddChannelMOdal(false)
