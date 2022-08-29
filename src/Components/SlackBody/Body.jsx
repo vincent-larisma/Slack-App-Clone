@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 import './Navbar.css'
 import AddUserModal from '../AddUserModal/AddUserModal'
 import AddChannel from '../AddChannelModal/AddChannel'
-import { UserList, LoginContextHeader, UserInfoSend } from '../LoginContext'
+import { UserList, LoginContextHeader, UserInfoSend, CurrentChannel } from '../LoginContext'
 import AddUserInChannel from '../AddUserInChannel/AddUserInChannel'
 
 function Body() {
@@ -25,6 +25,8 @@ function Body() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const { currentChannelIndex, setCurrentChannelIndex } = useContext(CurrentChannel)
+  const [channelList, setChannelList] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
 
@@ -56,7 +58,7 @@ function Body() {
 
   const handleClickSelectUser = (userValue) => {
     setavailUser(userValue.uid)
-    setContainUserInfo({ ...containUserInfo, userId: userValue.id })
+    setContainUserInfo({ ...containUserInfo, userId: userValue.id, userClass: 'User' })
   }
 
   const fetchUserList = () => {
@@ -85,8 +87,23 @@ function Body() {
     })
   }
 
+  const fetchGetAllUserChannel = () => {
+    fetch(`${APIurl}/channels`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...userDataHeadersAPI,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setChannelList(data.data)
+      })
+  }
+
   useEffect(() => {
     fetchUserList()
+    fetchGetAllUserChannel()
   }, [])
 
   const IconPop = (index) => {
@@ -94,13 +111,19 @@ function Body() {
     list.splice(index, 1)
     setListAllUserAdded(list)
     setavailUser('Starting User')
-    setContainUserInfo({ ...containUserInfo, userId: 1 })
+    setContainUserInfo({ ...containUserInfo, userId: 1, userClass: 'User' })
   }
 
   const handleClickSearchSelectUser = (value) => {
     setavailUser(value.uid)
     setSearchTerm('')
-    setContainUserInfo({ ...containUserInfo, userId: value.id })
+    setContainUserInfo({ ...containUserInfo, userId: value.id, userClass: 'User' })
+  }
+
+  const handleSelectChannel = (index) => {
+    setContainUserInfo({ ...containUserInfo, userId: channelList[index].id, userClass: 'Channel' })
+    setCurrentChannelIndex(channelList[index].id)
+    setavailUser(channelList[index].name)
   }
 
   return (
@@ -123,7 +146,6 @@ function Body() {
             {searchTerm.length
               ? userListArray.data
                   .filter((value) => {
-                    console.log('value', value)
                     if (searchTerm == '') {
                       return value
                     } else if (
@@ -213,8 +235,18 @@ function Body() {
             <div className='names-channel'>
               <ul
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
-                <li>batch21</li>
+                style={{ minHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
+                {channelList.length ? (
+                  channelList.map((value, index) => {
+                    return (
+                      <li key={index} onClick={() => handleSelectChannel(index)}>
+                        {value.name}
+                      </li>
+                    )
+                  })
+                ) : (
+                  <li>No Channels Available</li>
+                )}
               </ul>
             </div>
           </div>
@@ -227,12 +259,15 @@ function Body() {
               </button>
             </div>
             <div className='new-chat-btn'>
-              <button
-                onClick={() => {
-                  setopenAdduserInChannel((prev) => !prev)
-                }}>
-                <i class="fa-solid fa-user-plus"></i>
-              </button>
+              {containUserInfo.userClass === 'Channel' && (
+                <button
+                  onClick={() => {
+                    setopenAdduserInChannel((prev) => !prev)
+                  }}>
+                  <i class='fa-solid fa-user-plus'></i>
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   setopenAdduser((prev) => !prev)
@@ -257,6 +292,7 @@ function Body() {
               closeAdduserMOdal={setopenAdduser}
             />
           )}
+
           {openAddchannel && <AddChannel userListArray={userListArray} closeAddChannelMOdal={setopenAddchannel} />}
         </section>
       </div>
