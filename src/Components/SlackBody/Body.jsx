@@ -103,13 +103,13 @@ function Body() {
       <nav className='navbar-container'>
         <section className='settings'>
           <button>
-            <i class='fa-solid fa-bars'></i>
+            {/* <i class='fa-solid fa-bars'></i> */}
           </button>
           <button>
-            <i class='fa-solid fa-angle-left'></i>
+            {/* <i class='fa-solid fa-angle-left'></i> */}
           </button>
           <button>
-            <i class='fa-solid fa-angle-right'></i>
+            {/* <i class='fa-solid fa-angle-right'></i> */}
           </button>
         </section>
         <section className='search-bar'>
@@ -140,13 +140,13 @@ function Body() {
         </section>
         <section className='screen-setting'>
           <button>
-            <i class='fa-solid fa-user-tie'></i>
+            {/* <i class='fa-solid fa-user-tie'></i> */}
           </button>
           <button>
-            <i class='fa-solid fa-minus'></i>
+            {/* <i class='fa-solid fa-minus'></i> */}
           </button>
           <button>
-            <i class='fa-solid fa-down-left-and-up-right-to-center'></i>
+            {/* <i class='fa-solid fa-down-left-and-up-right-to-center'></i> */}
           </button>
           <button className='button-exit' onClick={exit}>
             <i className='fa-solid fa-xmark'></i>

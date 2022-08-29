@@ -48,10 +48,6 @@ export default function RegisterFunction() {
       .then((res) => res.json())
       .then((data) => console.log(data))
 
-    setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
-    console.log(userData)
-    // navigate('/Login')
-
     if(userData.email === "" && userData.password === "" && userData.passwordConfirm === "") {
       Swal.fire('Please enter your email and password')
     } else if (userData.email === "") {
@@ -64,6 +60,17 @@ export default function RegisterFunction() {
       Swal.fire('Please enter your email and password')
     } else if (userData.password === "" && userData.passwordConfirm === "") {
       Swal.fire('Please enter your password')
+    } else if (userData.password != userData.passwordConfirm) {
+      Swal.fire('Password did not match')
+    } else {
+      setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Account created!',
+        showConfirmButton: false,
+        timer: 2000
+      })
     }
   }
 
