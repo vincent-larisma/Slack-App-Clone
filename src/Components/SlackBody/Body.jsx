@@ -23,6 +23,7 @@ function Body() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const [channelList, setChannelList] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
 
@@ -54,7 +55,7 @@ function Body() {
 
   const handleClickSelectUser = (userValue) => {
     setavailUser(userValue.uid)
-    setContainUserInfo({ ...containUserInfo, userId: userValue.id })
+    setContainUserInfo({ ...containUserInfo, userId: userValue.id, userClass: 'User' })
   }
 
   const fetchUserList = () => {
@@ -83,22 +84,46 @@ function Body() {
     })
   }
 
+  const FetchGetAllUserChannel = () => {
+    fetch(`${APIurl}/channels`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...userDataHeadersAPI,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setChannelList(data.data)
+      })
+  }
+
   useEffect(() => {
     fetchUserList()
+    FetchGetAllUserChannel()
   }, [])
+
+  useEffect(() => {
+    console.log(listAllUserAdded)
+  }, [listAllUserAdded])
 
   const IconPop = (index) => {
     let list = listAllUserAdded
     list.splice(index, 1)
     setListAllUserAdded(list)
     setavailUser('Starting User')
-    setContainUserInfo({ ...containUserInfo, userId: 1 })
+    setContainUserInfo({ ...containUserInfo, userId: 1, userClass: 'User' })
   }
 
   const handleClickSearchSelectUser = (value) => {
     setavailUser(value.uid)
     setSearchTerm('')
-    setContainUserInfo({ ...containUserInfo, userId: value.id })
+    setContainUserInfo({ ...containUserInfo, userId: value.id, userClass: 'User' })
+  }
+
+  const handleSelectChannel = (index) => {
+    setContainUserInfo({ ...containUserInfo, userId: channelList[index].id, userClass: 'Channel' })
+    setavailUser(channelList[index].name)
   }
 
   return (
@@ -211,8 +236,18 @@ function Body() {
             <div className='names-channel'>
               <ul
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
-                <li>batch21</li>
+                style={{ minHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
+                {channelList.length ? (
+                  channelList.map((value, index) => {
+                    return (
+                      <li key={index} onClick={() => handleSelectChannel(index)}>
+                        {value.name}
+                      </li>
+                    )
+                  })
+                ) : (
+                  <li>No Channels Available</li>
+                )}
               </ul>
             </div>
           </div>
