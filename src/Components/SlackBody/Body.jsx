@@ -25,6 +25,7 @@ function Body() {
   const {containUserInfo, setContainUserInfo} = useContext(UserInfoSend)
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
+  const [text2, setText2] = useState(0)
 
   document.addEventListener('contextmenu', (event) => {
     event.preventDefault()
@@ -184,18 +185,21 @@ function Body() {
                     if (userValue) {
                       return (
                         <>
-                          <li
-                            className='direct-sms-users'
-                            key={index}
-                            onClick={() => handleClickSelectUser(userValue)}
-                            onMouseEnter={(e) => setText(1)}
-                            onMouseLeave={(e) => setText(0)}>
-                            {userValue.uid}
-                          </li>
-                          <i
-                            style={{ opacity: `${text}` }}
-                            class='fa-solid fa-circle-xmark'
-                            onClick={() => IconPop(index)}></i>
+                          <div className='new-direct-messages' 
+                          style={{Width: 279 }}
+                          onMouseEnter={(e) => setText(1)}
+                          onMouseLeave={(e) => setText(0)}>
+                            <li
+                              className='direct-sms-users'
+                              key={index}
+                              onClick={() => handleClickSelectUser(userValue)}>
+                              {userValue.uid}
+                            </li>
+                            <i
+                              style={{ opacity: `${text}` }}
+                              class='fa-solid fa-circle-xmark'
+                              onClick={() => IconPop(index)}></i>
+                          </div>
                         </>
                       )
                     }
@@ -213,6 +217,16 @@ function Body() {
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
                 style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
                 <li>batch21</li>
+                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
+                <div className='new-channel-messages'
+                style={{Width: 279 }}
+                onMouseEnter={(e) => setText2(1)}
+                onMouseLeave={(e) => setText2(0)}>
+                  <li>batch21</li>
+                  <i style={{ opacity: `${text2}` }}
+                     class='fa-solid fa-circle-xmark'
+                      ></i>
+                </div>
               </ul>
             </div>
             <button onClick={togglealluser}>
@@ -223,7 +237,7 @@ function Body() {
                 className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
                 style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
                 <li>Vince Larisma</li>
-                <li>Justine Jun Banogon cute pogi hahahaha</li>
+                <li>Justine Jun Banogon</li>
                 <li>Shawn Go</li>
                 <li>Shawn Go</li>
                 <li>Shawn Go</li>
