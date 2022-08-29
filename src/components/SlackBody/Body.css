@@ -26,6 +26,7 @@
 .search-container div:hover {
   background-color: #6998ab;
   color: white;
+  cursor: pointer;
 }
 
 .search-item {
@@ -39,8 +40,18 @@
 
 .threads {
   background-color: #1a374d;
-
   color: rgb(236, 236, 236);
+}
+
+.slack-body-logo {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  font-size: 25px;
+  padding: 9px 20px;
+  border-bottom: 1px solid white;
+  height: 55px;
 }
 
 .threads-buttons button {
@@ -68,7 +79,7 @@
 
 .direct-sms-users {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -104,6 +115,7 @@
   background-color: #6998ab;
 }
 
+
 .direct-message-channel ul li {
   color: black;
   font-size: 10px;
@@ -115,6 +127,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
+  padding-right: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
@@ -140,11 +153,15 @@
   cursor: pointer;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 10px 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 279px;
 }
 
 .all-users-channel ul li:hover {

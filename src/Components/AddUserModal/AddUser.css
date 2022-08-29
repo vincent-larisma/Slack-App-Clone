@@ -35,10 +35,6 @@
     margin-bottom: 8px;
 }
 
-.add-user-input input:placeholder {
-
-}
-
 .add-user-input {
     display: flex;
     justify-content: center;
@@ -54,4 +50,9 @@
     padding: 2px 4px;
     font-size: 12px;
     width: 60px;
+}
+
+.adduser-buttons button:hover {
+    background-color: white;
+    transform: scale(1.06);
 }

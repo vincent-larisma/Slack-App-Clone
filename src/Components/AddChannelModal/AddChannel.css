@@ -2,14 +2,14 @@
 .addchannel-container {
     z-index: 1;
     position: absolute;
-    top: 200px;
+    top: 170px;
     left: 400px;
 }
 
 
 .addchannel-content {
-    width: 400px;
-    height:200px;
+    width: 450px;
+    height: 270px;
     display: flex;
     /* justify-content: center;
     align-items: center; */
@@ -20,10 +20,45 @@
 
 }
 
-.addchannel-content p {
+.addNewChannel {
     margin-top: 20px;
-    margin-left: 30px;
+    margin-left: 20px;
     color: white;
+}
+
+.existingAddedMembers  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    border: 1px solid white;
+    color: white;
+    height: 50px;
+    width: 350px;
+    overflow-y: scroll;
+    cursor: pointer;
+}
+
+.list-members {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 10px;
+    align-items: center;
+}
+
+.list-members i:hover {
+    color: rgb(189, 3, 3);
+}
+
+.existingAddedMembers::-webkit-scrollbar {
+    display: none;
+}
+
+.existingAddedMembers li {
+    list-style: none;
+}
+
+.existingAddedMembers li:hover {
+    background-color: #6c8ea8;
 }
 
 .input-channel-container {
@@ -46,6 +81,16 @@
     justify-content: center;
 }
 
+.channel-members {
+    width: 350px;
+    padding: 5px;
+    text-align: center;
+    margin: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
 .adduser-buttons {
     display: flex;
     justify-content: center;
@@ -55,6 +100,11 @@
 .adduser-buttons button {
     padding: 4px 7px;
     font-size: 15px;
-    width: 80px;
+    width: 120px;
     border-radius: 5px;
+}
+
+.adduser-buttons button:hover {
+    background-color: white;
+    transform: scale(1.06);
 }
