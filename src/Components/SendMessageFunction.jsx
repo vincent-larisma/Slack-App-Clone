@@ -69,6 +69,9 @@ export default function SendMessageFunction() {
     event.preventDefault()
     getMessage()
     postMessage()
+    postMessage()
+    postMessage()
+
     setUserSendMessage({ ...userSendMessage, userMessage: '' })
 
     if (!listAllUserAdded.some(checkList)) {
@@ -79,7 +82,7 @@ export default function SendMessageFunction() {
 
   useEffect(() => {
     postMessage()
-  }, [setUserSendMessage])
+  }, [])
 
   return (
     <>

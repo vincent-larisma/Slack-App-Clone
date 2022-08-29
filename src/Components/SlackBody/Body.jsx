@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 import './Navbar.css'
 import AddUserModal from '../AddUserModal/AddUserModal'
 import AddChannel from '../AddChannelModal/AddChannel'
-import { UserList, LoginContextHeader, UserInfoSend } from '../LoginContext'
+import { UserList, LoginContextHeader, UserInfoSend, CurrentChannel } from '../LoginContext'
 import AddUserInChannel from '../AddUserInChannel/AddUserInChannel'
 
 function Body() {
@@ -25,6 +25,7 @@ function Body() {
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const { currentChannelIndex, setCurrentChannelIndex } = useContext(CurrentChannel)
   const [channelList, setChannelList] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
@@ -86,7 +87,7 @@ function Body() {
     })
   }
 
-  const FetchGetAllUserChannel = () => {
+  const fetchGetAllUserChannel = () => {
     fetch(`${APIurl}/channels`, {
       method: 'GET',
       headers: {
@@ -102,12 +103,8 @@ function Body() {
 
   useEffect(() => {
     fetchUserList()
-    FetchGetAllUserChannel()
+    fetchGetAllUserChannel()
   }, [])
-
-  useEffect(() => {
-    console.log(listAllUserAdded)
-  }, [listAllUserAdded])
 
   const IconPop = (index) => {
     let list = listAllUserAdded
@@ -125,6 +122,7 @@ function Body() {
 
   const handleSelectChannel = (index) => {
     setContainUserInfo({ ...containUserInfo, userId: channelList[index].id, userClass: 'Channel' })
+    setCurrentChannelIndex(channelList[index].id)
     setavailUser(channelList[index].name)
   }
 
@@ -148,7 +146,6 @@ function Body() {
             {searchTerm.length
               ? userListArray.data
                   .filter((value) => {
-                    console.log('value', value)
                     if (searchTerm == '') {
                       return value
                     } else if (
