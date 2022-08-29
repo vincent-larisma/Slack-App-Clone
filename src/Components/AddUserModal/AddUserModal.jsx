@@ -19,6 +19,7 @@ function AddUserModal({ closeAdduserMOdal }) {
 
   const handleClickAdd = () => {
     let list = listAllUserAdded
+
     if (!list.some(checkList)) {
       list.push(getUserID)
       setListAllUserAdded(list)
