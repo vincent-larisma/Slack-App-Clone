@@ -6,8 +6,6 @@ import Swal from 'sweetalert2'
 function AddUserModal({ closeAdduserMOdal }) {
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
 
-
-  const [directMessageToggle, setdirectMessageTogggle] = useState(false)
  
   const [getUserID, setGetUserID] = useState()
 
@@ -20,17 +18,12 @@ function AddUserModal({ closeAdduserMOdal }) {
     return userId === getUserID
   }
 
-  const toggledirectMessage = () => {
-    directMessageToggle ? setdirectMessageTogggle(false) : setdirectMessageTogggle(true)
-  }
-
   const handleClickAdd = () => {
     let list = listAllUserAdded
 
     if (!list.some(checkList)) {
       list.push(getUserID)
       setListAllUserAdded(list)
-      setdirectMessageTogggle(true)
 
       closeAdduserMOdal(false)
     } else if (list.some(checkList)) {
