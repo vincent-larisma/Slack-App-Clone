@@ -9,7 +9,6 @@ import './Navbar.css'
 import AddUserModal from '../AddUserModal/AddUserModal'
 import AddChannel from '../AddChannelModal/AddChannel'
 import { UserList, LoginContextHeader, UserInfoSend } from '../LoginContext'
-import { faArrowUpRightFromSquare, faDesktop } from '@fortawesome/free-solid-svg-icons'
 
 function Body() {
   const navigate = useNavigate()
@@ -193,7 +192,7 @@ function Body() {
                     }
                   })
                 ) : (
-                  <li>No New Messages</li>
+                  <li>No new messages</li>
                 )}
               </ul>
             </div>

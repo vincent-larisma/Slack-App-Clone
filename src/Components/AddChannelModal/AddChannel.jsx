@@ -14,10 +14,10 @@ function Addchannel({ closeAddChannelMOdal }) {
                 <p className='addNewChannel'>Add New Channel</p>
                 <div className='input-channel-container'>
                     <div className='enter-channel-input'>
-                        <input type="text" placeholder='Enter channel name'/>
+                        <input type="text" placeholder='Channel name'/>
                     </div>
                     <div className='enter-user-input'>
-                        <input type="text" placeholder='Add users' />
+                        <input type="text" placeholder='Add a member' />
                     </div>
                    <ul className='existingAddedMembers'>
                     <li className='list-members' onMouseEnter={(e) => setText(1)}

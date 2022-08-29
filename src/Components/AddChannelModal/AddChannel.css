@@ -8,8 +8,8 @@
 
 
 .addchannel-content {
-    width: 420px;
-    height: 250px;
+    width: 450px;
+    height: 270px;
     display: flex;
     /* justify-content: center;
     align-items: center; */
@@ -28,11 +28,12 @@
 
 .existingAddedMembers  {
     margin-top: 10px;
+    margin-bottom: 10px;
     color: white;
     border: 1px solid white;
     color: white;
     height: 50px;
-    width: 300px;
+    width: 350px;
     overflow-y: scroll;
     cursor: pointer;
 }
