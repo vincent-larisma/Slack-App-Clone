@@ -12,7 +12,7 @@ import { UserList, LoginContextHeader, UserInfoSend } from '../LoginContext'
 
 function Body() {
   const navigate = useNavigate()
-  const {listAllUserAdded, setListAllUserAdded} = useContext(UserList)
+  const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
   const [availUser, setavailUser] = useState('Starting user')
   const [userListArray, setUserListArray] = useState()
   const [channgelToggle, setchannelToggle] = useState(false)
@@ -20,9 +20,9 @@ function Body() {
   const [allUsersToggle, setallUsersTogggle] = useState(false)
   const [openAdduser, setopenAdduser] = useState(false)
   const [openAddchannel, setopenAddchannel] = useState(false)
-  const {loginInfoHeader} = useContext(LoginContextHeader)
-  const {accessToken, uid, expiry, client} = loginInfoHeader.dataLoginHeader
-  const {containUserInfo, setContainUserInfo} = useContext(UserInfoSend)
+  const { loginInfoHeader } = useContext(LoginContextHeader)
+  const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
+  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
   const [text2, setText2] = useState(0)
@@ -87,7 +87,7 @@ function Body() {
       }
     })
   }
-  
+
   useEffect(() => {
     fetchUserList()
   }, [])
@@ -110,15 +110,9 @@ function Body() {
     <>
       <nav className='navbar-container'>
         <section className='settings'>
-          <button>
-            {/* <i class='fa-solid fa-bars'></i> */}
-          </button>
-          <button>
-            {/* <i class='fa-solid fa-angle-left'></i> */}
-          </button>
-          <button>
-            {/* <i class='fa-solid fa-angle-right'></i> */}
-          </button>
+          <button>{/* <i class='fa-solid fa-bars'></i> */}</button>
+          <button>{/* <i class='fa-solid fa-angle-left'></i> */}</button>
+          <button>{/* <i class='fa-solid fa-angle-right'></i> */}</button>
         </section>
         <section className='search-bar'>
           <input type='text' placeholder='Search...' onChange={handleChangeSearch} />
@@ -147,15 +141,9 @@ function Body() {
           </div>
         </section>
         <section className='screen-setting'>
-          <button>
-            {/* <i class='fa-solid fa-user-tie'></i> */}
-          </button>
-          <button>
-            {/* <i class='fa-solid fa-minus'></i> */}
-          </button>
-          <button>
-            {/* <i class='fa-solid fa-down-left-and-up-right-to-center'></i> */}
-          </button>
+          <button>{/* <i class='fa-solid fa-user-tie'></i> */}</button>
+          <button>{/* <i class='fa-solid fa-minus'></i> */}</button>
+          <button>{/* <i class='fa-solid fa-down-left-and-up-right-to-center'></i> */}</button>
           <button className='button-exit' onClick={exit}>
             <i className='fa-solid fa-xmark'></i>
           </button>
@@ -163,8 +151,8 @@ function Body() {
       </nav>
       <div className='body-container'>
         <section className='threads'>
-          <div className='slack-body-logo'>      
-               <p>Messages</p> <i class="fa-solid fa-circle-down"></i>
+          <div className='slack-body-logo'>
+            <p>Messages</p> <i class='fa-solid fa-circle-down'></i>
           </div>
           <div className='threads-buttons'>
             <button onClick={toggledirectMessage}>
@@ -181,14 +169,15 @@ function Body() {
                       if (valueUser.id == value) {
                         userValue = valueUser
                       }
-                    }) 
+                    })
                     if (userValue) {
                       return (
                         <>
-                          <div className='new-direct-messages' 
-                          style={{Width: 279 }}
-                          onMouseEnter={(e) => setText(1)}
-                          onMouseLeave={(e) => setText(0)}>
+                          <div
+                            className='new-direct-messages'
+                            style={{ Width: 279 }}
+                            onMouseEnter={(e) => setText(1)}
+                            onMouseLeave={(e) => setText(0)}>
                             <li
                               className='direct-sms-users'
                               key={index}
@@ -217,15 +206,14 @@ function Body() {
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
                 style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
                 <li>batch21</li>
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
-                <div className='new-channel-messages'
-                style={{Width: 279 }}
-                onMouseEnter={(e) => setText2(1)}
-                onMouseLeave={(e) => setText2(0)}>
+
+                <div
+                  className='new-channel-messages'
+                  style={{ Width: 279 }}
+                  onMouseEnter={(e) => setText2(1)}
+                  onMouseLeave={(e) => setText2(0)}>
                   <li>batch21</li>
-                  <i style={{ opacity: `${text2}` }}
-                     class='fa-solid fa-circle-xmark'
-                      ></i>
+                  <i style={{ opacity: `${text2}` }} class='fa-solid fa-circle-xmark'></i>
                 </div>
               </ul>
             </div>
