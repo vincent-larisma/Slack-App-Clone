@@ -262,12 +262,15 @@ function Body() {
               </button>
             </div>
             <div className='new-chat-btn'>
-              <button
-                onClick={() => {
-                  setopenAdduserInChannel((prev) => !prev)
-                }}>
-                <i class="fa-solid fa-user-plus"></i>
-              </button>
+              {containUserInfo.userClass === 'Channel' && (
+                <button
+                  onClick={() => {
+                    setopenAdduserInChannel((prev) => !prev)
+                  }}>
+                  <i class='fa-solid fa-user-plus'></i>
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   setopenAdduser((prev) => !prev)
@@ -292,6 +295,7 @@ function Body() {
               closeAdduserMOdal={setopenAdduser}
             />
           )}
+
           {openAddchannel && <AddChannel userListArray={userListArray} closeAddChannelMOdal={setopenAddchannel} />}
         </section>
       </div>
