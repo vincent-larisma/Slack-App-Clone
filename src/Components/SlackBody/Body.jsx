@@ -9,6 +9,7 @@ import './Navbar.css'
 import AddUserModal from '../AddUserModal/AddUserModal'
 import AddChannel from '../AddChannelModal/AddChannel'
 import { UserList, LoginContextHeader, UserInfoSend } from '../LoginContext'
+import AddUserInChannel from '../AddUserInChannel/AddUserInChannel'
 
 function Body() {
   const navigate = useNavigate()
@@ -19,6 +20,7 @@ function Body() {
   const [directMessageToggle, setdirectMessageTogggle] = useState(false)
   const [allUsersToggle, setallUsersTogggle] = useState(false)
   const [openAdduser, setopenAdduser] = useState(false)
+  const [openAdduserInChannel, setopenAdduserInChannel] = useState(false)
   const [openAddchannel, setopenAddchannel] = useState(false)
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
@@ -262,6 +264,12 @@ function Body() {
             <div className='new-chat-btn'>
               <button
                 onClick={() => {
+                  setopenAdduserInChannel((prev) => !prev)
+                }}>
+                <i class="fa-solid fa-user-plus"></i>
+              </button>
+              <button
+                onClick={() => {
                   setopenAdduser((prev) => !prev)
                 }}>
                 <i className='fa-solid fa-message'></i>
@@ -276,6 +284,7 @@ function Body() {
           </section>
           <ReceiveMessage />
           <SendMessageFunction />
+          {openAdduserInChannel && <AddUserInChannel closeAddUserInChannel={setopenAdduserInChannel} />}
           {openAdduser && (
             <AddUserModal
               userListArray={userListArray}
