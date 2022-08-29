@@ -179,7 +179,7 @@
   transform: scaleY(0);
   transform-origin: top;
   width: 100%;
-  transition: 0.5s;
+  /* transition: 0.5s; */
 }
 
 .channel-names-clicked {
