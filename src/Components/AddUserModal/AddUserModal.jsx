@@ -3,7 +3,7 @@ import { UserList, UserInfoSend } from '../LoginContext'
 import './AddUser.css'
 import Swal from 'sweetalert2'
 
-function AddUserModal({ closeAdduserMOdal }) {
+function AddUserModal({ closeAdduserMOdal, setavailUser, userListArray }) {
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
 
@@ -23,6 +23,11 @@ function AddUserModal({ closeAdduserMOdal }) {
 
     if (!list.some(checkList)) {
       setContainUserInfo({ ...containUserInfo, userId: getUserID })
+      for (let i = 0; i < userListArray.data.length; i++) {
+        if (userListArray.data[i].id == getUserID) {
+          setavailUser(userListArray.data[i].uid)
+        }
+      }
 
       closeAdduserMOdal(false)
     } else if (list.some(checkList)) {

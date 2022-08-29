@@ -57,14 +57,6 @@ function Body() {
     setContainUserInfo({ ...containUserInfo, userId: userValue.id })
   }
 
-  const findNameInAllUsers = () => {
-    console.log(
-      userListArray.data.filter((value) => {
-        return value.id === containUserInfo.userId
-      })
-    )
-  }
-
   const fetchUserList = () => {
     fetch(`${APIurl}/users`, {
       method: 'GET',
@@ -249,7 +241,13 @@ function Body() {
           </section>
           <ReceiveMessage />
           <SendMessageFunction />
-          {openAdduser && <AddUserModal closeAdduserMOdal={setopenAdduser} />}
+          {openAdduser && (
+            <AddUserModal
+              userListArray={userListArray}
+              setavailUser={setavailUser}
+              closeAdduserMOdal={setopenAdduser}
+            />
+          )}
           {openAddchannel && <AddChannel closeAddChannelMOdal={setopenAddchannel} />}
         </section>
       </div>
