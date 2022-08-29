@@ -180,18 +180,20 @@ function Body() {
                     })
                     if (userValue) {
                       return (
-                        <li
-                          className='direct-sms-users'
-                          key={index}
-                          onClick={() => handleClickSelectUser(userValue)}
-                          onMouseEnter={(e) => setText(1)}
-                          onMouseLeave={(e) => setText(0)}>
-                          {userValue.uid}
+                        <>
+                          <li
+                            className='direct-sms-users'
+                            key={index}
+                            onClick={() => handleClickSelectUser(userValue)}
+                            onMouseEnter={(e) => setText(1)}
+                            onMouseLeave={(e) => setText(0)}>
+                            {userValue.uid}
+                          </li>
                           <i
                             style={{ opacity: `${text}` }}
                             class='fa-solid fa-circle-xmark'
                             onClick={() => IconPop(index)}></i>
-                        </li>
+                        </>
                       )
                     }
                   })
