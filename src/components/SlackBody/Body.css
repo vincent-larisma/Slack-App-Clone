@@ -8,7 +8,7 @@
 .body-container {
   display: grid;
   grid-template-columns: 1fr 4.5fr;
-  height: 92vh;
+  height: 93.1vh;
 }
 
 .search-container {
