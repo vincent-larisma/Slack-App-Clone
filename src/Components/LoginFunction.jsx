@@ -102,7 +102,7 @@ export default function LoginFunction() {
             {/* <i class="fa-solid fa-lock"></i> */}
             <input
               className='login-password-input'
-              type='text'
+              type='password'
               id='password'
               name='password'
               value={password}

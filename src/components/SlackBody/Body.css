@@ -50,7 +50,6 @@
   align-items: center;
   font-size: 25px;
   padding: 9px 20px;
-  border-bottom: 1px solid white;
   height: 55px;
 }
 
@@ -60,9 +59,12 @@
   padding: 10px 20px;
   column-gap: 10px;
   border: none;
-  background-color: rgb(220, 219, 219);
+  background-color: white;
   font-size: 18px;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
 }
+
 
 .threads-buttons-clicked {
   background-color: white;
@@ -74,7 +76,8 @@
 
 .threads-buttons button:hover {
   cursor: pointer;
-  background-color: #fff;
+  background-color: #6998ab;
+  color: white;
 }
 
 .direct-sms-users {
@@ -96,19 +99,24 @@
   color: rgb(189, 3, 3);
 }
 
+
 .names-channel ul li {
-  font-size: 10px;
   list-style: none;
   background-color: #1a374d;
   cursor: pointer;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 35px;
+  padding-right: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 200px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .new-direct-messages {
@@ -117,6 +125,7 @@
   align-items: center;
   cursor: pointer;
 }
+
 
 .direct-message-channel ul li {
   list-style: none;
@@ -129,12 +138,10 @@
   padding-left: 20px;
   padding-right: 10px;
   color: white;
-  padding-left: 10px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 200px;
-  color: white;
   display: flex;
   justify-content: flex-start;
 }
@@ -233,7 +240,6 @@
   text-align: left;
   box-sizing: border-box;
   width: 1000px;
-  height: 70px;
   padding: 12px 10px;
   display: inline-block;
   border: 1px solid #ccc;

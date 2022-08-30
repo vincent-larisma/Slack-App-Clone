@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { LoginContextHeader } from './LoginContext'
+import Swal from 'sweetalert2'
 
 export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
   const [text, setText] = useState(0)
@@ -43,7 +44,7 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
     if (!list.some(checkList)) {
       list.push(parseInt(userID))
     } else {
-      alert('User already added')
+      Swal.fire('User has already been added')
     }
 
     setCreateChannel({ ...createChannel, userID: '', userIDList: list })
@@ -67,9 +68,21 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
       .then((res) => res.json())
       .then((data) => console.log('create channel', data))
       .catch(alert(`Channel ${channelName} has been created successfully`))
+      .catch(
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Channel has been created!',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      )
+>>>>>>> justine-new-channel-layout
     closeAddChannelMOdal(false)
     setCreateChannel({ ...createChannel, channelName: '', userIDList: [] })
   }
+
+  
 
   return (
     <>
@@ -80,6 +93,7 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
             <div className='enter-channel-input'>
               <input
                 type='text'
+                required
                 placeholder='Channel Name'
                 name='channelName'
                 value={channelName}
@@ -96,7 +110,7 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
               />
               <button onClick={handleClickAddUserID}>Add</button>
             </div>
-            <p className='addNewChannel'>Current Added Members</p>
+            <p className='addNewChannel-text'>Current Added Members</p>
             <ul className='existingAddedMembers'>
               {userIDList.length ? (
                 userIDList.map((value, index) => {
@@ -121,11 +135,11 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
                   )
                 })
               ) : (
-                <span>No added Member</span>
+                <span>No added member</span>
               )}
             </ul>
           </div>
-          <section className='adduser-buttons'>
+          <section className='addChannel-buttons'>
             <button
               onClick={() => {
                 closeAddChannelMOdal(false)

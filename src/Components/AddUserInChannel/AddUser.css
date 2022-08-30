@@ -44,12 +44,14 @@
 }
 
 .adduser-buttons button {
-  padding: 2px 4px;
+  padding: 4px 6px;
   font-size: 12px;
-  width: 60px;
+  width: 70px;
+  border-radius: 5px;
 }
 
 .adduser-buttons button:hover {
-  background-color: white;
+  background-color: #6998ab;
   transform: scale(1.06);
+  color: white;
 }
