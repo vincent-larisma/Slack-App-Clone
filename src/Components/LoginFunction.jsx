@@ -55,6 +55,7 @@ export default function LoginFunction() {
         return res.json()
       })
       .then((data) => {
+        console.log(data)
         if (data.data) {
           setLoginInfo({ ...loginInfo, dataInfo: data.data })
           navigate('/slack-app')
