@@ -107,7 +107,7 @@
   font-family: 'Roboto', sans-serif;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 20px;
+  padding-left: 35px;
   padding-right: 10px;
   color: white;
   white-space: nowrap;
@@ -124,6 +124,7 @@
   align-items: center;
   cursor: pointer;
 }
+
 
 .direct-message-channel ul li {
   list-style: none;
@@ -238,7 +239,6 @@
   text-align: left;
   box-sizing: border-box;
   width: 1000px;
-  height: 70px;
   padding: 12px 10px;
   display: inline-block;
   border: 1px solid #ccc;

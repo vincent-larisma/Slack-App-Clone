@@ -44,7 +44,7 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
     if (!list.some(checkList)) {
       list.push(parseInt(userID))
     } else {
-      alert('User already added')
+      Swal.fire('User has already been added')
     }
 
     setCreateChannel({ ...createChannel, userID: '', userIDList: list })

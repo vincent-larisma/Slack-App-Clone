@@ -29,6 +29,7 @@ function Body() {
   const [channelList, setChannelList] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
+  const [text1, setText1] = useState(0)
 
   document.addEventListener('contextmenu', (event) => {
     event.preventDefault()
@@ -126,6 +127,12 @@ function Body() {
     setavailUser(channelList[index].name)
   }
 
+  const removeChannel = (index) => {
+    let newList = channelList
+    newList.splice(index,1)
+    setavailUser('Starting User')
+  }
+
   return (
     <>
       <nav className='navbar-container'>
@@ -192,7 +199,7 @@ function Body() {
             <div className='direct-message-channel'>
               <ul
                 className={directMessageToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
+                style={{ maxHeight: 250, overflowY: 'scroll', maxWidth: 276 }}>
                 {listAllUserAdded.length ? (
                   listAllUserAdded.map((value, index) => {
                     let userValue = false
@@ -207,8 +214,8 @@ function Body() {
                           <div
                             className='new-direct-messages'
                             style={{ Width: 279 }}
-                            onMouseEnter={(e) => setText(1)}
-                            onMouseLeave={(e) => setText(0)}>
+                            onMouseEnter={(e) => setText1(1)}
+                            onMouseLeave={(e) => setText1(0)}>
                             <li
                               className='direct-sms-users'
                               key={index}
@@ -216,7 +223,7 @@ function Body() {
                               {userValue.uid}
                             </li>
                             <i
-                              style={{ opacity: `${text}` }}
+                              style={{ opacity: `${text1}` }}
                               class='fa-solid fa-circle-xmark'
                               onClick={() => IconPop(index)}></i>
                           </div>
@@ -235,17 +242,17 @@ function Body() {
             <div className='names-channel'>
               <ul
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ minHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
+                style={{ maxHeight: 250, overflowY: 'scroll', maxWidth: 276 }}>
                 {channelList.length ? (
                   channelList.map((value, index) => {
                     return (
-                      <li key={index} onClick={() => handleSelectChannel(index)}>
-                        {value.name}
-                      </li>
+                       <li key={index} onClick={() => handleSelectChannel(index)}>
+                            {value.name}
+                        </li>
                     )
                   })
                 ) : (
-                  <li>No Channels Available</li>
+                  <li>No channels available</li>
                 )}
               </ul>
             </div>
