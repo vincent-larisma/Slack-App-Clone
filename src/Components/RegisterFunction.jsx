@@ -33,7 +33,9 @@ export default function RegisterFunction() {
     setUserData({ ...userData, [name]: value })
   }
 
-  const APIurl = 'http://206.189.91.54/api/v1'
+  const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+  const APIurl = 'http://206.189.91.54/api/v1';
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
@@ -53,6 +55,10 @@ export default function RegisterFunction() {
             Swal.fire('Please enter your email')
           } else if (userData.password === '') {
             Swal.fire('Please enter your password')
+          } else if (!userData.email.match(pattern)) {
+            Swal.fire('Please enter a valid email')
+          } else if (userData.password.length < 6) {
+            Swal.fire('Password must be at least 6 characters')
           } else if (userData.passwordConfirm === '') {
             Swal.fire('Please confirm your password')
           } else if (userData.email === '' && userData.password === '') {

@@ -249,7 +249,7 @@ function Body() {
                     )
                   })
                 ) : (
-                  <li>No Channels Added Yet</li>
+                  <li>No Channels Added</li>
                 )}
               </ul>
             </div>

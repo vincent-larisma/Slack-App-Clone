@@ -77,7 +77,7 @@ export default function LoginFunction() {
       <form className='form-container'>
         <section className='inner-form'>
           <div className='form-name'>
-            Slack App <i class='fa-solid fa-square-envelope'></i>
+            SlackApp <i class='fa-solid fa-square-envelope'></i>
           </div>
           <div className='login-email'>
             <p className='top-credentials'>
