@@ -33,7 +33,9 @@ export default function RegisterFunction() {
     setUserData({ ...userData, [name]: value })
   }
 
-  const APIurl = 'http://206.189.91.54/api/v1'
+  const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+  const APIurl = 'http://206.189.91.54/api/v1';
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
