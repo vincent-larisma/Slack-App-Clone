@@ -74,15 +74,13 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
           icon: 'success',
           title: 'Channel has been created!',
           showConfirmButton: false,
-          timer: 2000
+          timer: 2000,
         })
       )
->>>>>>> justine-new-channel-layout
+
     closeAddChannelMOdal(false)
     setCreateChannel({ ...createChannel, channelName: '', userIDList: [] })
   }
-
-  
 
   return (
     <>

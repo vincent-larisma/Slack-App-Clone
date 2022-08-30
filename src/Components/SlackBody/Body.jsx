@@ -234,22 +234,20 @@ function Body() {
                 )}
               </ul>
             </div>
-            <button onClick={toggleChannel} className="channel-button-thread">
+            <button onClick={toggleChannel} className='channel-button-thread'>
               <i class='fa-solid fa-people-group'></i> Channels
             </button>
             <div className='names-channel'>
               <ul
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ minHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
-                {channelList !== undefined ? (
                 style={{ maxHeight: 250, overflowY: 'scroll', maxWidth: 276 }}>
-                {channelList.length ? (
+                {channelList !== undefined ? (
                   channelList.map((value, index) => {
                     console.log(channelList)
                     return (
-                       <li key={index} onClick={() => handleSelectChannel(index)}>
-                            {value.name}
-                        </li>
+                      <li key={index} onClick={() => handleSelectChannel(index)}>
+                        {value.name}
+                      </li>
                     )
                   })
                 ) : (
