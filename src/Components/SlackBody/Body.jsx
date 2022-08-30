@@ -127,12 +127,6 @@ function Body() {
     setavailUser(channelList[index].name)
   }
 
-  const removeChannel = (index) => {
-    let newList = channelList
-    newList.splice(index,1)
-    setavailUser('Starting User')
-  }
-
   return (
     <>
       <nav className='navbar-container'>

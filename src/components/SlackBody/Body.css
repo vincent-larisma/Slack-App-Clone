@@ -99,6 +99,10 @@
   color: rgb(189, 3, 3);
 }
 
+.names-channel ul {
+  border-bottom: 1px solid white;
+}
+
 .names-channel ul li {
   list-style: none;
   background-color: #1a374d;
