@@ -66,17 +66,23 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
       body: JSON.stringify(userDataAPI),
     })
       .then((res) => res.json())
-      .then((data) => console.log('create channel', data))
-      .catch(alert(`Channel ${channelName} has been created successfully`))
-      .catch(
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Channel has been created!',
-          showConfirmButton: false,
-          timer: 2000,
-        })
-      )
+      .then((data) => {
+        if (data.errors) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${data.errors[0]}`,
+          })
+        } else {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Channel has been created!',
+            showConfirmButton: false,
+            timer: 2000,
+          })
+        }
+      })
 
     closeAddChannelMOdal(false)
     setCreateChannel({ ...createChannel, channelName: '', userIDList: [] })

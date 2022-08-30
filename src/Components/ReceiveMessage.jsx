@@ -34,7 +34,6 @@ export default function ReceiveMessage() {
       .then((res) => res.json())
       .then((data) => {
         setReceivedMessage({ data })
-        console.log(data)
         setRestrictOnce(true)
       })
   }

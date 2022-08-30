@@ -98,7 +98,6 @@ function Body() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('fetchChannel', data)
         setChannelList(data.data)
       })
   }
@@ -243,7 +242,6 @@ function Body() {
                 style={{ maxHeight: 250, overflowY: 'scroll', maxWidth: 276 }}>
                 {channelList !== undefined ? (
                   channelList.map((value, index) => {
-                    console.log(channelList)
                     return (
                       <li key={index} onClick={() => handleSelectChannel(index)}>
                         {value.name}
