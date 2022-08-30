@@ -43,32 +43,37 @@ export default function RegisterFunction() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(userDataAPI),
-    }).then((res) => res.json())
-
-    if (userData.email === '' && userData.password === '' && userData.passwordConfirm === '') {
-      Swal.fire('Please enter your email and password')
-    } else if (userData.email === '') {
-      Swal.fire('Please enter your email')
-    } else if (userData.password === '') {
-      Swal.fire('Please enter your password')
-    } else if (userData.passwordConfirm === '') {
-      Swal.fire('Please confirm your password')
-    } else if (userData.email === '' && userData.password === '') {
-      Swal.fire('Please enter your email and password')
-    } else if (userData.password === '' && userData.passwordConfirm === '') {
-      Swal.fire('Please enter your password')
-    } else if (userData.password != userData.passwordConfirm) {
-      Swal.fire('Password did not match')
-    } else {
-      setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Account created!',
-        showConfirmButton: false,
-        timer: 2000,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 'error') {
+          if (userData.email === '' && userData.password === '' && userData.passwordConfirm === '') {
+            Swal.fire('Please enter your email and password')
+          } else if (userData.email === '') {
+            Swal.fire('Please enter your email')
+          } else if (userData.password === '') {
+            Swal.fire('Please enter your password')
+          } else if (userData.passwordConfirm === '') {
+            Swal.fire('Please confirm your password')
+          } else if (userData.email === '' && userData.password === '') {
+            Swal.fire('Please enter your email and password')
+          } else if (userData.password === '' && userData.passwordConfirm === '') {
+            Swal.fire('Please enter your password')
+          } else if (userData.password != userData.passwordConfirm) {
+            Swal.fire('Password did not match')
+          }
+        } else if (data.status === 'success') {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Account created!',
+            showConfirmButton: false,
+            timer: 2000,
+          })
+        }
       })
-    }
+
+    setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
   }
 
   return (
