@@ -97,6 +97,7 @@ function Body() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log('fetchChannel', data)
         setChannelList(data.data)
       })
   }
@@ -105,6 +106,9 @@ function Body() {
     fetchUserList()
     fetchGetAllUserChannel()
   }, [])
+  useEffect(() => {
+    fetchGetAllUserChannel()
+  }, [openAddchannel])
 
   const IconPop = (index) => {
     let list = listAllUserAdded
@@ -236,8 +240,9 @@ function Body() {
               <ul
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
                 style={{ minHeight: 150, overflowY: 'scroll', maxWidth: 276 }}>
-                {channelList.length ? (
+                {channelList !== undefined ? (
                   channelList.map((value, index) => {
+                    console.log(channelList)
                     return (
                       <li key={index} onClick={() => handleSelectChannel(index)}>
                         {value.name}
@@ -245,7 +250,7 @@ function Body() {
                     )
                   })
                 ) : (
-                  <li>No Channels Available</li>
+                  <li>No Channels Added Yet</li>
                 )}
               </ul>
             </div>

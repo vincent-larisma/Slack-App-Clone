@@ -65,12 +65,11 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
       body: JSON.stringify(userDataAPI),
     })
       .then((res) => res.json())
+      .then((data) => console.log('create channel', data))
       .catch(alert(`Channel ${channelName} has been created successfully`))
     closeAddChannelMOdal(false)
     setCreateChannel({ ...createChannel, channelName: '', userIDList: [] })
   }
-
- 
 
   return (
     <>
