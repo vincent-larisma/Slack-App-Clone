@@ -90,6 +90,7 @@ export default function CreateChannel({ closeAddChannelMOdal, userListArray }) {
             <div className='enter-channel-input'>
               <input
                 type='text'
+                required
                 placeholder='Channel Name'
                 name='channelName'
                 value={channelName}
