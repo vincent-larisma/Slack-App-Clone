@@ -55,8 +55,10 @@ export default function RegisterFunction() {
             Swal.fire('Please enter your email')
           } else if (userData.password === '') {
             Swal.fire('Please enter your password')
-          } else if (userData.password === '') {
-            Swal.fire('Please enter your password')
+          } else if (!userData.email.match(pattern)) {
+            Swal.fire('Please enter a valid email')
+          } else if (userData.password.length < 6) {
+            Swal.fire('Password must be at least 6 characters')
           } else if (userData.passwordConfirm === '') {
             Swal.fire('Please confirm your password')
           } else if (userData.email === '' && userData.password === '') {
