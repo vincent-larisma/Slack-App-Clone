@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { UserList } from '../LoginContext'
-import Body from '../SlackBody/Body'
+import { UserList, UserInfoSend } from '../LoginContext'
 import './AddUser.css'
 import Swal from 'sweetalert2'
 
-function AddUserModal({ closeAdduserMOdal }) {
+function AddUserModal({ closeAdduserMOdal, setavailUser, userListArray }) {
   const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
+  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
 
   const [getUserID, setGetUserID] = useState()
 
@@ -20,13 +20,18 @@ function AddUserModal({ closeAdduserMOdal }) {
 
   const handleClickAdd = () => {
     let list = listAllUserAdded
+
     if (!list.some(checkList)) {
-      list.push(getUserID)
-      setListAllUserAdded(list)
+      setContainUserInfo({ ...containUserInfo, userId: getUserID })
+      for (let i = 0; i < userListArray.data.length; i++) {
+        if (userListArray.data[i].id == getUserID) {
+          setavailUser(userListArray.data[i].uid)
+        }
+      }
 
       closeAdduserMOdal(false)
     } else if (list.some(checkList)) {
-      Swal.fire('User has already been added')
+      Swal.fire('User has already been messaged')
     }
     setGetUserID('')
   }
@@ -35,7 +40,7 @@ function AddUserModal({ closeAdduserMOdal }) {
     <>
       <section className='adduser-container'>
         <div className='adduser-content'>
-          <p>Add User</p>
+          <p>Message User</p>
           <div className='add-user-input'>
             <input type='number' placeholder='Enter user ID' value={getUserID} onChange={handleChangeUserID} />
           </div>
@@ -46,7 +51,7 @@ function AddUserModal({ closeAdduserMOdal }) {
               }}>
               Cancel
             </button>
-            <button onClick={handleClickAdd}>Add</button>
+            <button onClick={handleClickAdd}>Message</button>
           </section>
         </div>
       </section>

@@ -26,18 +26,31 @@
 .search-container div:hover {
   background-color: #6998ab;
   color: white;
+  cursor: pointer;
 }
 
 .search-item {
   position: relative;
   background-color: rgb(236, 236, 236);
   color: black;
+  padding: 10px;
+  border: 0.5px rgb(188, 188, 188) solid;
+  cursor: pointer;
 }
 
 .threads {
   background-color: #1a374d;
-
   color: rgb(236, 236, 236);
+}
+
+.slack-body-logo {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  font-size: 25px;
+  padding: 9px 20px;
+  height: 55px;
 }
 
 .threads-buttons button {
@@ -46,9 +59,12 @@
   padding: 10px 20px;
   column-gap: 10px;
   border: none;
-  background-color: rgb(220, 219, 219);
+  background-color: white;
   font-size: 18px;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
 }
+
 
 .threads-buttons-clicked {
   background-color: white;
@@ -60,12 +76,13 @@
 
 .threads-buttons button:hover {
   cursor: pointer;
-  background-color: #fff;
+  background-color: #6998ab;
+  color: white;
 }
 
 .direct-sms-users {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -84,27 +101,33 @@
 
 
 .names-channel ul li {
-  color: black;
-  font-size: 10px;
   list-style: none;
   background-color: #1a374d;
   cursor: pointer;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 10px 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 35px;
+  padding-right: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 200px;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.names-channel ul li:hover {
-  background-color: #6998ab;
+.new-direct-messages {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
 }
+
 
 .direct-message-channel ul li {
-  color: black;
-  font-size: 10px;
   list-style: none;
   background-color: #1a374d;
   cursor: pointer;
@@ -113,21 +136,28 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
+  padding-right: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 300;
-  
+  width: 200px;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.direct-message-channel ul::-webkit-scrollbar, .names-channel ul::-webkit-scrollbar, .all-users-channel ul::-webkit-scrollbar{
+.direct-message-channel i {
+  color: #6998ab;
+}
+
+.direct-message-channel i:hover {
+  color: rgb(192, 1, 1);
+}
+
+.direct-message-channel ul::-webkit-scrollbar,
+.names-channel ul::-webkit-scrollbar,
+.all-users-channel ul::-webkit-scrollbar {
   display: none;
-
-}
-
-.direct-message-channel ul li:hover {
-  background-color: #6998ab;
 }
 
 .all-users-channel ul li {
@@ -138,11 +168,30 @@
   cursor: pointer;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
-  padding: 10px 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 10px;
   color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 279px;
+}
+
+.new-channel-messages {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.new-channel-messages i {
+  color: #6998ab;
+}
+
+.new-channel-messages i:hover {
+  color: rgb(189, 3, 3);
 }
 
 .all-users-channel ul li:hover {
@@ -154,7 +203,7 @@
   transform: scaleY(0);
   transform-origin: top;
   width: 100%;
-  transition: 0.5s;
+  /* transition: 0.5s; */
 }
 
 .channel-names-clicked {
@@ -191,13 +240,11 @@
   text-align: left;
   box-sizing: border-box;
   width: 1000px;
-  height: 70px;
   padding: 12px 10px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 7px;
   font-size: 20px;
-
 }
 
 .new-message textarea::-webkit-scrollbar {
@@ -277,10 +324,6 @@
 
 .converse-chats {
   transform: scale(1, -1);
-}
-
-.conversation:hover {
-  cursor: pointer;
 }
 
 .conversation div i {

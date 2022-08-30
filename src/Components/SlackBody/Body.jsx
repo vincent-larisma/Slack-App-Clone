@@ -8,8 +8,8 @@ import Swal from 'sweetalert2'
 import './Navbar.css'
 import AddUserModal from '../AddUserModal/AddUserModal'
 import AddChannel from '../AddChannelModal/AddChannel'
-import { UserList, LoginContextHeader, UserInfoSend } from '../LoginContext'
-import { faArrowUpRightFromSquare, faDesktop } from '@fortawesome/free-solid-svg-icons'
+import { UserList, LoginContextHeader, UserInfoSend, CurrentChannel } from '../LoginContext'
+import AddUserInChannel from '../AddUserInChannel/AddUserInChannel'
 
 function Body() {
   const navigate = useNavigate()
@@ -20,12 +20,16 @@ function Body() {
   const [directMessageToggle, setdirectMessageTogggle] = useState(false)
   const [allUsersToggle, setallUsersTogggle] = useState(false)
   const [openAdduser, setopenAdduser] = useState(false)
+  const [openAdduserInChannel, setopenAdduserInChannel] = useState(false)
   const [openAddchannel, setopenAddchannel] = useState(false)
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
   const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const { currentChannelIndex, setCurrentChannelIndex } = useContext(CurrentChannel)
+  const [channelList, setChannelList] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
   const [text, setText] = useState(0)
+  const [text1, setText1] = useState(0)
 
   document.addEventListener('contextmenu', (event) => {
     event.preventDefault()
@@ -53,13 +57,9 @@ function Body() {
     directMessageToggle ? setdirectMessageTogggle(false) : setdirectMessageTogggle(true)
   }
 
-  const togglealluser = () => {
-    allUsersToggle ? setallUsersTogggle(false) : setallUsersTogggle(true)
-  }
-
   const handleClickSelectUser = (userValue) => {
     setavailUser(userValue.uid)
-    setContainUserInfo({ ...containUserInfo, userId: userValue.id })
+    setContainUserInfo({ ...containUserInfo, userId: userValue.id, userClass: 'User' })
   }
 
   const fetchUserList = () => {
@@ -87,15 +87,47 @@ function Body() {
       }
     })
   }
+
+  const fetchGetAllUserChannel = () => {
+    fetch(`${APIurl}/channels`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...userDataHeadersAPI,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setChannelList(data.data)
+      })
+  }
+
   useEffect(() => {
     fetchUserList()
+    fetchGetAllUserChannel()
   }, [])
+  useEffect(() => {
+    fetchGetAllUserChannel()
+  }, [openAddchannel])
 
   const IconPop = (index) => {
     let list = listAllUserAdded
     list.splice(index, 1)
-
     setListAllUserAdded(list)
+    setavailUser('Starting User')
+    setContainUserInfo({ ...containUserInfo, userId: 1, userClass: 'User' })
+  }
+
+  const handleClickSearchSelectUser = (value) => {
+    setavailUser(value.uid)
+    setSearchTerm('')
+    setContainUserInfo({ ...containUserInfo, userId: value.id, userClass: 'User' })
+  }
+
+  const handleSelectChannel = (index) => {
+    setContainUserInfo({ ...containUserInfo, userId: channelList[index].id, userClass: 'Channel' })
+    setCurrentChannelIndex(channelList[index].id)
+    setavailUser(channelList[index].name)
   }
 
   return (
@@ -118,7 +150,6 @@ function Body() {
             {searchTerm.length
               ? userListArray.data
                   .filter((value) => {
-                    console.log('value', value)
                     if (searchTerm == '') {
                       return value
                     } else if (
@@ -130,7 +161,7 @@ function Body() {
                   })
                   .map((value, index) => {
                     return (
-                      <div className='search-item' key={index}>
+                      <div className='search-item' key={index} onClick={() => handleClickSearchSelectUser(value)}>
                         {value.uid}
                       </div>
                     )
@@ -155,6 +186,9 @@ function Body() {
       </nav>
       <div className='body-container'>
         <section className='threads'>
+          <div className='slack-body-logo'>
+            <i class='fa-solid fa-envelope'></i> <p>Messages</p>
+          </div>
           <div className='threads-buttons'>
             <button onClick={toggledirectMessage}>
               <i class='fa-solid fa-message'></i> Direct messages
@@ -162,7 +196,7 @@ function Body() {
             <div className='direct-message-channel'>
               <ul
                 className={directMessageToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
+                style={{ maxHeight: 250, overflowY: 'scroll', maxWidth: 276 }}>
                 {listAllUserAdded.length ? (
                   listAllUserAdded.map((value, index) => {
                     let userValue = false
@@ -173,50 +207,50 @@ function Body() {
                     })
                     if (userValue) {
                       return (
-                        <li
-                          className='direct-sms-users'
-                          key={index}
-                          onClick={() => handleClickSelectUser(userValue)}
-                          onMouseEnter={(e) => setText(1)}
-                          onMouseLeave={(e) => setText(0)}>
-                          {userValue.uid}{' '}
-                          <i
-                            style={{ opacity: `${text}` }}
-                            class='fa-solid fa-circle-xmark'
-                            onClick={() => IconPop(index)}></i>
-                        </li>
+                        <>
+                          <div
+                            className='new-direct-messages'
+                            style={{ Width: 279 }}
+                            onMouseEnter={(e) => setText1(1)}
+                            onMouseLeave={(e) => setText1(0)}>
+                            <li
+                              className='direct-sms-users'
+                              key={index}
+                              onClick={() => handleClickSelectUser(userValue)}>
+                              {userValue.uid}
+                            </li>
+                            <i
+                              style={{ opacity: `${text1}` }}
+                              class='fa-solid fa-circle-xmark'
+                              onClick={() => IconPop(index)}></i>
+                          </div>
+                        </>
                       )
                     }
                   })
                 ) : (
-                  <li>No New Messages</li>
+                  <li>No new messages</li>
                 )}
               </ul>
             </div>
-            <button onClick={toggleChannel}>
+            <button onClick={toggleChannel} className='channel-button-thread'>
               <i class='fa-solid fa-people-group'></i> Channels
             </button>
             <div className='names-channel'>
               <ul
                 className={channgelToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
-                <li>batch21</li>
-                <li>group 2 - Slack App</li>
-              </ul>
-            </div>
-            <button onClick={togglealluser}>
-              <i class='fa-solid fa-bell'></i> All users
-            </button>
-            <div className='all-users-channel'>
-              <ul
-                className={allUsersToggle ? 'channel-names-clicked ' : 'channel-names-not-clicked'}
-                style={{ maxHeight: 150, overflowY: 'scroll', maxWidth: 279 }}>
-                <li>Vince Larisma</li>
-                <li>Justine Jun Banogon cute pogi hahahaha</li>
-                <li>Shawn Go</li>
-                <li>Shawn Go</li>
-                <li>Shawn Go</li>
-                <li>Shawn Go</li>
+                style={{ maxHeight: 250, overflowY: 'scroll', maxWidth: 276 }}>
+                {channelList !== undefined ? (
+                  channelList.map((value, index) => {
+                    return (
+                      <li key={index} onClick={() => handleSelectChannel(index)}>
+                        {value.name}
+                      </li>
+                    )
+                  })
+                ) : (
+                  <li>No Channels Added Yet</li>
+                )}
               </ul>
             </div>
           </div>
@@ -229,11 +263,20 @@ function Body() {
               </button>
             </div>
             <div className='new-chat-btn'>
+              {containUserInfo.userClass === 'Channel' && (
+                <button
+                  onClick={() => {
+                    setopenAdduserInChannel((prev) => !prev)
+                  }}>
+                  <i class='fa-solid fa-user-plus'></i>
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   setopenAdduser((prev) => !prev)
                 }}>
-                <i class='fa-solid fa-user-plus'></i>
+                <i className='fa-solid fa-message'></i>
               </button>
               <button
                 onClick={() => {
@@ -245,8 +288,16 @@ function Body() {
           </section>
           <ReceiveMessage />
           <SendMessageFunction />
-          {openAdduser && <AddUserModal closeAdduserMOdal={setopenAdduser} />}
-          {openAddchannel && <AddChannel closeAddChannelMOdal={setopenAddchannel} />}
+          {openAdduserInChannel && <AddUserInChannel closeAddUserInChannel={setopenAdduserInChannel} />}
+          {openAdduser && (
+            <AddUserModal
+              userListArray={userListArray}
+              setavailUser={setavailUser}
+              closeAdduserMOdal={setopenAdduser}
+            />
+          )}
+
+          {openAddchannel && <AddChannel userListArray={userListArray} closeAddChannelMOdal={setopenAddchannel} />}
         </section>
       </div>
     </>

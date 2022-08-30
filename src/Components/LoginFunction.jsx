@@ -109,7 +109,7 @@ export default function LoginFunction() {
               placeholder='Enter your password'
               onChange={handleChangePassword}
               onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
-            />
+            /> 
             <button className='create-submit-button' onClick={() => navigate('/CreateUser')}>
               Register <i class="fa-solid fa-arrow-right"></i> 
             </button>

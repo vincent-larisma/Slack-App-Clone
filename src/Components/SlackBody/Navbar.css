@@ -83,8 +83,13 @@ body {
 
 .screen-setting button:hover {
   transform: scale(1.2);
+  transition: .2s ease-out;
 }
 
 .button-exit {
   color: black;
+}
+
+.button-exit i {
+  font-size: 20px;
 }

@@ -1,27 +1,14 @@
-import React, { useStae } from 'react'
+import React from 'react'
+import { UserList } from '../LoginContext'
 import './AddChannel.css'
 
-function Addchannel({ closeAddChannelMOdal }) {
+import Swal from 'sweetalert2'
+import CreateChannel from './../CreateChannel'
 
+function Addchannel({ closeAddChannelMOdal, userListArray }) {
   return (
     <>
-        <section className='addchannel-container'>
-            <div className='addchannel-content'>
-                <p>Add New Channel</p>
-                <div className='input-channel-container'>
-                    <div className='enter-channel-input'>
-                        <input type="text" placeholder='Enter channel name' />
-                    </div>
-                    <div className='enter-user-input'>
-                        <input type="text" placeholder='Add users' />
-                    </div>
-                </div>
-                <section className='adduser-buttons'>
-                    <button onClick={() => {closeAddChannelMOdal(false)}}>Cancel</button>
-                    <button>Add</button>
-                </section>
-            </div>
-        </section>
+      <CreateChannel userListArray={userListArray} closeAddChannelMOdal={closeAddChannelMOdal} />
     </>
   )
 }

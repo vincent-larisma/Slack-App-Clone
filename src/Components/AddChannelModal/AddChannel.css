@@ -2,14 +2,14 @@
 .addchannel-container {
     z-index: 1;
     position: absolute;
-    top: 200px;
+    top: 130px;
     left: 400px;
 }
 
 
 .addchannel-content {
-    width: 400px;
-    height:200px;
+    width: 450px;
+    height: 295px;
     display: flex;
     /* justify-content: center;
     align-items: center; */
@@ -20,10 +20,45 @@
 
 }
 
-.addchannel-content p {
+.addNewChannel {
     margin-top: 20px;
-    margin-left: 30px;
+    margin-left: 20px;
     color: white;
+}
+
+.existingAddedMembers  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    border: 1px solid white;
+    color: white;
+    height: 50px;
+    width: 350px;
+    overflow-y: scroll;
+    cursor: pointer;
+}
+
+.list-members {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 10px;
+    align-items: center;
+}
+
+.list-members i:hover {
+    color: rgb(189, 3, 3);
+}
+
+.existingAddedMembers::-webkit-scrollbar {
+    display: none;
+}
+
+.existingAddedMembers li {
+    list-style: none;
+}
+
+.existingAddedMembers li:hover {
+    background-color: #6c8ea8;
 }
 
 .input-channel-container {
@@ -32,7 +67,14 @@
     align-items: center;
 }
 
-.enter-channel-input input, .enter-user-input input{
+.enter-user-input {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+
+}
+
+.enter-channel-input input {
     width: 300px;
     font-size: 15px;
     padding: 5px 8px;
@@ -41,20 +83,71 @@
     margin-bottom: 8px;
 }
 
+.enter-user-input input {
+    width: 230px;
+    font-size: 15px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.enter-user-input button {
+    width: 50px;
+    font-size: 15px;
+    padding: 5px 8px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.existingAddedMembers span {
+    padding-left: 10px;
+}
+
+.enter-user-input button:hover {
+    background-color: #6998ab;
+    transform: scale(1.06);
+    color: white;
+}
+
 .add-user-input {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.adduser-buttons {
+.addNewChannel-text {
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.channel-members {
+    width: 350px;
+    padding: 5px;
+    text-align: center;
+    margin: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+
+.addChannel-buttons {
     display: flex;
     justify-content: center;
     column-gap: 20px;
 }
 
-.adduser-buttons button {
-    padding: 4px 7px;
-    font-size: 15px;
-    width: 80px;
+.addChannel-buttons button {
+    width: 120px;
     border-radius: 5px;
+    padding: 4px 6px;
+    font-size: 12px;
+}
+
+.addChannel-buttons button:hover {
+    background-color: #6998ab;
+    transform: scale(1.06);
+    color: white;
 }

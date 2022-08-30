@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { UserMessages } from './LoginContext'
-import { LoginContextHeader } from './LoginContext'
-import { UserInfoSend } from './LoginContext'
+import { LoginContextHeader, UserList, UserInfoSend } from './LoginContext'
 
 const APIurl = 'http://206.189.91.54/api/v1'
 
 export default function SendMessageFunction() {
-  const { loginInfoHeader, setLoginInfoHeader } = useContext(LoginContextHeader)
-  const { containUserInfo, setContainUserInfo } = useContext(UserInfoSend)
+  const { listAllUserAdded, setListAllUserAdded } = useContext(UserList)
+  const { loginInfoHeader } = useContext(LoginContextHeader)
+  const { containUserInfo } = useContext(UserInfoSend)
   const { setReceivedMessage } = useContext(UserMessages)
   const [userSendMessage, setUserSendMessage] = useState({
     userMessage: '',
@@ -16,7 +16,7 @@ export default function SendMessageFunction() {
   })
 
   const { userId, userClass } = containUserInfo
-  const { userMessage, receiverID, receiverClass } = userSendMessage
+  const { userMessage } = userSendMessage
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const handleChangeMessage = (event) => {
@@ -45,9 +45,7 @@ export default function SendMessageFunction() {
         ...userDataHeadersAPI,
       },
       body: JSON.stringify(userDataAPI),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+    }).then((res) => res.json())
   }
 
   const postMessage = () => {
@@ -62,12 +60,29 @@ export default function SendMessageFunction() {
       .then((data) => setReceivedMessage({ data }))
   }
 
+  const checkList = (idList) => {
+    return idList === userId
+  }
+
   const handleClickSubmit = (event) => {
+    const list = listAllUserAdded
     event.preventDefault()
     getMessage()
     postMessage()
+    postMessage()
+    postMessage()
+
     setUserSendMessage({ ...userSendMessage, userMessage: '' })
+
+    if (!listAllUserAdded.some(checkList)) {
+      list.push(userId)
+      setListAllUserAdded(list)
+    }
   }
+
+  useEffect(() => {
+    postMessage()
+  }, [])
 
   return (
     <>

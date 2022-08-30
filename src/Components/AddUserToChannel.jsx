@@ -1,18 +1,18 @@
 import React, { useState, useContext } from 'react'
-import { LoginContextHeader } from './LoginContext'
+import { LoginContextHeader, CurrentChannel } from './LoginContext'
 
-export default function AddUserToChannel() {
+export default function AddUserToChannel({ closeAddUserInChannel }) {
+  const { currentChannelIndex, setCurrentChannelIndex } = useContext(CurrentChannel)
   const { loginInfoHeader } = useContext(LoginContextHeader)
   const [addMemberToChannel, setAddMemberToChannel] = useState({
-    channelID: '',
     userID: '',
   })
 
-  const { channelID, userID } = addMemberToChannel
+  const { userID } = addMemberToChannel
   const { accessToken, uid, expiry, client } = loginInfoHeader.dataLoginHeader
 
   const userDataAPI = {
-    id: channelID,
+    id: parseInt(currentChannelIndex),
     member_id: userID,
   }
   const userDataHeadersAPI = {
@@ -24,10 +24,6 @@ export default function AddUserToChannel() {
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
-  const handleChangeChannelID = (event) => {
-    const { name, value } = event.target
-    setAddMemberToChannel({ ...addMemberToChannel, [name]: value })
-  }
   const handleChangeUserID = (event) => {
     const { name, value } = event.target
     setAddMemberToChannel({ ...addMemberToChannel, [name]: value })
@@ -43,29 +39,31 @@ export default function AddUserToChannel() {
         ...userDataHeadersAPI,
       },
       body: JSON.stringify(userDataAPI),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+    }).then((res) => res.json())
 
-    setAddMemberToChannel({ ...addMemberToChannel, channelID: '', userID: '' })
+    setAddMemberToChannel({ ...addMemberToChannel, userID: '' })
+    closeAddUserInChannel(false)
   }
 
   return (
     <>
-      <div>
-        <input type='number' placeholder='User ID' name='userID' value={userID} onChange={handleChangeUserID} />
-      </div>
-
-      <div>
-        <input
-          type='number'
-          placeholder='Channel ID'
-          name='channelID'
-          value={channelID}
-          onChange={handleChangeChannelID}
-        />
-        <button onClick={handleClickSubmit}>Create</button>
-      </div>
+      <section className='adduser-container'>
+        <div className='adduser-content'>
+          <p>Add user in channel</p>
+          <div className='add-user-input'>
+            <input type='number' placeholder='User ID' name='userID' value={userID} onChange={handleChangeUserID} />
+          </div>
+          <section className='adduser-buttons'>
+            <button
+              onClick={() => {
+                closeAddUserInChannel(false)
+              }}>
+              Cancel
+            </button>
+            <button onClick={handleClickSubmit}>Add</button>
+          </section>
+        </div>
+      </section>
     </>
   )
 }

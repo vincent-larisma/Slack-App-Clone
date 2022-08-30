@@ -32,9 +32,7 @@ export default function GetChannelDetail() {
         'Content-Type': 'application/json',
         ...userDataHeadersAPI,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+    }).then((res) => res.json())
 
     setGetChannelDetails({ channelID: '' })
   }
