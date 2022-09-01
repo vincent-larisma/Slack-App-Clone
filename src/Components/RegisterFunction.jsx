@@ -19,40 +19,41 @@ export default function RegisterFunction() {
     password_confirmation: passwordConfirm,
   }
 
-  const handleChangeEmail = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target
     setUserData({ ...userData, [name]: value })
   }
-  const handleChangePassword = (event) => {
-    const { name, value } = event.target
-    setUserData({ ...userData, [name]: value })
-  }
-  const handleChangePasswordConfirm = (event) => {
-    const { name, value } = event.target
-    setUserData({ ...userData, [name]: value })
-  }
+  // const handleChangePassword = (event) => {
+  //   const { name, value } = event.target
+  //   setUserData({ ...userData, [name]: value })
+  // }
+  // const handleChangePasswordConfirm = (event) => {
+  //   const { name, value } = event.target
+  //   setUserData({ ...userData, [name]: value })
+  // }
 
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
-    fetch(`${APIurl}/auth/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userDataAPI),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+    console.log(userData)
+    // fetch(`${APIurl}/auth/`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(userDataAPI),
+    // })
+    //   .then((res) => res.json())
+     
 
-    setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
-    navigate('/Login')
+    // setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
+    // navigate('/Login')
 
-    if(email.value === "") {
-      console.log('hahahah')
-    }
+    // if(email.value === "") {
+    //   console.log('hahahah')
+    // }
   }
 
   return (
@@ -68,7 +69,7 @@ export default function RegisterFunction() {
               name='email'
               value={email}
               placeholder='Enter your email address'
-              onChange={handleChangeEmail}
+              onChange={handleChange}
             />
           </div>
           <div className='login-password'>
@@ -79,7 +80,7 @@ export default function RegisterFunction() {
               name='password'
               value={password}
               placeholder='Enter your password'
-              onChange={handleChangePassword}
+              onChange={handleChange}
             />
           </div>
           <div className='confirm-password'>
@@ -90,7 +91,7 @@ export default function RegisterFunction() {
               name='passwordConfirm'
               value={passwordConfirm}
               placeholder='Confirm password'
-              onChange={handleChangePasswordConfirm}
+              onChange={handleChange}
             />
           </div>
           <div className='loginCreate'>
