@@ -23,37 +23,28 @@ export default function RegisterFunction() {
     const { name, value } = event.target
     setUserData({ ...userData, [name]: value })
   }
-  // const handleChangePassword = (event) => {
-  //   const { name, value } = event.target
-  //   setUserData({ ...userData, [name]: value })
-  // }
-  // const handleChangePasswordConfirm = (event) => {
-  //   const { name, value } = event.target
-  //   setUserData({ ...userData, [name]: value })
-  // }
-
 
   const APIurl = 'http://206.189.91.54/api/v1'
 
   const handleClickSubmit = (event) => {
     event.preventDefault()
     console.log(userData)
-    // fetch(`${APIurl}/auth/`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(userDataAPI),
-    // })
-    //   .then((res) => res.json())
+    fetch(`${APIurl}/auth/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userDataAPI),
+    })
+      .then((res) => res.JSON())
      
 
-    // setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
-    // navigate('/Login')
+    setUserData({ ...userData, email: '', password: '', passwordConfirm: '' })
+    navigate('/Login')
 
-    // if(email.value === "") {
-    //   console.log('hahahah')
-    // }
+    if(email.value === "") {
+      console.log('hahahah')
+    }
   }
 
   return (
